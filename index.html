@@ -17,7 +17,7 @@
             --bg-color: #fce4ec;
             --white: #ffffff;
             --text-color: #333333;
-            --gray: #777777;
+            --gray: #666666;
         }
 
         * {
@@ -166,7 +166,6 @@
             cursor: pointer;
         }
 
-        /* Highlight selected radio card */
         .radio-card input[type="radio"]:checked + label,
         .radio-card:has(input[type="radio"]:checked) {
             border-color: var(--primary-pink);
@@ -192,7 +191,6 @@
             opacity: 0.9;
         }
 
-        /* Hidden class */
         .hidden {
             display: none !important;
         }
@@ -200,53 +198,100 @@
         /* Professional Success Message Box */
         .success-box {
             text-align: center;
-            padding: 40px 20px;
+            padding: 10px 5px;
         }
 
         .success-icon-container {
-            width: 80px;
-            height: 80px;
+            width: 65px;
+            height: 65px;
             background: #e8f5e9;
             color: #2e7d32;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 40px;
-            margin: 0 auto 20px auto;
-            box-shadow: 0 5px 15px rgba(46, 125, 50, 0.2);
+            font-size: 30px;
+            margin: 0 auto 12px auto;
+            box-shadow: 0 5px 15px rgba(46, 125, 50, 0.15);
         }
 
         .success-box h3 {
             color: var(--dark-pink);
-            font-size: 24px;
-            margin-bottom: 10px;
+            font-size: 20px;
+            margin-bottom: 4px;
             font-weight: 700;
         }
 
-        .success-box p {
-            color: var(--gray);
-            font-size: 14px;
-            margin-bottom: 25px;
-        }
-
-        .new-entry-btn {
-            background: linear-gradient(135deg, var(--primary-pink), var(--dark-pink));
-            color: var(--white);
-            border: none;
-            padding: 12px 25px;
-            border-radius: 8px;
-            font-size: 14px;
+        .success-box .sub-title {
+            color: var(--primary-pink);
+            font-size: 13px;
             font-weight: 600;
-            cursor: pointer;
-            transition: opacity 0.3s;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
+            margin-bottom: 15px;
         }
 
-        .new-entry-btn:hover {
-            opacity: 0.9;
+        /* Pulse Info & Official Card Style */
+        .pulse-info-card {
+            background-color: #fff5f8;
+            border: 1px solid var(--light-pink);
+            border-radius: 12px;
+            padding: 14px;
+            text-align: left;
+            margin-bottom: 15px;
+        }
+
+        .pulse-info-card h4 {
+            color: var(--dark-pink);
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .pulse-info-card p {
+            color: var(--text-color);
+            font-size: 11px;
+            line-height: 1.5;
+            margin-bottom: 6px;
+        }
+
+        /* Contact & Social Links Grid */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .contact-btn {
+            background: var(--light-pink);
+            color: var(--dark-pink);
+            padding: 8px 10px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-btn:hover {
+            background: var(--primary-pink);
+            color: var(--white);
+        }
+
+        .youtube-full-btn {
+            grid-column: span 2;
+            background: #ffebee;
+            color: #c62828;
+        }
+        .youtube-full-btn:hover {
+            background: #c62828;
+            color: var(--white);
         }
     </style>
 </head>
@@ -359,11 +404,40 @@
             <div class="success-icon-container">
                 <i class="fa-solid fa-check"></i>
             </div>
-            <h3>ধন্যবাদ!</h3>
-            <p>আপনার তথ্য সফলভাবে সাবমিট করা হয়েছে।</p>
-            <button class="new-entry-btn" onclick="location.reload()">
-                <i class="fa-solid fa-plus"></i> Submit Another Entry
-            </button>
+            <h3>Submission Successful!</h3>
+            <p class="sub-title">Your information has been securely recorded.</p>
+
+            <div class="pulse-info-card">
+                <h4><i class="fa-solid fa-building"></i> Office Address</h4>
+                <p>301/A, Hossain Villa, Mabs Road, Green Road, Farmgate, Dhaka.</p>
+                
+                <h4 style="margin-top: 8px;"><i class="fa-solid fa-phone"></i> Official Contacts</h4>
+                <p><strong>Founder & MD:</strong> 01792-439561</p>
+                <p><strong>Admin-1 (WhatsApp):</strong> 01985574715</p>
+                <p><strong>Admin-2 (WhatsApp):</strong> 01764890174</p>
+
+                <h4 style="margin-top: 8px;"><i class="fa-solid fa-shield-halved"></i> Rules & Privacy Policy</h4>
+                <p>1. All submitted data is 100% secure and confidential.<br>2. Course materials and lecture sheets are strictly for enrolled students only.</p>
+            </div>
+
+            <!-- Social Media Grid Links -->
+            <div class="contact-grid">
+                <a href="https://www.facebook.com/pulsenursingBD" target="_blank" class="contact-btn">
+                    <i class="fa-brands fa-facebook"></i> Admission FB
+                </a>
+                <a href="https://www.facebook.com/pulse.license.job" target="_blank" class="contact-btn">
+                    <i class="fa-brands fa-facebook"></i> Job & License FB
+                </a>
+                <a href="https://wa.me/8801985574715" target="_blank" class="contact-btn">
+                    <i class="fa-brands fa-whatsapp"></i> Admin-1 WA
+                </a>
+                <a href="https://wa.me/8801764890174" target="_blank" class="contact-btn">
+                    <i class="fa-brands fa-whatsapp"></i> Admin-2 WA
+                </a>
+                <a href="https://www.youtube.com/@PulseNursing" target="_blank" class="contact-btn youtube-full-btn">
+                    <i class="fa-brands fa-youtube"></i> Pulse Nursing YouTube Channel
+                </a>
+            </div>
         </div>
     </div>
 
