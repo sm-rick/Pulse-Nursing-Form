@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Pulse Nursing</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-pink: #c2185b;
+            --dark-pink: #880e4f;
+            --light-pink: #f8bbd0;
+            --bg-color: #fce4ec;
+            --white: #ffffff;
+            --text-color: #333333;
+            --gray: #777777;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .admin-container {
+            width: 100%;
+            max-width: 1100px;
+            background: var(--white);
+            padding: 25px;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(136, 14, 79, 0.15);
+        }
+
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--light-pink);
+            padding-bottom: 15px;
+        }
+
+        .admin-header h2 {
+            color: var(--dark-pink);
+            font-size: 22px;
+        }
+
+        .back-btn {
+            background-color: var(--gray);
+            color: white;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-size: 13px;
+            cursor: pointer;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .back-btn:hover {
+            background-color: #555;
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+            max-height: 65vh;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+
+        table th, table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+            white-space: nowrap;
+        }
+
+        table th {
+            background-color: var(--dark-pink);
+            color: white;
+            position: sticky;
+            top: 0;
+        }
+
+        .admin-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+
+        .btn-export {
+            background-color: #2e7d32;
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-export:hover {
+            background-color: #1b5e20;
+        }
+
+        .loading-text {
+            text-align: center;
+            padding: 30px;
+            color: var(--gray);
+            font-size: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="admin-container">
+        <div class="admin-header">
+            <h2><i class="fa-solid fa-gauge"></i> Admin Dashboard (Google Sheets Data)</h2>
+            <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Back to Form</a>
+        </div>
+        
+        <div class="table-responsive">
+            <table id="dataTable">
+                <thead>
+                    <tr>
+                        <th>Order Date</th>
+                        <th>Delivery System</th>
+                        <th>Student Name</th>
+                        <th>Phone Number</th>
+                        <th>Course</th>
+                        <th>Level</th>
+                        <th>District</th>
+                        <th>Upazilla</th>
+                        <th>Address Line</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                    <tr><td colspan="9" class="loading-text">Verifying admin access...</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="admin-actions">
+            <button class="btn-export" onclick="exportToExcel()"><i class="fa-solid fa-file-excel"></i> Download Excel (CSV)</button>
+        </div>
+    </div>
+
+    <!-- JavaScript Logic -->
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbyx9vPi6Ob_-FR4j3TQlDDWpwBkgi4ILek5VBz9HcHk-rOBqF29-viIyIID4jXZxgCF/exec';
+
+        // Check Password on Page Load
+        window.onload = function() {
+            let password = prompt("Enter Admin Password:");
+            if (password === "SM@890174s") {
+                loadTableData();
+            } else {
+                alert("Incorrect Password!");
+                window.location.href = "index.html"; // Redirect back to form if password is wrong
+            }
+        };
+
+        // Load data into admin table from Google Sheets API
+        function loadTableData() {
+            const tableBody = document.getElementById('tableBody');
+            tableBody.innerHTML = `<tr><td colspan="9" class="loading-text">Loading data from Google Sheets...</td></tr>`;
+            
+            fetch(scriptURL)
+                .then(response => response.json())
+                .then(data => {
+                    tableBody.innerHTML = '';
+                    
+                    if(data.length === 0) {
+                        tableBody.innerHTML = `<tr><td colspan="9" style="text-align:center; color:#777; padding: 20px;">No data found.</td></tr>`;
+                        return;
+                    }
+
+                    data.forEach(item => {
+                        let row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td>${item.orderDate || ''}</td>
+                            <td>${item.deliverySystem || ''}</td>
+                            <td>${item.studentName || ''}</td>
+                            <td>${item.phoneNumber || ''}</td>
+                            <td>${item.course || ''}</td>
+                            <td>${item.level || ''}</td>
+                            <td>${item.district || ''}</td>
+                            <td>${item.upazilla || ''}</td>
+                            <td>${item.addressLine || ''}</td>
+                        `;
+                        tableBody.appendChild(row);
+                    });
+                })
+                .catch(error => {
+                    tableBody.innerHTML = `<tr><td colspan="9" style="text-align:center; color:red; padding: 20px;">Failed to load data.</td></tr>`;
+                    console.error('Error loading data:', error);
+                });
+        }
+
+        // Export to Excel / CSV from loaded Google Sheets data
+        function exportToExcel() {
+            fetch(scriptURL)
+                .then(response => response.json())
+                .then(data => {
+                    if(data.length === 0) {
+                        alert("No data available to export!");
+                        return;
+                    }
+
+                    let csvContent = "data:text/csv;charset=utf-8,";
+                    csvContent += "Order Date,Delivery System,Student Name,Phone Number,Course,Level,District,Upazilla,Address Line\r\n";
+
+                    data.forEach(item => {
+                        let row = [
+                            item.orderDate || '',
+                            `"${item.deliverySystem || ''}"`,
+                            `"${item.studentName || ''}"`,
+                            `"${item.phoneNumber || ''}"`,
+                            `"${item.course || ''}"`,
+                            `"${item.level || ''}"`,
+                            `"${item.district || ''}"`,
+                            `"${item.upazilla || ''}"`,
+                            `"${item.addressLine || ''}"`
+                        ];
+                        csvContent += row.join(",") + "\r\n";
+                    });
+
+                    let encodedUri = encodeURI(csvContent);
+                    let link = document.createElement("a");
+                    link.setAttribute("href", encodedUri);
+                    link.setAttribute("download", "pulse_students_data.csv");
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                })
+                .catch(error => alert("Export failed!"));
+        }
+    </script>
+</body>
+</html>
