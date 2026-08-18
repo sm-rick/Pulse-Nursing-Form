@@ -125,7 +125,7 @@
             cursor: not-allowed;
         }
 
-        /* Modern Radio Group UI */
+        /* Modern Radio Group UI (Fixed Full Card Click & No Focus Outline) */
         .radio-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
@@ -144,6 +144,7 @@
             align-items: center;
             justify-content: center;
             gap: 6px;
+            user-select: none;
         }
 
         .radio-card:hover {
@@ -156,6 +157,13 @@
             accent-color: var(--primary-pink);
             cursor: pointer;
             margin: 0;
+            outline: none !important;
+            box-shadow: none !important;
+        }
+
+        .radio-card input[type="radio"]:focus {
+            outline: none !important;
+            box-shadow: none !important;
         }
 
         .radio-card label {
@@ -166,6 +174,7 @@
             cursor: pointer;
         }
 
+        /* Highlight selected radio card */
         .radio-card input[type="radio"]:checked + label,
         .radio-card:has(input[type="radio"]:checked) {
             border-color: var(--primary-pink);
@@ -335,22 +344,22 @@
 
                 <div class="form-group">
                     <label>Phone Number (11 Digit English Number)</label>
-                    <input type="text" id="phoneNumber" placeholder="e.g. 01712345678" maxlength="11" oninput="validatePhone(this)" required>
+                    <input type="text" id="phoneNumber" placeholder="e.g. 01712345678" maxlength="11" onclick="this.focus()" oninput="validatePhone(this)" required>
                 </div>
 
                 <!-- Course Radio Cards -->
                 <div class="form-group">
                     <label>Course</label>
                     <div class="radio-grid">
-                        <div class="radio-card">
+                        <div class="radio-card" onclick="selectRadio('courseBsc')">
                             <input type="radio" id="courseBsc" name="course" value="BSC" required>
                             <label for="courseBsc">BSC</label>
                         </div>
-                        <div class="radio-card">
+                        <div class="radio-card" onclick="selectRadio('courseDiploma')">
                             <input type="radio" id="courseDiploma" name="course" value="DIPLOMA">
                             <label for="courseDiploma">DIPLOMA</label>
                         </div>
-                        <div class="radio-card">
+                        <div class="radio-card" onclick="selectRadio('courseMidwifery')">
                             <input type="radio" id="courseMidwifery" name="course" value="Midwifery">
                             <label for="courseMidwifery">Midwifery</label>
                         </div>
@@ -361,19 +370,19 @@
                 <div class="form-group">
                     <label>Level</label>
                     <div class="radio-grid">
-                        <div class="radio-card">
+                        <div class="radio-card" onclick="selectRadio('levelAdmission')">
                             <input type="radio" id="levelAdmission" name="level" value="Admission" required>
                             <label for="levelAdmission">Admission</label>
                         </div>
-                        <div class="radio-card">
+                        <div class="radio-card" onclick="selectRadio('levelLicense')">
                             <input type="radio" id="levelLicense" name="level" value="License">
                             <label for="levelLicense">License</label>
                         </div>
-                        <div class="radio-card">
+                        <div class="radio-card" onclick="selectRadio('levelJob')">
                             <input type="radio" id="levelJob" name="level" value="Job">
                             <label for="levelJob">Job</label>
                         </div>
-                        <div class="radio-card">
+                        <div class="radio-card" onclick="selectRadio('levelAcademic')">
                             <input type="radio" id="levelAcademic" name="level" value="Academic">
                             <label for="levelAcademic">Academic</label>
                         </div>
@@ -450,6 +459,11 @@
             const formattedDate = today.toISOString().split('T')[0];
             document.getElementById('orderDate').value = formattedDate;
         };
+
+        // Helper function to check radio when card is clicked anywhere
+        function selectRadio(id) {
+            document.getElementById(id).checked = true;
+        }
 
         function toggleAddressField() {
             const deliverySystem = document.getElementById('deliverySystem').value;
