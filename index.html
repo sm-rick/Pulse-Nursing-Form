@@ -93,6 +93,7 @@
         /* Form Controls */
         .form-group {
             margin-bottom: 16px;
+            position: relative;
         }
 
         label {
@@ -125,7 +126,37 @@
             cursor: not-allowed;
         }
 
-        /* Modern Radio Group UI (Fixed Full Card Click & No Focus Outline) */
+        /* Searchable Dropdown Custom List Styles */
+        .autocomplete-items {
+            position: absolute;
+            border: 1px solid #d1c4e9;
+            border-top: none;
+            z-index: 99;
+            top: 100%;
+            left: 0;
+            right: 0;
+            max-height: 180px;
+            overflow-y: auto;
+            background-color: #fff;
+            border-radius: 0 0 8px 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .autocomplete-items div {
+            padding: 10px 14px;
+            cursor: pointer;
+            font-size: 13px;
+            color: var(--text-color);
+            border-bottom: 1px solid #f3e5f5;
+            font-weight: normal; /* নরমাল ফন্ট সুনিশ্চিত করা */
+        }
+
+        .autocomplete-items div:hover, .autocomplete-items div.autocomplete-active {
+            background-color: #fce4ec;
+            color: var(--dark-pink);
+        }
+
+        /* Modern Radio Group UI */
         .radio-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
@@ -161,11 +192,6 @@
             box-shadow: none !important;
         }
 
-        .radio-card input[type="radio"]:focus {
-            outline: none !important;
-            box-shadow: none !important;
-        }
-
         .radio-card label {
             margin: 0;
             font-size: 13px;
@@ -174,7 +200,6 @@
             cursor: pointer;
         }
 
-        /* Highlight selected radio card */
         .radio-card input[type="radio"]:checked + label,
         .radio-card:has(input[type="radio"]:checked) {
             border-color: var(--primary-pink);
@@ -238,7 +263,6 @@
             margin-bottom: 15px;
         }
 
-        /* Pulse Info & Official Card Style */
         .pulse-info-card {
             background-color: #fff5f8;
             border: 1px solid var(--light-pink);
@@ -265,7 +289,6 @@
             margin-bottom: 6px;
         }
 
-        /* Contact & Social Links Grid */
         .contact-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -321,7 +344,7 @@
 
         <!-- Main Form Wrapper -->
         <div id="formWrapper">
-            <form id="studentForm" onsubmit="handleFormSubmit(event)">
+            <form id="studentForm" autocomplete="off" onsubmit="handleFormSubmit(event)">
                 
                 <div class="form-group">
                     <label>Order Date</label>
@@ -344,7 +367,7 @@
 
                 <div class="form-group">
                     <label>Phone Number (11 Digit English Number)</label>
-                    <input type="text" id="phoneNumber" placeholder="e.g. 01712345678" maxlength="11" onclick="this.focus()" oninput="validatePhone(this)" required>
+                    <input type="text" id="phoneNumber" placeholder="e.g. 01712345678" maxlength="11" oninput="validatePhone(this)" required>
                 </div>
 
                 <!-- Course Radio Cards -->
@@ -389,14 +412,18 @@
                     </div>
                 </div>
 
+                <!-- Searchable District Input -->
                 <div class="form-group">
                     <label>District</label>
-                    <input type="text" id="district" placeholder="Enter District" required>
+                    <input type="text" id="district" placeholder="Click or Type District" required>
+                    <div id="districtList" class="autocomplete-items"></div>
                 </div>
 
+                <!-- Searchable Upazilla Input -->
                 <div class="form-group">
                     <label>Upazilla / Thana</label>
-                    <input type="text" id="upazilla" placeholder="Enter Upazilla or Thana" required>
+                    <input type="text" id="upazilla" placeholder="Click or Type Upazilla / Thana" required>
+                    <div id="upazillaList" class="autocomplete-items"></div>
                 </div>
 
                 <div class="form-group hidden" id="addressGroup">
@@ -450,17 +477,131 @@
         </div>
     </div>
 
-    <!-- JavaScript Logic -->
+    <!-- JavaScript Logic with Full Location Database & Alphabetical Dropdowns -->
     <script>
         const scriptURL = 'https://script.google.com/macros/s/AKfycbyx9vPi6Ob_-FR4j3TQlDDWpwBkgi4ILek5VBz9HcHk-rOBqF29-viIyIID4jXZxgCF/exec';
+
+        const locationData = {
+            "Dhaka": [
+                "Savar", "Dhamrai", "Keraniganj", "Dohar", "Nawabganj",
+                "Uttara", "Uttara West", "Uttara East", "Turag", "Uttar Khan", "Dakshinkhan", "Khilkhet", "Airport", 
+                "Mirpur", "Shah Ali", "Kafrul", "Pallabi", "Rupnagar", "Bhashantek", 
+                "Tejgaon", "Tejgaon Industrial Area", "Sher-e-Bangla Nagar", "Hatirjheel", "Rampura", "Badda", "Bhatara", "Gulshan", "Banani", "Cantonment", 
+                "Mohammadpur", "Adabor", "Dhanmondi", "Hazaribagh", "New Market", "Kalabagan", 
+                "Ramna", "Shahbagh", "Paltan", "Motijheel", "Sabujbagh", "Shahjahanpur", "Mugda", "Khilgaon", 
+                "Wari", "Sutrapur", "Gendaria", "Lalbagh", "Chawkbazar", "Bangshal", "Kotwali", "Kamrangirchar", 
+                "Demra", "Jatrabari", "Kadamtali", "Shyampur"
+            ],
+            "Faridpur": ["Faridpur Sadar", "Alfadanga", "Boalmari", "Bhanga", "Charbhadrasan", "Madhukhali", "Nagarkanda", "Sadarpur", "Saltha"],
+            "Gazipur": [
+                "Gazipur Sadar", "Kaliakair", "Kaliganj", "Kapasia", "Sreepur",
+                "Konabari", "Gacha", "Tongi East", "Tongi West", "Basan", "Pubail", "Sadar Thana"
+            ],
+            "Gopalganj": ["Gopalganj Sadar", "Kashedani", "Kotalipara", "Muksudpur", "Tungipara"],
+            "Kishoreganj": ["Kishoreganj Sadar", "Hossainpur", "Pakundia", "Katiadi", "Kuliarchar", "Bhairab", "Bajitpur", "Itna", "Mithamain", "Nikli", "Tarail", "Austagram", "Karimganj"],
+            "Madaripur": ["Madaripur Sadar", "Shibchar", "Rajoir", "Kalkini", "Dasar"],
+            "Manikganj": ["Manikganj Sadar", "Singair", "Saturia", "Ghior", "Doulatpur", "Shibalaya", "Harirampur"],
+            "Munshiganj": ["Munshiganj Sadar", "Sreenagar", "Louhajang", "Sirajdikhan", "Tongibari", "Gazaria"],
+            "Narayanganj": [
+                "Narayanganj Sadar", "Rupganj", "Sonargaon", "Araihazar", "Bandar",
+                "Fatullah", "Siddhirganj"
+            ],
+            "Narsingdi": ["Narsingdi Sadar", "Palash", "Shibpur", "Monohardi", "Belabo", "Raipura"],
+            "Rajbari": ["Rajbari Sadar", "Goalanda", "Pangsha", "Baliakandi", "Kalukhali"],
+            "Shariatpur": ["Shariatpur Sadar", "Naria", "Jajira", "Bhedarganj", "Damudya", "Gosairhat"],
+            "Tangail": ["Tangail Sadar", "Sakhipur", "Basail", "Ghatail", "Kalihati", "Bhuapur", "Mirzapur", "Nagarpur", "Madhupur", "Dhanbari", "Delduar", "Gopalpur"],
+            "Chattogram": [
+                "Anwara", "Banshkhali", "Boalkhali", "Chandanaish", "Fatikchhari", "Hathazari", "Lohagara", "Mirsarai", "Patiya", "Rauzan", "Rangunia", "Sandwip", "Satkania", "Sitakunda",
+                "Kotwali", "Double Mooring", "Panchlaish", "Pahartali", "Halishahar", "Bakalia", "Bayazid Bostami", "Chandgaon", "Bandar", "EPZ", "Patenga", "Karnafuli", "Khulshi", "Sadarghat", "Chawkbazar", "Akbarshah"
+            ],
+            "Cox's Bazar": ["Cox's Bazar Sadar", "Chakaria", "Pekua", "Kutubdia", "Ukhia", "Teknaf", "Ramu", "Maheshkhali", "Eidgaon"],
+            "Bandarban": ["Bandarban Sadar", "Alikadam", "Naikhongchhari", "Rowangchhari", "Ruma", "Thanchi", "Lama"],
+            "Khagrachhari": ["Khagrachhari Sadar", "Dighinala", "Panchhari", "Lakshmichhari", "Mahalchhari", "Matiranga", "Ramgarh", "Manikchhari", "Guimara"],
+            "Rangamati": ["Rangamati Sadar", "Baghaichhari", "Barkal", "Belaichhari", "Kaptai", "Jurachhari", "Langadu", "Naniarchar", "Kawkhali", "Rajasthali"],
+            "Noakhali": ["Noakhali Sadar (Sudharam)", "Senbagh", "Companiganj", "Begumganj", "Chatkhil", "Hatiya", "Subarnachar", "Kabirhat"],
+            "Lakshmipur": ["Lakshmipur Sadar", "Raipur", "Ramganj", "Ramgati", "Kamalnagar", "Chandraganj"],
+            "Feni": ["Feni Sadar", "Chhagalnaiya", "Sonagazi", "Daganbhuiyan", "Parshuram", "Fulgazi"],
+            "Comilla": ["Comilla Adarsha Sadar", "Sadar Dakshin", "Burichong", "Brahmanpara", "Chouddagram", "Daudkandi", "Debidwar", "Homna", "Laksam", "Monoharganj", "Meghna", "Muradnagar", "Nangalkot", "Titas", "Barura", "Lalmai"],
+            "Brahmanbaria": ["Brahmanbaria Sadar", "Ashuganj", "Nasirnagar", "Nabinagar", "Sarail", "Kasba", "Akhaura", "Bancharampur", "Bijoynagar"],
+            "Chandpur": ["Chandpur Sadar", "Matlab Uttar", "Matlab Dakshin", "Hajiganj", "Kachua", "Shahrasti", "Faridganj", "Haimchar"],
+            "Rajshahi": [
+                "Paba", "Mohanpur", "Tanore", "Bagmara", "Durgapur", "Charghat", "Bagha", "Godagari", "Puthia",
+                "Boalia", "Rajpara", "Motihar", "Shah Makhdum", "Chandrima", "Katakhali", "Karnahar", "Damkura"
+            ],
+            "Bogura": ["Bogura Sadar", "Sherpur", "Dhunat", "Sariakandi", "Gabtali", "Sonatala", "Shibganj", "Kahalu", "Nandigram", "Dupchanchia", "Adamdighi", "Shahjahanpur"],
+            "Naogaon": ["Naogaon Sadar", "Raninagar", "Atrai", "Badalgachhi", "Manda", "Dhamoirhat", "Patnitala", "Sapahar", "Porsha", "Mahadebpur", "Niamatpur"],
+            "Natore": ["Natore Sadar", "Bagatipara", "Baraigram", "Gurudaspur", "Lalpur", "Singra", "Naldanga"],
+            "Chapainawabganj": ["Chapainawabganj Sadar", "Gomastapur", "Nachol", "Bholahat", "Shibganj"],
+            "Pabna": ["Pabna Sadar", "Ishwardi", "Bhangura", "Atgharia", "Chatmohar", "Bera", "Sujanagar", "Sathia", "Faridpur"],
+            "Sirajganj": ["Sirajganj Sadar", "Kazipur", "Ullapara", "Shahjadpur", "Rayganj", "Tarash", "Kamarkhanda", "Belkuchi", "Chauhali"],
+            "Joypurhat": ["Joypurhat Sadar", "Akkelpur", "Kalai", "Khetlal", "Panchbibi"],
+            "Khulna": [
+                "Rupsa", "Dighalia", "Dumuria", "Paikgachha", "Koyra", "Batiaghata", "Dakop", "Phultala", "Terokhada",
+                "Sonadanga", "Khalishpur", "Daulatpur", "Khan Jahan Ali", "Boyra", "Harintana", "Lobonchora", "Sonadanga Model"
+            ],
+            "Jashore": ["Jashore Sadar", "Abhaynagar", "Bagherpara", "Chaugachha", "Jhikargachha", "Keshabpur", "Sharsha", "Manirampur"],
+            "Satkhira": ["Satkhira Sadar", "Kalaroa", "Tala", "Debhata", "Kaliganj", "Assasuni", "Shyamnagar"],
+            "Meherpur": ["Meherpur Sadar", "Gangni", "Mujibnagar"],
+            "Narail": ["Narail Sadar", "Lohagara", "Kalia"],
+            "Chuadanga": ["Chuadanga Sadar", "Alamdanga", "Jibannagar", "Damurhuda"],
+            "Kushtia": ["Kushtia Sadar", "Kumarkhali", "Khoksa", "Bheramara", "Mirpur", "Doulatpur"],
+            "Magura": ["Magura Sadar", "Sreepur", "Salikha", "Mohammadpur"],
+            "Bagerhat": ["Bagerhat Sadar", "Kachua", "Mollahat", "Chitalmari", "Sharankhola", "Rampal", "Mongla", "Fakirhat", "Morellganj"],
+            "Jhenaidah": ["Jhenaidah Sadar", "Shailkupa", "Harinakunda", "Kaliganj", "Maheshpur", "Kotchandpur"],
+            "Barishal": [
+                "Barishal Sadar", "Bakerganj", "Babuganj", "Uzirpur", "Banaripara", "Gournadi", "Agailjhara", "Mehendiganj", "Muladi", "Hizla",
+                "Kotwali", "Airport Thana"
+            ],
+            "Barguna": ["Barguna Sadar", "Amtali", "Betagi", "Bamna", "Patharghata", "Taltali"],
+            "Bhola": ["Bhola Sadar", "Borhanuddin", "Char Fasson", "Doulatkhan", "Lalmohan", "Monpura", "Tazumuddin"],
+            "Jhalokati": ["Jhalokati Sadar", "Nalchity", "Rajapur", "Kathalia"],
+            "Pirojpur": ["Pirojpur Sadar", "Nesarabad (Swarupkati)", "Nazirpur", "Kawkhali", "Bhandaria", "Mathbaria", "Indurkani"],
+            "Patuakhali": ["Patuakhali Sadar", "Bauphal", "Galachipa", "Kalapara", "Dashmina", "Mirzaganj", "Dumki", "Rangabali"],
+            "Sylhet": [
+                "Golapganj", "Beani Bazar", "Jaintapur", "Kanaighat", "Gowainghat", "Companiganj", "Zakiganj", "Bishwanath", "Osmani Nagar", "Dakshin Surma", "Balaganj", "Fenchuganj",
+                "Kotwali", "Jalalabad", "Moglabazar", "Airport", "Shah Paran"
+            ],
+            "Sunamganj": ["Sunamganj Sadar", "Bishwamvarpur", "Chhatak", "Dowarabazar", "Jagannathpur", "Shantiganj (South Sunamganj)", "Tahirpur", "Dharmapasha", "Sulla", "Derai", "Madhyanagar"],
+            "Habiganj": ["Habiganj Sadar", "Nabiganj", "Bahubal", "Ajmiriganj", "Baniachong", "Lakhai", "Chunarughat", "Madhabpur", "Shayestaganj"],
+            "Moulvibazar": ["Moulvibazar Sadar", "Barlekha", "Juri", "Kulaura", "Kamalganj", "Sreemangal", "Rajnagar"],
+            "Rangpur": [
+                "Badarganj", "Gangachara", "Kaunia", "Mithapukur", "Pirgachha", "Pirganj", "Taraganj",
+                "Kotwali", "Haragach", "Parshuram", "Tajhat"
+            ],
+            "Dinajpur": ["Dinajpur Sadar", "Biral", "Birampur", "Birganj", "Bochaganj", "Chirirbandar", "Ghoraghat", "Hakimpur", "Kaharol", "Khansama", "Nawabganj", "Parbatipur", "Phulbari"],
+            "Gaibandha": ["Gaibandha Sadar", "Fulchhari", "Gobindaganj", "Palashbari", "Sadullapur", "Saghata", "Sundarganj"],
+            "Kurigram": ["Kurigram Sadar", "Bhurungamari", "Chilmari", "Phulbari", "Rajarhat", "Rajibpur", "Roumari", "Nageshwari", "Ulipur"],
+            "Lalmonirhat": ["Lalmonirhat Sadar", "Aditmari", "Kaliganj", "Hatibandha", "Patgram"],
+            "Nilphamari": ["Nilphamari Sadar", "Dimla", "Domar", "Jaldhaka", "Kishoreganj", "Syedpur"],
+            "Panchagarh": ["Panchagarh Sadar", "Atwari", "Boda", "Debiganj", "Tentulia"],
+            "Thakurgaon": ["Thakurgaon Sadar", "Baliadangi", "Pirganj", "Ranisankail", "Haripur"],
+            "Mymensingh": [
+                "Muktagachha", "Bhaluka", "Trishal", "Dhobaura", "Phulpur", "Haluaghat", "Gauripur", "Ishwarganj", "Nandail", "Phulbaria", "Tarakanda", "Gafargaon",
+                "Kotwali"
+            ],
+            "Jamalpur": ["Jamalpur Sadar", "Islampur", "Dewanganj", "Madarganj", "Melandaha", "Bakshiganj", "Sarishabari"],
+            "Netrokona": ["Netrokona Sadar", "Atpara", "Barhatta", "Durgapur", "Kalmakanda", "Kendua", "Khaliajuri", "Madan", "Mohonganj", "Purbadhala"],
+            "Sherpur": ["Sherpur Sadar", "Nalitabari", "Jhenaigati", "Nakla", "Sreebordi"]
+        };
 
         window.onload = function() {
             const today = new Date();
             const formattedDate = today.toISOString().split('T')[0];
             document.getElementById('orderDate').value = formattedDate;
+
+            // Sort districts alphabetically
+            const sortedDistricts = Object.keys(locationData).sort((a, b) => a.localeCompare(b));
+
+            setupSearchableDropdown('district', 'districtList', sortedDistricts, function(selectedDistrict) {
+                const upazillaInput = document.getElementById('upazilla');
+                upazillaInput.value = '';
+                
+                // Sort upazillas alphabetically for the selected district
+                const upazillas = (locationData[selectedDistrict] || []).sort((a, b) => a.localeCompare(b));
+                setupSearchableDropdown('upazilla', 'upazillaList', upazillas, null);
+            });
         };
 
-        // Helper function to check radio when card is clicked anywhere
         function selectRadio(id) {
             document.getElementById(id).checked = true;
         }
@@ -489,6 +630,81 @@
             if(input.value.length > 11) {
                 input.value = input.value.slice(0, 11);
             }
+        }
+
+        // Searchable Dropdown with Alphabetical click options and Keyboard Navigation (No Bold)
+        function setupSearchableDropdown(inputId, listId, dataArray, onSelectCallback) {
+            const input = document.getElementById(inputId);
+            const listContainer = document.getElementById(listId);
+            let currentFocus = -1;
+
+            function showAllItems(filterVal = "") {
+                listContainer.innerHTML = "";
+                currentFocus = -1;
+
+                const filtered = dataArray.filter(item => item.toLowerCase().includes(filterVal.toLowerCase()));
+                if (filtered.length === 0) return;
+
+                filtered.forEach(item => {
+                    const div = document.createElement('div');
+                    div.textContent = item; // সাধারণ টেক্সট, কোনো বোল্ড ট্যাগ নেই
+                    
+                    div.addEventListener('click', function() {
+                        input.value = item;
+                        listContainer.innerHTML = "";
+                        if (onSelectCallback) onSelectCallback(item);
+                    });
+                    listContainer.appendChild(div);
+                });
+            }
+
+            // ইনপুটে ক্লিক করলেই বা ফোকাস পেলেই আলফাবেট অনুসারে সব দেখাবে
+            input.addEventListener('focus', function() {
+                showAllItems(input.value);
+            });
+
+            input.oninput = function() {
+                showAllItems(this.value);
+            };
+
+            input.onkeydown = function(e) {
+                let items = listContainer.getElementsByTagName('div');
+                if (e.keyCode === 40) { // Arrow DOWN
+                    currentFocus++;
+                    addActive(items);
+                } else if (e.keyCode === 38) { // Arrow UP
+                    currentFocus--;
+                    addActive(items);
+                } else if (e.keyCode === 13) { // ENTER
+                    e.preventDefault();
+                    if (currentFocus > -1 && items[currentFocus]) {
+                        items[currentFocus].click();
+                    } else if (items.length > 0) {
+                        items[0].click();
+                    }
+                }
+            };
+
+            function addActive(items) {
+                if (!items) return false;
+                removeActive(items);
+                if (currentFocus >= items.length) currentFocus = 0;
+                if (currentFocus < 0) currentFocus = items.length - 1;
+                items[currentFocus].classList.add('autocomplete-active');
+                items[currentFocus].scrollIntoView({ block: 'nearest' });
+            }
+
+            function removeActive(items) {
+                for (let i = 0; i < items.length; i++) {
+                    items[i].classList.remove('autocomplete-active');
+                }
+            }
+
+            document.addEventListener('click', function(e) {
+                if (e.target !== input && !listContainer.contains(e.target)) {
+                    listContainer.innerHTML = "";
+                }
+            });
         }
 
         function handleFormSubmit(event) {
