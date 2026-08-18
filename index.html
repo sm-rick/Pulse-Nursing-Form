@@ -129,8 +129,6 @@
         /* Searchable Dropdown Custom List Styles */
         .autocomplete-items {
             position: absolute;
-            border: 1px solid #d1c4e9;
-            border-top: none;
             z-index: 99;
             top: 100%;
             left: 0;
@@ -139,6 +137,11 @@
             overflow-y: auto;
             background-color: #fff;
             border-radius: 0 0 8px 8px;
+        }
+
+        .autocomplete-items:not(:empty) {
+            border: 1px solid #d1c4e9;
+            border-top: none;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
@@ -148,7 +151,11 @@
             font-size: 13px;
             color: var(--text-color);
             border-bottom: 1px solid #f3e5f5;
-            font-weight: normal; /* নরমাল ফন্ট সুনিশ্চিত করা */
+            font-weight: normal;
+        }
+
+        .autocomplete-items div:last-child {
+            border-bottom: none;
         }
 
         .autocomplete-items div:hover, .autocomplete-items div.autocomplete-active {
@@ -351,13 +358,19 @@
                     <input type="text" id="orderDate" readonly>
                 </div>
 
+                <!-- Delivery System Radio Cards -->
                 <div class="form-group">
                     <label>Delivery System</label>
-                    <select id="deliverySystem" onchange="toggleAddressField()" required>
-                        <option value="" disabled selected>Select Delivery Method</option>
-                        <option value="Office Delivery">Office Delivery</option>
-                        <option value="Home Delivery">Home Delivery</option>
-                    </select>
+                    <div class="radio-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <div class="radio-card" onclick="selectRadio('deliveryOffice')">
+                            <input type="radio" id="deliveryOffice" name="deliverySystem" value="Office Delivery" checked required>
+                            <label for="deliveryOffice">Office Delivery</label>
+                        </div>
+                        <div class="radio-card" onclick="selectRadio('deliveryHome')">
+                            <input type="radio" id="deliveryHome" name="deliverySystem" value="Home Delivery">
+                            <label for="deliveryHome">Home Delivery</label>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="form-group">
@@ -426,6 +439,7 @@
                     <div id="upazillaList" class="autocomplete-items"></div>
                 </div>
 
+                <!-- Address Line -->
                 <div class="form-group hidden" id="addressGroup">
                     <label>Address Line</label>
                     <input type="text" id="addressLine" placeholder="Village, Road, House No, etc.">
@@ -477,7 +491,7 @@
         </div>
     </div>
 
-    <!-- JavaScript Logic with Full Location Database & Alphabetical Dropdowns -->
+    <!-- JavaScript Logic -->
     <script>
         const scriptURL = 'https://script.google.com/macros/s/AKfycbyx9vPi6Ob_-FR4j3TQlDDWpwBkgi4ILek5VBz9HcHk-rOBqF29-viIyIID4jXZxgCF/exec';
 
@@ -589,29 +603,43 @@
             const formattedDate = today.toISOString().split('T')[0];
             document.getElementById('orderDate').value = formattedDate;
 
-            // Sort districts alphabetically
             const sortedDistricts = Object.keys(locationData).sort((a, b) => a.localeCompare(b));
+            setupDistrictDropdown(sortedDistricts);
+            setupUpazillaDropdown();
+            
+            toggleAddressField();
 
-            setupSearchableDropdown('district', 'districtList', sortedDistricts, function(selectedDistrict) {
+            document.querySelectorAll('input[name="deliverySystem"]').forEach(radio => {
+                radio.addEventListener('change', toggleAddressField);
+            });
+
+            // গ্লোবাল ক্লিক ইভেন্ট: ফর্ম বা ইনপুট বক্সের বাইরে কোথাও ক্লিক করলে সব ড্রপডাউন বন্ধ হয়ে যাবে
+            document.addEventListener('click', function(e) {
+                const districtInput = document.getElementById('district');
+                const districtList = document.getElementById('districtList');
                 const upazillaInput = document.getElementById('upazilla');
-                upazillaInput.value = '';
-                
-                // Sort upazillas alphabetically for the selected district
-                const upazillas = (locationData[selectedDistrict] || []).sort((a, b) => a.localeCompare(b));
-                setupSearchableDropdown('upazilla', 'upazillaList', upazillas, null);
+                const upazillaList = document.getElementById('upazillaList');
+
+                if (e.target !== districtInput && !districtList.contains(e.target)) {
+                    districtList.innerHTML = "";
+                }
+                if (e.target !== upazillaInput && !upazillaList.contains(e.target)) {
+                    upazillaList.innerHTML = "";
+                }
             });
         };
 
         function selectRadio(id) {
             document.getElementById(id).checked = true;
+            toggleAddressField();
         }
 
         function toggleAddressField() {
-            const deliverySystem = document.getElementById('deliverySystem').value;
+            const deliveryHome = document.getElementById('deliveryHome').checked;
             const addressGroup = document.getElementById('addressGroup');
             const addressInput = document.getElementById('addressLine');
 
-            if (deliverySystem === 'Home Delivery') {
+            if (deliveryHome) {
                 addressGroup.classList.remove('hidden');
                 addressInput.setAttribute('required', 'true');
             } else {
@@ -632,50 +660,65 @@
             }
         }
 
-        // Searchable Dropdown with Alphabetical click options and Keyboard Navigation (No Bold)
-        function setupSearchableDropdown(inputId, listId, dataArray, onSelectCallback) {
-            const input = document.getElementById(inputId);
-            const listContainer = document.getElementById(listId);
+        function addActive(items, currentFocus) {
+            if (!items) return;
+            removeActive(items);
+            if (currentFocus >= items.length) currentFocus = 0;
+            if (currentFocus < 0) currentFocus = items.length - 1;
+            
+            items[currentFocus].classList.add('autocomplete-active');
+            items[currentFocus].scrollIntoView({ block: 'nearest' });
+            return currentFocus;
+        }
+
+        function removeActive(items) {
+            for (let i = 0; i < items.length; i++) {
+                items[i].classList.remove('autocomplete-active');
+            }
+        }
+
+        function setupDistrictDropdown(sortedDistricts) {
+            const input = document.getElementById('district');
+            const listContainer = document.getElementById('districtList');
+            const upazillaList = document.getElementById('upazillaList');
             let currentFocus = -1;
 
-            function showAllItems(filterVal = "") {
+            function showItems(filterVal = "") {
+                upazillaList.innerHTML = ""; // জেলার বক্সে ক্লিক করলে উপজেলার ড্রপডাউন বন্ধ করে দেওয়া হবে
                 listContainer.innerHTML = "";
                 currentFocus = -1;
-
-                const filtered = dataArray.filter(item => item.toLowerCase().includes(filterVal.toLowerCase()));
+                const filtered = sortedDistricts.filter(item => item.toLowerCase().includes(filterVal.toLowerCase()));
                 if (filtered.length === 0) return;
 
                 filtered.forEach(item => {
                     const div = document.createElement('div');
-                    div.textContent = item; // সাধারণ টেক্সট, কোনো বোল্ড ট্যাগ নেই
-                    
+                    div.textContent = item;
                     div.addEventListener('click', function() {
                         input.value = item;
                         listContainer.innerHTML = "";
-                        if (onSelectCallback) onSelectCallback(item);
+                        setupUpazillaDropdown();
+                        document.getElementById('upazilla').value = '';
                     });
                     listContainer.appendChild(div);
                 });
             }
 
-            // ইনপুটে ক্লিক করলেই বা ফোকাস পেলেই আলফাবেট অনুসারে সব দেখাবে
-            input.addEventListener('focus', function() {
-                showAllItems(input.value);
-            });
+            input.addEventListener('focus', function() { showItems(input.value); });
+            input.addEventListener('input', function() { showItems(this.value); });
 
-            input.oninput = function() {
-                showAllItems(this.value);
-            };
-
-            input.onkeydown = function(e) {
+            input.addEventListener('keydown', function(e) {
                 let items = listContainer.getElementsByTagName('div');
-                if (e.keyCode === 40) { // Arrow DOWN
+                if (items.length === 0) return;
+
+                if (e.key === 'ArrowDown') {
+                    e.preventDefault();
                     currentFocus++;
-                    addActive(items);
-                } else if (e.keyCode === 38) { // Arrow UP
+                    currentFocus = addActive(items, currentFocus);
+                } else if (e.key === 'ArrowUp') {
+                    e.preventDefault();
                     currentFocus--;
-                    addActive(items);
-                } else if (e.keyCode === 13) { // ENTER
+                    currentFocus = addActive(items, currentFocus);
+                } else if (e.key === 'Enter') {
                     e.preventDefault();
                     if (currentFocus > -1 && items[currentFocus]) {
                         items[currentFocus].click();
@@ -683,26 +726,86 @@
                         items[0].click();
                     }
                 }
-            };
+            });
+        }
 
-            function addActive(items) {
-                if (!items) return false;
-                removeActive(items);
-                if (currentFocus >= items.length) currentFocus = 0;
-                if (currentFocus < 0) currentFocus = items.length - 1;
-                items[currentFocus].classList.add('autocomplete-active');
-                items[currentFocus].scrollIntoView({ block: 'nearest' });
-            }
+        function setupUpazillaDropdown() {
+            const input = document.getElementById('upazilla');
+            const listContainer = document.getElementById('upazillaList');
+            const districtList = document.getElementById('districtList');
+            const districtInput = document.getElementById('district');
+            let currentFocus = -1;
 
-            function removeActive(items) {
-                for (let i = 0; i < items.length; i++) {
-                    items[i].classList.remove('autocomplete-active');
+            function getAvailableUpazillas() {
+                const selectedDistrict = districtInput.value.trim();
+                if (selectedDistrict && locationData[selectedDistrict]) {
+                    return [...locationData[selectedDistrict]].sort((a, b) => a.localeCompare(b));
+                } else {
+                    let allUps = [];
+                    for (let dist in locationData) {
+                        locationData[dist].forEach(up => {
+                            if (!allUps.includes(up)) allUps.push(up);
+                        });
+                    }
+                    return allUps.sort((a, b) => a.localeCompare(b));
                 }
             }
 
-            document.addEventListener('click', function(e) {
-                if (e.target !== input && !listContainer.contains(e.target)) {
-                    listContainer.innerHTML = "";
+            function showItems(filterVal = "") {
+                districtList.innerHTML = ""; // উপজেলার বক্সে ক্লিক করলে জেলার ড্রপডাউন বন্ধ করে দেওয়া হবে
+                listContainer.innerHTML = "";
+                currentFocus = -1;
+                const upazillas = getAvailableUpazillas();
+                
+                let filtered = upazillas.filter(item => item.toLowerCase().includes(filterVal.toLowerCase()));
+                if (!districtInput.value.trim() && !filterVal) {
+                    filtered = filtered.slice(0, 12);
+                }
+
+                if (filtered.length === 0) return;
+
+                filtered.forEach(item => {
+                    const div = document.createElement('div');
+                    div.textContent = item;
+                    div.addEventListener('click', function() {
+                        input.value = item;
+                        listContainer.innerHTML = "";
+
+                        if (!districtInput.value.trim()) {
+                            for (let dist in locationData) {
+                                if (locationData[dist].includes(item)) {
+                                    districtInput.value = dist;
+                                    break;
+                                }
+                            }
+                        }
+                    });
+                    listContainer.appendChild(div);
+                });
+            }
+
+            input.addEventListener('focus', function() { showItems(input.value); });
+            input.addEventListener('input', function() { showItems(this.value); });
+
+            input.addEventListener('keydown', function(e) {
+                let items = listContainer.getElementsByTagName('div');
+                if (items.length === 0) return;
+
+                if (e.key === 'ArrowDown') {
+                    e.preventDefault();
+                    currentFocus++;
+                    currentFocus = addActive(items, currentFocus);
+                } else if (e.key === 'ArrowUp') {
+                    e.preventDefault();
+                    currentFocus--;
+                    currentFocus = addActive(items, currentFocus);
+                } else if (e.key === 'Enter') {
+                    e.preventDefault();
+                    if (currentFocus > -1 && items[currentFocus]) {
+                        items[currentFocus].click();
+                    } else if (items.length > 0) {
+                        items[0].click();
+                    }
                 }
             });
         }
@@ -714,20 +817,20 @@
             submitBtn.disabled = true;
             submitBtn.innerText = "Submitting...";
 
-            const deliverySys = document.getElementById('deliverySystem').value;
+            const selectedDelivery = document.querySelector('input[name="deliverySystem"]:checked');
             const selectedCourse = document.querySelector('input[name="course"]:checked');
             const selectedLevel = document.querySelector('input[name="level"]:checked');
 
             const formData = new FormData();
             formData.append('orderDate', document.getElementById('orderDate').value);
-            formData.append('deliverySystem', deliverySys);
+            formData.append('deliverySystem', selectedDelivery ? selectedDelivery.value : '');
             formData.append('studentName', document.getElementById('studentName').value);
-            formData.append('phoneNumber', document.getElementById('phoneNumber').value);
+            formData.append('phoneNumber', document.getElementById('phoneNumber'.value));
             formData.append('course', selectedCourse ? selectedCourse.value : '');
             formData.append('level', selectedLevel ? selectedLevel.value : '');
             formData.append('district', document.getElementById('district').value);
             formData.append('upazilla', document.getElementById('upazilla').value);
-            formData.append('addressLine', deliverySys === 'Home Delivery' ? document.getElementById('addressLine').value : 'N/A');
+            formData.append('addressLine', (selectedDelivery && selectedDelivery.value === 'Home Delivery') ? document.getElementById('addressLine').value : 'N/A');
 
             fetch(scriptURL, { method: 'POST', body: formData })
                 .then(response => {
