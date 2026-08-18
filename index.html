@@ -197,27 +197,56 @@
             display: none !important;
         }
 
-        /* Success Message Box */
+        /* Professional Success Message Box */
         .success-box {
             text-align: center;
-            padding: 30px 20px;
+            padding: 40px 20px;
         }
 
-        .success-box i {
-            font-size: 50px;
+        .success-icon-container {
+            width: 80px;
+            height: 80px;
+            background: #e8f5e9;
             color: #2e7d32;
-            margin-bottom: 15px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            margin: 0 auto 20px auto;
+            box-shadow: 0 5px 15px rgba(46, 125, 50, 0.2);
         }
 
         .success-box h3 {
             color: var(--dark-pink);
-            font-size: 22px;
+            font-size: 24px;
             margin-bottom: 10px;
+            font-weight: 700;
         }
 
         .success-box p {
             color: var(--gray);
             font-size: 14px;
+            margin-bottom: 25px;
+        }
+
+        .new-entry-btn {
+            background: linear-gradient(135deg, var(--primary-pink), var(--dark-pink));
+            color: var(--white);
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .new-entry-btn:hover {
+            opacity: 0.9;
         }
     </style>
 </head>
@@ -229,7 +258,6 @@
             <div class="logo-container">
                 <img src="https://i.ibb.co.com/MyhpZCjG/SIMPLE-PULSE-LOGO-DESIGN-RED.png" alt="Pulse Nursing Logo">
             </div>
-            <!-- Admin button links to admin.html page -->
             <a href="admin.html" class="admin-btn">
                 <i class="fa-solid fa-lock"></i> Admin Login
             </a>
@@ -326,11 +354,16 @@
             </form>
         </div>
 
-        <!-- Success Message Container -->
+        <!-- Professional Success Message Container -->
         <div id="successMessageContainer" class="hidden success-box">
-            <i class="fa-solid fa-circle-check"></i>
+            <div class="success-icon-container">
+                <i class="fa-solid fa-check"></i>
+            </div>
             <h3>ধন্যবাদ!</h3>
             <p>আপনার তথ্য সফলভাবে সাবমিট করা হয়েছে।</p>
+            <button class="new-entry-btn" onclick="location.reload()">
+                <i class="fa-solid fa-plus"></i> Submit Another Entry
+            </button>
         </div>
     </div>
 
@@ -338,14 +371,12 @@
     <script>
         const scriptURL = 'https://script.google.com/macros/s/AKfycbyx9vPi6Ob_-FR4j3TQlDDWpwBkgi4ILek5VBz9HcHk-rOBqF29-viIyIID4jXZxgCF/exec';
 
-        // Auto set current date
         window.onload = function() {
             const today = new Date();
             const formattedDate = today.toISOString().split('T')[0];
             document.getElementById('orderDate').value = formattedDate;
         };
 
-        // Toggle Address Line visibility based on Delivery System
         function toggleAddressField() {
             const deliverySystem = document.getElementById('deliverySystem').value;
             const addressGroup = document.getElementById('addressGroup');
@@ -361,12 +392,10 @@
             }
         }
 
-        // Validate English Name only
         function validateEnglishName(input) {
             input.value = input.value.replace(/[^A-Za-z\s]/g, '');
         }
 
-        // Validate 11 Digit English Phone Number
         function validatePhone(input) {
             input.value = input.value.replace(/[^0-9]/g, '');
             if(input.value.length > 11) {
@@ -374,7 +403,6 @@
             }
         }
 
-        // Form Submit Handler
         function handleFormSubmit(event) {
             event.preventDefault();
             
@@ -383,8 +411,6 @@
             submitBtn.innerText = "Submitting...";
 
             const deliverySys = document.getElementById('deliverySystem').value;
-            
-            // Get selected radio values safely
             const selectedCourse = document.querySelector('input[name="course"]:checked');
             const selectedLevel = document.querySelector('input[name="level"]:checked');
 
