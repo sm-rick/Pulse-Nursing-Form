@@ -354,7 +354,7 @@
             <form id="studentForm" autocomplete="off" onsubmit="handleFormSubmit(event)">
                 
                 <div class="form-group">
-                    <label>Order Date</label>
+                    <label>Date</label>
                     <input type="text" id="orderDate" readonly>
                 </div>
 
@@ -495,6 +495,9 @@
     <script>
         const scriptURL = 'https://script.google.com/macros/s/AKfycbyx9vPi6Ob_-FR4j3TQlDDWpwBkgi4ILek5VBz9HcHk-rOBqF29-viIyIID4jXZxgCF/exec';
 
+        // ব্যাকএন্ডে পাঠানোর জন্য বিশুদ্ধ তারিখ স্টোর করার গ্লোবাল ভেরিয়েবল
+        let pureDateString = '';
+
         const locationData = {
             "Dhaka": [
                 "Savar", "Dhamrai", "Keraniganj", "Dohar", "Nawabganj",
@@ -600,8 +603,19 @@
 
         window.onload = function() {
             const today = new Date();
-            const formattedDate = today.toISOString().split('T')[0];
-            document.getElementById('orderDate').value = formattedDate;
+            
+            // ব্যাকএন্ডে পাঠানোর জন্য বিশুদ্ধ YYYY-MM-DD ফরম্যাট সংরক্ষণ
+            pureDateString = today.toISOString().split('T')[0];
+
+            // ইংরেজিতে আগে তারিখ এবং পরে বার (যেমন: 19 August 2026, Wednesday) প্রদর্শনের ব্যবস্থা
+            const dayName = today.toLocaleDateString('en-US', { weekday: 'long' });
+            const monthName = today.toLocaleDateString('en-US', { month: 'long' });
+            const dayNum = today.getDate();
+            const yearNum = today.getFullYear();
+            
+            const englishDateWithDay = `${dayNum} ${monthName} ${yearNum}, ${dayName}`;
+            
+            document.getElementById('orderDate').value = englishDateWithDay;
 
             const sortedDistricts = Object.keys(locationData).sort((a, b) => a.localeCompare(b));
             setupDistrictDropdown(sortedDistricts);
@@ -613,7 +627,7 @@
                 radio.addEventListener('change', toggleAddressField);
             });
 
-            // গ্লোবাল ক্লিক ইভেন্ট: ফর্ম বা ইনপুট বক্সের বাইরে কোথাও ক্লিক করলে সব ড্রপডাউন বন্ধ হয়ে যাবে
+            // গ্লোবাল ক্লিক ইভেন্ট: ফর্ম বা ইনপুট বক্সের বাইরে কোথাও ক্লিক করলে ড্রপডাউন বন্ধ হয়ে যাবে
             document.addEventListener('click', function(e) {
                 const districtInput = document.getElementById('district');
                 const districtList = document.getElementById('districtList');
@@ -684,7 +698,7 @@
             let currentFocus = -1;
 
             function showItems(filterVal = "") {
-                upazillaList.innerHTML = ""; // জেলার বক্সে ক্লিক করলে উপজেলার ড্রপডাউন বন্ধ করে দেওয়া হবে
+                upazillaList.innerHTML = "";
                 listContainer.innerHTML = "";
                 currentFocus = -1;
                 const filtered = sortedDistricts.filter(item => item.toLowerCase().includes(filterVal.toLowerCase()));
@@ -752,7 +766,7 @@
             }
 
             function showItems(filterVal = "") {
-                districtList.innerHTML = ""; // উপজেলার বক্সে ক্লিক করলে জেলার ড্রপডাউন বন্ধ করে দেওয়া হবে
+                districtList.innerHTML = "";
                 listContainer.innerHTML = "";
                 currentFocus = -1;
                 const upazillas = getAvailableUpazillas();
@@ -822,10 +836,11 @@
             const selectedLevel = document.querySelector('input[name="level"]:checked');
 
             const formData = new FormData();
-            formData.append('orderDate', document.getElementById('orderDate').value);
+            // ব্যাকএন্ডে শুধু pureDateString (YYYY-MM-DD ফরম্যাট) পাঠানো হচ্ছে, বার বা সময় ছাড়া
+            formData.append('orderDate', pureDateString);
             formData.append('deliverySystem', selectedDelivery ? selectedDelivery.value : '');
             formData.append('studentName', document.getElementById('studentName').value);
-            formData.append('phoneNumber', document.getElementById('phoneNumber'.value));
+            formData.append('phoneNumber', document.getElementById('phoneNumber').value);
             formData.append('course', selectedCourse ? selectedCourse.value : '');
             formData.append('level', selectedLevel ? selectedLevel.value : '');
             formData.append('district', document.getElementById('district').value);
