@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pulse Nursing Coaching - Student Form</title>
+    <title>Pulse Nursing Coaching - Student Information Form</title>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- FontAwesome for Icons -->
@@ -30,7 +30,7 @@
         body {
             background-color: var(--bg-color);
             color: var(--text-color);
-            padding: 20px;
+            padding: 15px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -39,150 +39,168 @@
 
         .container {
             width: 100%;
-            max-width: 900px;
+            max-width: 500px;
             background: var(--white);
-            padding: 30px;
+            padding: 25px;
             border-radius: 16px;
             box-shadow: 0 10px 25px rgba(136, 14, 79, 0.15);
             position: relative;
         }
 
-        .top-header {
+        /* Header & Logo */
+        .header {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            margin-bottom: 20px;
             border-bottom: 2px solid var(--light-pink);
             padding-bottom: 15px;
-            margin-bottom: 25px;
-            flex-wrap: wrap;
-            gap: 15px;
         }
 
-        .logo-area {
-            display: flex;
-            align-items: center;
-            gap: 12px;
+        .logo-container img {
+            max-height: 45px;
+            object-fit: contain;
         }
 
-        .logo-area img {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            border: 2px solid var(--primary-pink);
-            object-fit: cover;
-        }
-
-        .logo-area h2 {
-            color: var(--dark-pink);
-            font-size: 20px;
-        }
-
-        .logo-area p {
-            font-size: 12px;
-            color: var(--gray);
-        }
-
-        .header-buttons {
-            display: flex;
-            gap: 10px;
-        }
-
-        .btn-records {
-            background-color: var(--primary-pink);
-            color: white;
-            padding: 8px 16px;
+        .admin-btn {
+            background-color: var(--dark-pink);
+            color: var(--white);
+            border: none;
+            padding: 8px 14px;
             border-radius: 8px;
-            text-decoration: none;
             font-size: 13px;
             font-weight: 500;
+            cursor: pointer;
             display: flex;
             align-items: center;
             gap: 6px;
+            text-decoration: none;
+            transition: background 0.3s;
         }
 
-        .btn-records:hover {
-            background-color: var(--dark-pink);
+        .admin-btn:hover {
+            background-color: var(--primary-pink);
         }
 
-        .form-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
+        h2 {
+            text-align: center;
+            color: var(--dark-pink);
+            font-size: 19px;
+            margin-bottom: 20px;
+            font-weight: 600;
         }
 
+        /* Form Controls */
         .form-group {
-            margin-bottom: 15px;
-        }
-
-        .form-group.full-width {
-            grid-column: span 2;
+            margin-bottom: 16px;
         }
 
         label {
             display: block;
             font-size: 13px;
-            font-weight: 600;
-            color: var(--dark-pink);
+            font-weight: 500;
             margin-bottom: 6px;
+            color: var(--dark-pink);
         }
 
-        input[type="text"], input[type="date"], select {
+        input, select {
             width: 100%;
-            padding: 10px 14px;
-            border: 1px solid #ddd;
+            padding: 12px 14px;
+            border: 1px solid #d1c4e9;
             border-radius: 8px;
             font-size: 14px;
+            background-color: #fff;
             outline: none;
             transition: all 0.3s;
         }
 
         input:focus, select:focus {
             border-color: var(--primary-pink);
-            box-shadow: 0 0 5px rgba(194, 24, 91, 0.2);
+            box-shadow: 0 0 0 3px rgba(194, 24, 91, 0.15);
         }
 
-        .radio-group-box {
-            border: 1px solid #ddd;
-            padding: 10px 14px;
+        input[readonly] {
+            background-color: #f5f5f5;
+            color: var(--gray);
+            cursor: not-allowed;
+        }
+
+        /* Modern Radio Group UI */
+        .radio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 8px;
+        }
+
+        .radio-card {
+            border: 1px solid #d1c4e9;
             border-radius: 8px;
+            padding: 10px;
+            text-align: center;
+            cursor: pointer;
+            background-color: #fff;
+            transition: all 0.2s ease;
             display: flex;
-            gap: 20px;
             align-items: center;
-            background: #fff;
-            min-height: 45px;
+            justify-content: center;
+            gap: 6px;
         }
 
-        .radio-label {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 14px;
-            font-weight: 400;
+        .radio-card:hover {
+            border-color: var(--primary-pink);
+            background-color: #fff5f8;
+        }
+
+        .radio-card input[type="radio"] {
+            width: auto;
+            accent-color: var(--primary-pink);
+            cursor: pointer;
+            margin: 0;
+        }
+
+        .radio-card label {
+            margin: 0;
+            font-size: 13px;
+            font-weight: 500;
             color: var(--text-color);
             cursor: pointer;
         }
 
+        /* Highlight selected radio card */
+        .radio-card input[type="radio"]:checked + label,
+        .radio-card:has(input[type="radio"]:checked) {
+            border-color: var(--primary-pink);
+            background-color: #fce4ec;
+            color: var(--dark-pink);
+        }
+
         .submit-btn {
-            background-color: var(--primary-pink);
-            color: white;
-            border: none;
             width: 100%;
+            background: linear-gradient(135deg, var(--primary-pink), var(--dark-pink));
+            color: var(--white);
+            border: none;
             padding: 14px;
             border-radius: 8px;
             font-size: 16px;
             font-weight: 600;
             cursor: pointer;
             margin-top: 10px;
-            transition: background 0.3s;
+            transition: opacity 0.3s;
         }
 
         .submit-btn:hover {
-            background-color: var(--dark-pink);
+            opacity: 0.9;
         }
 
+        /* Hidden class */
+        .hidden {
+            display: none !important;
+        }
+
+        /* Success Message Box */
         .success-box {
             text-align: center;
-            padding: 40px;
+            padding: 30px 20px;
         }
 
         .success-box i {
@@ -193,121 +211,126 @@
 
         .success-box h3 {
             color: var(--dark-pink);
+            font-size: 22px;
             margin-bottom: 10px;
         }
 
-        .hidden {
-            display: none !important;
-        }
-
-        @media(max-width: 768px) {
-            .form-grid {
-                grid-template-columns: 1fr;
-            }
-            .form-group.full-width {
-                grid-column: span 1;
-            }
+        .success-box p {
+            color: var(--gray);
+            font-size: 14px;
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <!-- Top Header -->
-        <div class="top-header">
-            <div class="logo-area">
-                <img src="logo.png" alt="Logo" onerror="this.src='https://via.placeholder.com/50'">
-                <div>
-                    <h2>Pulse Nursing Coaching</h2>
-                    <p>নোর্স গড়ার প্রত্যয়ে</p>
-                </div>
+        <!-- Header -->
+        <div class="header">
+            <div class="logo-container">
+                <img src="https://i.ibb.co.com/MyhpZCjG/SIMPLE-PULSE-LOGO-DESIGN-RED.png" alt="Pulse Nursing Logo">
             </div>
-            <div class="header-buttons">
-                <a href="admin.html" class="btn-records"><i class="fa-solid fa-table"></i> Records</a>
-            </div>
+            <!-- Admin button links to admin.html page -->
+            <a href="admin.html" class="admin-btn">
+                <i class="fa-solid fa-lock"></i> Admin Login
+            </a>
         </div>
 
-        <!-- Form Wrapper -->
+        <h2>Student Delivery Information</h2>
+
+        <!-- Main Form Wrapper -->
         <div id="formWrapper">
             <form id="studentForm" onsubmit="handleFormSubmit(event)">
-                <div class="form-grid">
-                    <!-- Order Date -->
-                    <div class="form-group">
-                        <label for="orderDate">Order Date:</label>
-                        <input type="date" id="orderDate" required>
-                    </div>
+                
+                <div class="form-group">
+                    <label>Order Date</label>
+                    <input type="text" id="orderDate" readonly>
+                </div>
 
-                    <!-- Delivery System -->
-                    <div class="form-group">
-                        <label>Delivery System:</label>
-                        <div class="radio-group-box">
-                            <label class="radio-label"><input type="radio" name="deliverySystem" value="Office Delivery" checked onclick="toggleAddressField()"> Office Delivery</label>
-                            <label class="radio-label"><input type="radio" name="deliverySystem" value="Home Delivery" onclick="toggleAddressField()"> Home Delivery</label>
+                <div class="form-group">
+                    <label>Delivery System</label>
+                    <select id="deliverySystem" onchange="toggleAddressField()" required>
+                        <option value="" disabled selected>Select Delivery Method</option>
+                        <option value="Office Delivery">Office Delivery</option>
+                        <option value="Home Delivery">Home Delivery</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Student Name (English Only)</label>
+                    <input type="text" id="studentName" placeholder="Enter full name in English" oninput="validateEnglishName(this)" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Phone Number (11 Digit English Number)</label>
+                    <input type="text" id="phoneNumber" placeholder="e.g. 01712345678" maxlength="11" oninput="validatePhone(this)" required>
+                </div>
+
+                <!-- Course Radio Cards -->
+                <div class="form-group">
+                    <label>Course</label>
+                    <div class="radio-grid">
+                        <div class="radio-card">
+                            <input type="radio" id="courseBsc" name="course" value="BSC" required>
+                            <label for="courseBsc">BSC</label>
                         </div>
-                    </div>
-
-                    <!-- Student Name -->
-                    <div class="form-group">
-                        <label for="studentName">Student Name (English only):</label>
-                        <input type="text" id="studentName" placeholder="Enter student name" oninput="validateEnglishName(this)" required>
-                    </div>
-
-                    <!-- Phone Number -->
-                    <div class="form-group">
-                        <label for="phoneNumber">Phone Number (11 digits):</label>
-                        <input type="text" id="phoneNumber" placeholder="017xxxxxxxx" maxlength="11" oninput="validatePhone(this)" required>
-                    </div>
-
-                    <!-- Course (Radio) -->
-                    <div class="form-group">
-                        <label>Course:</label>
-                        <div class="radio-group-box">
-                            <label class="radio-label"><input type="radio" name="course" value="BSC" required> BSC</label>
-                            <label class="radio-label"><input type="radio" name="course" value="DIPLOMA"> DIPLOMA</label>
-                            <label class="radio-label"><input type="radio" name="course" value="Midwifery"> Midwifery</label>
+                        <div class="radio-card">
+                            <input type="radio" id="courseDiploma" name="course" value="DIPLOMA">
+                            <label for="courseDiploma">DIPLOMA</label>
                         </div>
-                    </div>
-
-                    <!-- Level (Radio) -->
-                    <div class="form-group">
-                        <label>Level:</label>
-                        <div class="radio-group-box">
-                            <label class="radio-label"><input type="radio" name="level" value="Admission" required> Admission</label>
-                            <label class="radio-label"><input type="radio" name="level" value="License"> License</label>
-                            <label class="radio-label"><input type="radio" name="level" value="Job"> Job</label>
-                            <label class="radio-label"><input type="radio" name="level" value="Academic"> Academic</label>
+                        <div class="radio-card">
+                            <input type="radio" id="courseMidwifery" name="course" value="Midwifery">
+                            <label for="courseMidwifery">Midwifery</label>
                         </div>
-                    </div>
-
-                    <!-- District -->
-                    <div class="form-group">
-                        <label for="district">District (English only):</label>
-                        <input type="text" id="district" placeholder="Type district" oninput="validateEnglishName(this)" required>
-                    </div>
-
-                    <!-- Upazilla -->
-                    <div class="form-group">
-                        <label for="upazilla">Upazilla / Thana (English only):</label>
-                        <input type="text" id="upazilla" placeholder="Type upazilla/thana" oninput="validateEnglishName(this)" required>
-                    </div>
-
-                    <!-- Address Line (Hidden by default) -->
-                    <div class="form-group full-width hidden" id="addressGroup">
-                        <label for="addressLine">Address Line:</label>
-                        <input type="text" id="addressLine" placeholder="House/Village, Post Office, etc.">
                     </div>
                 </div>
 
-                <button type="submit" class="submit-btn" id="submitBtn">Add Label Entry</button>
+                <!-- Level Radio Cards -->
+                <div class="form-group">
+                    <label>Level</label>
+                    <div class="radio-grid">
+                        <div class="radio-card">
+                            <input type="radio" id="levelAdmission" name="level" value="Admission" required>
+                            <label for="levelAdmission">Admission</label>
+                        </div>
+                        <div class="radio-card">
+                            <input type="radio" id="levelLicense" name="level" value="License">
+                            <label for="levelLicense">License</label>
+                        </div>
+                        <div class="radio-card">
+                            <input type="radio" id="levelJob" name="level" value="Job">
+                            <label for="levelJob">Job</label>
+                        </div>
+                        <div class="radio-card">
+                            <input type="radio" id="levelAcademic" name="level" value="Academic">
+                            <label for="levelAcademic">Academic</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>District</label>
+                    <input type="text" id="district" placeholder="Enter District" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Upazilla / Thana</label>
+                    <input type="text" id="upazilla" placeholder="Enter Upazilla or Thana" required>
+                </div>
+
+                <div class="form-group hidden" id="addressGroup">
+                    <label>Address Line</label>
+                    <input type="text" id="addressLine" placeholder="Village, Road, House No, etc.">
+                </div>
+
+                <button type="submit" id="submitBtn" class="submit-btn">Submit Information</button>
             </form>
         </div>
 
         <!-- Success Message Container -->
-        <div id="successMessageContainer" class="success-box hidden">
+        <div id="successMessageContainer" class="hidden success-box">
             <i class="fa-solid fa-circle-check"></i>
-            <h3>Information Submitted Successfully!</h3>
-            <p>You can now use this data for slip generation.</p>
-            <button class="btn-records" style="margin: 20px auto 0 auto;" onclick="location.reload()">Submit Another Entry</button>
+            <h3>ধন্যবাদ!</h3>
+            <p>আপনার তথ্য সফলভাবে সাবমিট করা হয়েছে।</p>
         </div>
     </div>
 
@@ -315,18 +338,16 @@
     <script>
         const scriptURL = 'https://script.google.com/macros/s/AKfycbyx9vPi6Ob_-FR4j3TQlDDWpwBkgi4ILek5VBz9HcHk-rOBqF29-viIyIID4jXZxgCF/exec';
 
-        // Auto set current date (শুধুমাত্র তারিখ দেখাবে, সময় আসবে না)
+        // Auto set current date
         window.onload = function() {
             const today = new Date();
-            const year = today.getFullYear();
-            const month = String(today.getMonth() + 1).padStart(2, '0');
-            const day = String(today.getDate()).padStart(2, '0');
-            document.getElementById('orderDate').value = `${year}-${month}-${day}`;
+            const formattedDate = today.toISOString().split('T')[0];
+            document.getElementById('orderDate').value = formattedDate;
         };
 
-        // Toggle Address Line visibility based on Delivery System Radio
+        // Toggle Address Line visibility based on Delivery System
         function toggleAddressField() {
-            const deliverySystem = document.querySelector('input[name="deliverySystem"]:checked').value;
+            const deliverySystem = document.getElementById('deliverySystem').value;
             const addressGroup = document.getElementById('addressGroup');
             const addressInput = document.getElementById('addressLine');
 
@@ -361,21 +382,19 @@
             submitBtn.disabled = true;
             submitBtn.innerText = "Submitting...";
 
-            const deliverySys = document.querySelector('input[name="deliverySystem"]:checked').value;
-            const courseVal = document.querySelector('input[name="course"]:checked') ? document.querySelector('input[name="course"]:checked').value : '';
-            const levelVal = document.querySelector('input[name="level"]:checked') ? document.querySelector('input[name="level"]:checked').value : '';
+            const deliverySys = document.getElementById('deliverySystem').value;
             
-            // ফোন নাম্বারের শুরুতে অ্যাপোস্ট্রোফি (') যুক্ত করা হলো যাতে শিটে জিরো (0) মুছে না যায়
-            const rawPhone = document.getElementById('phoneNumber').value;
-            const formattedPhone = rawPhone.startsWith('0') ? `'${rawPhone}` : rawPhone;
+            // Get selected radio values safely
+            const selectedCourse = document.querySelector('input[name="course"]:checked');
+            const selectedLevel = document.querySelector('input[name="level"]:checked');
 
             const formData = new FormData();
             formData.append('orderDate', document.getElementById('orderDate').value);
             formData.append('deliverySystem', deliverySys);
             formData.append('studentName', document.getElementById('studentName').value);
-            formData.append('phoneNumber', formattedPhone);
-            formData.append('course', courseVal);
-            formData.append('level', levelVal);
+            formData.append('phoneNumber', document.getElementById('phoneNumber').value);
+            formData.append('course', selectedCourse ? selectedCourse.value : '');
+            formData.append('level', selectedLevel ? selectedLevel.value : '');
             formData.append('district', document.getElementById('district').value);
             formData.append('upazilla', document.getElementById('upazilla').value);
             formData.append('addressLine', deliverySys === 'Home Delivery' ? document.getElementById('addressLine').value : 'N/A');
@@ -388,7 +407,7 @@
                 .catch(error => {
                     alert('Error! Something went wrong.');
                     submitBtn.disabled = false;
-                    submitBtn.innerText = "Add Label Entry";
+                    submitBtn.innerText = "Submit Information";
                     console.error('Error!', error.message);
                 });
         }
