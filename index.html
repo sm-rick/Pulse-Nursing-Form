@@ -264,11 +264,11 @@
         </div>
     </div>
 
-    <!-- JavaScript Logic -->
+   <!-- JavaScript Logic -->
     <script>
         const scriptURL = 'https://script.google.com/macros/s/AKfycbyx9vPi6Ob_-FR4j3TQlDDWpwBkgi4ILek5VBz9HcHk-rOBqF29-viIyIID4jXZxgCF/exec';
 
-        // Auto set current date
+        // Auto set current date (শুধুমাত্র তারিখ দেখাবে, সময় আসবে না)
         window.onload = function() {
             const today = new Date();
             const formattedDate = today.toISOString().split('T')[0];
@@ -314,11 +314,15 @@
 
             const deliverySys = document.getElementById('deliverySystem').value;
             
+            // ফোন নাম্বারের শুরুতে অ্যাপোস্ট্রোফি (') যুক্ত করা হলো যাতে গুগল শিটে জিরো (0) মুছে না যায়
+            const rawPhone = document.getElementById('phoneNumber').value;
+            const formattedPhone = rawPhone.startsWith('0') ? `'${rawPhone}` : rawPhone;
+
             const formData = new FormData();
             formData.append('orderDate', document.getElementById('orderDate').value);
             formData.append('deliverySystem', deliverySys);
             formData.append('studentName', document.getElementById('studentName').value);
-            formData.append('phoneNumber', document.getElementById('phoneNumber').value);
+            formData.append('phoneNumber', formattedPhone); // টেক্সট ফরম্যাটেড ফোন নাম্বার
             formData.append('course', document.getElementById('course').value);
             formData.append('level', document.getElementById('level').value);
             formData.append('district', document.getElementById('district').value);
