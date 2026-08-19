@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard - Pulse Nursing</title>
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
     <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- SheetJS for Excel Workbook Export (.xlsx) -->
@@ -13,12 +13,11 @@
     
     <style>
         :root {
-            --primary-pink: #c2185b;
-            --dark-pink: #880e4f;
-            --light-pink: #f8bbd0;
-            --bg-color: #fce4ec;
+            --primary-pink: #ad1457;
+            --light-pink-bg: #fce4ec;
             --white: #ffffff;
-            --text-color: #333333;
+            --text-main: #2d3748;
+            --border-color: #f8bbd0;
             --gray: #777777;
         }
 
@@ -26,12 +25,12 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Inter', 'Hind Siliguri', sans-serif;
         }
 
         body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
+            background: linear-gradient(135deg, #fce4ec 0%, #ffebee 100%);
+            color: var(--text-main);
             padding: 20px;
             min-height: 100vh;
             display: flex;
@@ -45,7 +44,8 @@
             background: var(--white);
             padding: 25px;
             border-radius: 16px;
-            box-shadow: 0 10px 25px rgba(136, 14, 79, 0.15);
+            box-shadow: 0 10px 25px rgba(173, 20, 87, 0.15);
+            border-top: 6px solid var(--primary-pink);
         }
 
         .admin-header {
@@ -53,12 +53,12 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 15px;
-            border-bottom: 2px solid var(--light-pink);
+            border-bottom: 2px solid var(--border-color);
             padding-bottom: 15px;
         }
 
         .admin-header h2 {
-            color: var(--dark-pink);
+            color: var(--primary-pink);
             font-size: 20px;
         }
 
@@ -76,11 +76,6 @@
             gap: 6px;
         }
 
-        .back-btn:hover {
-            background-color: #555;
-        }
-
-        /* Filter Controls Bar */
         .filter-bar {
             display: flex;
             flex-wrap: wrap;
@@ -89,13 +84,13 @@
             background: #fff5f8;
             padding: 12px;
             border-radius: 10px;
-            border: 1px solid var(--light-pink);
+            border: 1px solid var(--border-color);
             align-items: center;
         }
 
         .filter-bar select, .filter-bar input {
             padding: 8px 12px;
-            border: 1px solid #d1c4e9;
+            border: 1px solid var(--border-color);
             border-radius: 6px;
             font-size: 13px;
             outline: none;
@@ -129,7 +124,7 @@
         }
 
         table th {
-            background-color: var(--dark-pink);
+            background-color: var(--primary-pink);
             color: white;
             position: sticky;
             top: 0;
@@ -148,7 +143,7 @@
         }
         .status-pending {
             background-color: #ffebee;
-            color: #c62828;
+            color: #ad1457;
         }
 
         .admin-actions {
@@ -179,19 +174,11 @@
         }
 
         .btn-excel { background-color: #2e7d32; }
-        .btn-excel:hover { background-color: #1b5e20; }
-
         .btn-csv { background-color: #0277bd; }
-        .btn-csv:hover { background-color: #01579b; }
-
-        .btn-delete { background-color: #c62828; }
-        .btn-delete:hover { background-color: #b71c1c; }
-
+        .btn-delete { background-color: #ad1457; }
         .btn-mark-done { background-color: #00897b; }
-        .btn-mark-done:hover { background-color: #00695c; }
-
         .btn-mark-pending { background-color: #ef6c00; }
-        .btn-mark-pending:hover { background-color: #e65100; }
+        .btn-print { background-color: var(--primary-pink); }
 
         .loading-text {
             text-align: center;
@@ -200,7 +187,7 @@
             font-size: 15px;
         }
 
-        /* Modern Custom Password Modal UI */
+        /* Modal UI */
         #authModal {
             position: fixed;
             top: 0;
@@ -222,7 +209,6 @@
             max-width: 380px;
             text-align: center;
             box-shadow: 0 15px 30px rgba(0,0,0,0.3);
-            animation: fadeIn 0.3s ease;
         }
 
         .modal-card i {
@@ -232,7 +218,7 @@
         }
 
         .modal-card h3 {
-            color: var(--dark-pink);
+            color: var(--primary-pink);
             margin-bottom: 8px;
             font-size: 20px;
         }
@@ -246,7 +232,7 @@
         .modal-card input {
             width: 100%;
             padding: 12px;
-            border: 1px solid #d1c4e9;
+            border: 1px solid var(--border-color);
             border-radius: 8px;
             font-size: 15px;
             margin-bottom: 15px;
@@ -254,14 +240,9 @@
             text-align: center;
         }
 
-        .modal-card input:focus {
-            border-color: var(--primary-pink);
-            box-shadow: 0 0 0 3px rgba(194, 24, 91, 0.15);
-        }
-
         .modal-card button {
             width: 100%;
-            background: linear-gradient(135deg, var(--primary-pink), var(--dark-pink));
+            background: linear-gradient(135deg, var(--primary-pink), #880e4f);
             color: white;
             border: none;
             padding: 12px;
@@ -271,19 +252,188 @@
             cursor: pointer;
         }
 
-        .modal-card button:hover {
-            opacity: 0.9;
+        /* Print Slip Layout Container */
+        #printAreaContainer {
+            display: none;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
+        .shipping-card {
+            border: 2px solid #555;
+            padding: 14px 16px;
+            border-radius: 8px;
+            background: #fff;
+            box-sizing: border-box;
+            width: 100%;
+            margin-bottom: 14px;
+        }
+
+        .card-top-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 2px solid var(--primary-pink);
+            padding-bottom: 10px;
+            margin-bottom: 12px;
+        }
+
+        .logo-title-group {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .card-top-header img {
+            width: 54px;
+            height: 54px;
+            object-fit: contain;
+            border-radius: 6px;
+            background: #fff;
+            padding: 2px;
+            border: 1.5px solid var(--border-color);
+        }
+
+        .card-coaching-info h4 {
+            margin: 0;
+            color: var(--primary-pink);
+            font-size: 21px;
+            font-weight: 700;
+        }
+
+        .card-coaching-info p {
+            margin: 2px 0 0;
+            font-size: 15px;
+            color: #222;
+            font-weight: 600;
+        }
+
+        .header-right-side {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 6px;
+        }
+
+        .delivery-badge {
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--primary-pink);
+            background: #fff;
+            padding: 3px 16px;
+            border-radius: 4px;
+            border: 1.5px solid var(--primary-pink);
+            text-align: center;
+            min-width: 52px;
+        }
+
+        .second-row-info {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .course-level-badge, .invoice-badge {
+            font-size: 14px;
+            font-weight: 700;
+            color: #222;
+            background: #fdfdfd;
+            padding: 3px 11px;
+            border-radius: 4px;
+            border: 1.5px solid var(--border-color);
+            letter-spacing: 0.3px;
+        }
+
+        .card-addresses {
+            display: flex;
+            gap: 14px;
+        }
+
+        .address-from {
+            flex: 0.9;
+            border: 1.5px solid var(--border-color);
+            padding: 10px 12px;
+            border-radius: 6px;
+            line-height: 1.25;
+            font-size: 15px;
+            color: #333;
+        }
+
+        .address-from b, .address-to b {
+            color: #222;
+            font-size: 15.5px;
+        }
+
+        .address-to {
+            flex: 1.5;
+            border: 1.5px solid var(--border-color);
+            padding: 10px 12px;
+            border-radius: 6px;
+            font-size: 15.5px;
+            line-height: 1.3;
+            color: #333;
+        }
+
+        .to-grid {
+            display: grid;
+            grid-template-columns: 55px 1fr;
+            row-gap: 2px;
+            align-items: baseline;
+        }
+
+        .to-label {
+            font-weight: 700;
+            color: #222;
+        }
+
+        .pink-highlight {
+            color: var(--primary-pink);
+            font-weight: 700;
+        }
+
+        .office-head-highlight {
+            color: var(--primary-pink);
+            font-weight: 700;
+            font-size: 15.5px;
+        }
+
+        /* Print Settings: Top aligned and full size */
+        @media print {
+            @page {
+                size: A4 portrait;
+                margin: 4mm;
+            }
+            body {
+                background: none;
+                padding: 0 !important;
+                margin: 0 !important;
+                display: block !important;
+            }
+            .admin-container, #authModal {
+                display: none !important;
+            }
+            #printAreaContainer {
+                display: block !important;
+                width: 100% !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+            .shipping-card {
+                border: 2px solid #555 !important;
+                background: #fff !important;
+                width: 100% !important;
+                box-sizing: border-box !important;
+                page-break-inside: avoid !important;
+                margin-top: 0 !important;
+                margin-bottom: 14px !important;
+            }
+            #printAreaContainer .shipping-card:first-child {
+                margin-top: 0 !important;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- Modern Password Prompt Modal -->
+    <!-- Authentication Modal -->
     <div id="authModal">
         <div class="modal-card">
             <i class="fa-solid fa-lock"></i>
@@ -294,14 +444,13 @@
         </div>
     </div>
 
-    <!-- Admin Dashboard Main Container -->
+    <!-- Main Container -->
     <div class="admin-container">
         <div class="admin-header">
             <h2><i class="fa-solid fa-gauge"></i> Admin Dashboard</h2>
             <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Back to Form</a>
         </div>
         
-        <!-- Filter & Search Bar -->
         <div class="filter-bar">
             <input type="text" id="searchInput" placeholder="Search by name, phone, district..." onkeyup="filterTable()">
             <select id="filterCourse" onchange="filterTable()">
@@ -352,6 +501,7 @@
             <div class="action-group">
                 <button class="btn-custom btn-mark-done" onclick="markSelectedStatus('Delivered')"><i class="fa-solid fa-check"></i> Mark Delivered</button>
                 <button class="btn-custom btn-mark-pending" onclick="markSelectedStatus('Pending')"><i class="fa-solid fa-clock"></i> Mark Pending</button>
+                <button class="btn-custom btn-print" onclick="printSelectedRows()"><i class="fa-solid fa-print"></i> Print Selected</button>
                 <button class="btn-custom btn-delete" onclick="deleteSelectedRows()"><i class="fa-solid fa-trash"></i> Delete Selected</button>
             </div>
             <div class="action-group">
@@ -361,12 +511,13 @@
         </div>
     </div>
 
-    <!-- JavaScript Logic -->
+    <!-- Print Slip Layout Container -->
+    <div id="printAreaContainer"></div>
+
     <script>
         const scriptURL = 'https://script.google.com/macros/s/AKfycbyx9vPi6Ob_-FR4j3TQlDDWpwBkgi4ILek5VBz9HcHk-rOBqF29-viIyIID4jXZxgCF/exec';
-        let allMasterData = []; // মূল ডাটা স্টোর করার জন্য
+        let allMasterData = [];
 
-        // Password Verification
         function verifyPassword() {
             let password = document.getElementById('adminPasswordInput').value;
             if (password === "SM@890174s") {
@@ -378,7 +529,6 @@
             }
         }
 
-        // Load data into admin table from Google Sheets API
         function loadTableData() {
             const tableBody = document.getElementById('tableBody');
             tableBody.innerHTML = `<tr><td colspan="12" class="loading-text">Loading data from Google Sheets...</td></tr>`;
@@ -386,7 +536,6 @@
             fetch(scriptURL)
                 .then(response => response.json())
                 .then(data => {
-                    // ব্রাউজারের LocalStorage থেকে মার্ক করা স্ট্যাটাস লোড করা (যেহেতু গুগল শিটে সরাসরি রাইট ব্যাক করার কোড নেই)
                     let savedStatuses = JSON.parse(localStorage.getItem('pulse_delivery_status') || '{}');
                     
                     allMasterData = data.map((item, index) => {
@@ -405,7 +554,6 @@
                 });
         }
 
-        // Render Table Data with Serial Numbers
         function renderTable(dataToRender) {
             const tableBody = document.getElementById('tableBody');
             tableBody.innerHTML = '';
@@ -439,7 +587,6 @@
             });
         }
 
-        // Filter / Search Logic
         function filterTable() {
             let searchVal = document.getElementById('searchInput').value.toLowerCase();
             let courseVal = document.getElementById('filterCourse').value;
@@ -461,13 +608,11 @@
             renderTable(filtered);
         }
 
-        // Toggle Select All Checkboxes
         function toggleSelectAll(masterCheckbox) {
             let checkboxes = document.querySelectorAll('.row-checkbox');
             checkboxes.forEach(cb => cb.checked = masterCheckbox.checked);
         }
 
-        // Mark Selected as Delivered / Pending
         function markSelectedStatus(status) {
             let selectedCheckboxes = document.querySelectorAll('.row-checkbox:checked');
             if (selectedCheckboxes.length === 0) {
@@ -488,7 +633,94 @@
             alert(`Successfully marked as ${status}!`);
         }
 
-        // Delete Selected Rows (Local UI view deletion)
+        function printSelectedRows() {
+            let selectedCheckboxes = document.querySelectorAll('.row-checkbox:checked');
+            if (selectedCheckboxes.length === 0) {
+                alert("Please select at least one row to print!");
+                return;
+            }
+
+            let printContainer = document.getElementById('printAreaContainer');
+            printContainer.innerHTML = '';
+
+            selectedCheckboxes.forEach(cb => {
+                let id = cb.getAttribute('data-id');
+                let item = allMasterData.find(d => d.uniqueId == id);
+                if (item) {
+                    let badgeText = (item.deliverySystem && item.deliverySystem.toLowerCase().includes('home')) ? 'HD' : 'OD';
+                    
+                    // গিটহব রিপোজটরির লোকাল ফোল্ডারে থাকা logo.png ফাইলটি ব্যবহার করা হলো
+                    let logoUrl = "logo.png";
+                    
+                    let phone = item.phoneNumber || '';
+                    let dateObj = new Date(item.orderDate || Date.now());
+                    let yy = String(dateObj.getFullYear()).slice(-2);
+                    let mm = String(dateObj.getMonth() + 1).padStart(2, '0');
+                    let dd = String(dateObj.getDate()).padStart(2, '0');
+                    let datePart = yy + mm + dd;
+                    let phoneLast3 = phone.slice(-3);
+                    let invoiceNo = `${datePart}-${phoneLast3}-${item.uniqueId + 1}`;
+
+                    let toAddressHTML = `
+                        <div class="to-grid">
+                            <span class="to-label">Name:</span>
+                            <span class="to-content"><b>${item.studentName || ''}</b></span>
+                            <span class="to-label">Ph:</span>
+                            <span class="to-content"><b>${phone}</b></span>
+                            <span class="to-label">Dist:</span>
+                            <span class="to-content"><span class="pink-highlight">${item.district || ''}</span>${item.upazilla ? ` | Up/Thana: <span class="pink-highlight">${item.upazilla}</span>` : ''}</span>
+                    `;
+                    if(badgeText === 'HD' && item.addressLine) {
+                        toAddressHTML += `
+                            <span class="to-label">Addr:</span>
+                            <span class="to-content">${item.addressLine}</span>
+                        `;
+                    }
+                    toAddressHTML += `</div>`;
+
+                    let cardHTML = `
+                        <div class="shipping-card">
+                            <div class="card-top-header">
+                                <div class="logo-title-group">
+                                    <img src="${logoUrl}" alt="Logo" onerror="this.style.display='none'">
+                                    <div class="card-coaching-info">
+                                        <h4>Pulse Nursing Coaching</h4>
+                                        <p>Farmgate, Dhaka | Phone: 01792-439561</p>
+                                    </div>
+                                </div>
+                                <div class="header-right-side">
+                                    <div class="delivery-badge">${badgeText}</div>
+                                    <div class="second-row-info">
+                                        <div class="course-level-badge">${item.level || ''} | ${item.course || ''}</div>
+                                        <div class="invoice-badge">Inv: ${invoiceNo}</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card-addresses">
+                                <div class="address-from">
+                                    <b>From:</b><br>
+                                    <span class="office-head-highlight">Pulse Nursing Head Office</span><br>
+                                    Farmgate, Dhaka<br>
+                                    Ph: 01792-439561
+                                </div>
+                                <div class="address-to">
+                                    <b>To:</b><br>
+                                    ${toAddressHTML}
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    printContainer.insertAdjacentHTML('beforeend', cardHTML);
+                }
+            });
+
+            window.print();
+            setTimeout(() => {
+                printContainer.innerHTML = '';
+            }, 500);
+        }
+
         function deleteSelectedRows() {
             let selectedCheckboxes = document.querySelectorAll('.row-checkbox:checked');
             if (selectedCheckboxes.length === 0) {
@@ -504,7 +736,6 @@
             }
         }
 
-        // Export to CSV
         function exportToCSV() {
             if(allMasterData.length === 0) {
                 alert("No data available to export!");
@@ -512,7 +743,7 @@
             }
 
             let csvContent = "data:text/csv;charset=utf-8,";
-            csvContent += "SL,Order Date,Delivery System,Student Name,Phone Number,Course,Level,District,Upazilla,Address Line,Status\r\n";
+            csvContent += "SL,Order Date,Delivery System,StudentName,PhoneNumber,Course,Level,District,Upazilla,AddressLine,Status\r\n";
 
             allMasterData.forEach((item, index) => {
                 let row = [
@@ -540,7 +771,6 @@
             document.body.removeChild(link);
         }
 
-        // Export to Excel Workbook (.xlsx) using SheetJS
         function exportToWorkbook() {
             if(allMasterData.length === 0) {
                 alert("No data available to export!");
