@@ -25,6 +25,9 @@
             margin: 0;
             padding: 0;
             font-family: 'Plus Jakarta Sans', sans-serif;
+            /* সাকসেস পেইজ বা সাধারণ টেক্সটে যাতে ভুলবশত কার্সর বা টেক্সট সিলেকশন মার্ক না আসে */
+            -webkit-user-select: text;
+            user-select: text;
         }
 
         body {
@@ -385,6 +388,7 @@
         .success-box {
             text-align: center;
             padding: 10px 5px;
+            outline: none;
         }
 
         .success-icon-container {
@@ -484,14 +488,12 @@
     <!-- Custom Alert & Loading Modal Container -->
     <div id="customModal" class="custom-modal-overlay hidden">
         <div class="custom-modal-box">
-            <div id="modalIconContainer">
-                <!-- Dynamically injected spinner or icon -->
-            </div>
+            <div id="modalIconContainer"></div>
             <h3 id="modalTitle">Notice</h3>
             <div id="modalMessageContainer">
                 <p id="modalMessage">Please wait...</p>
             </div>
-            <button class="custom-modal-btn" id="modalActionBtn" onclick="closeCustomModal()">বোঝge গেছি / ঠিক আছে</button>
+            <button class="custom-modal-btn" id="modalActionBtn" onclick="closeCustomModal()">ঠিক আছে</button>
         </div>
     </div>
 
@@ -609,7 +611,7 @@
         </div>
 
         <!-- Professional Success Message Container -->
-        <div id="successMessageContainer" class="hidden success-box">
+        <div id="successMessageContainer" class="hidden success-box" tabindex="-1">
             <div class="success-icon-container">
                 <i class="fa-solid fa-check"></i>
             </div>
@@ -716,7 +718,7 @@
                 "Rupsa", "Dighalia", "Dumuria", "Paikgachha", "Koyra", "Batiaghata", "Dakop", "Phultala", "Terokhada",
                 "Sonadanga", "Khalishpur", "Daulatpur", "Khan Jahan Ali", "Boyra", "Harintana", "Lobonchora", "Sonadanga Model"
             ],
-            "Jashore": ["Jashore Sadar", "Abhaynagar", "Bagherpara", "Chaugachha", "Jhikargachha", "Keshabpur", "Sharsha", "Manirampur"],
+            "Jashore": ["Jashore Sadar", "Abhaynagar", "Bagherpara", "Chaugachha", "Jhikargachha", "Keshabpur", "Sharsha", "Manikampur"],
             "Satkhira": ["Satkhira Sadar", "Kalaroa", "Tala", "Debhata", "Kaliganj", "Assasuni", "Shyamnagar"],
             "Meherpur": ["Meherpur Sadar", "Gangni", "Mujibnagar"],
             "Narail": ["Narail Sadar", "Lohagara", "Kalia"],
@@ -799,7 +801,6 @@
         };
 
         function showCustomModal(title, message, inputElement = null, isSubmitting = false) {
-            document.getElementById('modalTitleinnerText = title'); // safety
             document.getElementById('modalTitle').innerText = title;
             
             const messageContainer = document.getElementById('modalMessageContainer');
@@ -820,7 +821,7 @@
                         <strong>নিরাপত্তা নির্দেশিকা:</strong> অনুগ্রহ করে একাধিকবার সাবমিট বাটনে ক্লিক করবেন না। ডাটা সুরক্ষিতভাবে সংরক্ষণ করা হচ্ছে।
                     </div>
                 `;
-                actionBtn.style.display = "none"; // লোডিং চলাকালীন বাটন লুকিয়ে রাখা হলো
+                actionBtn.style.display = "none";
             } else {
                 isSubmittingModalActive = false;
                 iconContainer.innerHTML = `
@@ -837,7 +838,7 @@
         }
 
         function closeCustomModal() {
-            if (isSubmittingModalActive) return; // সাবমিট প্রসেস চলাকালীন বন্ধ করা যাবে না
+            if (isSubmittingModalActive) return;
             document.getElementById('customModal').classList.add('hidden');
             if (targetInputToFocus) {
                 targetInputToFocus.focus();
@@ -1071,7 +1072,6 @@
                 return;
             }
 
-            // অত্যন্ত প্রফেশনাল এবং সুন্দর লোডিং পপ-আপ কল করা হচ্ছে
             showCustomModal(
                 "তথ্য প্রসেস হচ্ছে...", 
                 "আপনার তথ্য সফলভাবে পালস নার্সিং-এর ডাটাবেসে সাবমিট করা হচ্ছে। অনুগ্রহ করে একটু অপেক্ষা করুন...", 
@@ -1096,9 +1096,12 @@
 
             fetch(scriptURL, { method: 'POST', body: formData })
                 .then(response => {
-                    document.getElementById('customModal').classList.add('hidden'); // পপ-আপ বন্ধ হবে
+                    document.getElementById('customModal').classList.add('hidden');
                     document.getElementById('formWrapper').classList.add('hidden');
-                    document.getElementById('successMessageContainer').classList.remove('hidden');
+                    
+                    const successContainer = document.getElementById('successMessageContainer');
+                    successContainer.classList.remove('hidden');
+                    successContainer.focus(); // ফোকাস সরিয়ে দেওয়া হলো যাতে ব্লিংকিং কার্সর বা বর্ডার না দেখায়
                 })
                 .catch(error => {
                     document.getElementById('customModal').classList.add('hidden');
