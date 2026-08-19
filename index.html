@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pulse Nursing Coaching - Student Information Form</title>
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -16,15 +16,15 @@
             --light-pink: #f8bbd0;
             --bg-color: #fce4ec;
             --white: #ffffff;
-            --text-color: #333333;
-            --gray: #666666;
+            --text-color: #2d3748;
+            --gray: #718096;
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Plus Jakarta Sans', sans-serif;
         }
 
         body {
@@ -236,75 +236,139 @@
             display: none !important;
         }
 
-        /* Custom Alert Modal Styles */
+        /* ==========================================================
+           PREMIUM PROFESSIONAL MODAL & LOADING UI DESIGN
+           ========================================================== */
         .custom-modal-overlay {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 0, 0, 0.6);
+            background: rgba(15, 23, 42, 0.65);
+            backdrop-filter: blur(5px);
             display: flex;
             justify-content: center;
             align-items: center;
             z-index: 9999;
             padding: 20px;
-            animation: fadeIn 0.3s ease;
+            animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .custom-modal-box {
             background: #ffffff;
             width: 100%;
-            max-width: 380px;
-            border-radius: 16px;
-            padding: 25px 20px;
+            max-width: 420px;
+            border-radius: 20px;
+            padding: 30px 24px;
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 20px 40px -15px rgba(136, 14, 79, 0.25);
             position: relative;
-            animation: scaleUp 0.3s ease;
+            animation: scaleUp 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid rgba(248, 187, 208, 0.4);
+        }
+
+        /* Modern Glowing Ring Spinner */
+        .loading-container-pro {
+            position: relative;
+            width: 74px;
+            height: 74px;
+            margin: 0 auto 20px auto;
+        }
+
+        .spinner-ring {
+            width: 100%;
+            height: 100%;
+            border: 4px solid #f8bbd0;
+            border-top: 4px solid var(--primary-pink);
+            border-radius: 50%;
+            animation: spin 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
+        }
+
+        .spinner-inner-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: var(--dark-pink);
+            font-size: 22px;
+            animation: pulseIcon 1.5s ease-in-out infinite;
         }
 
         .custom-modal-icon {
-            width: 55px;
-            height: 55px;
+            width: 65px;
+            height: 65px;
             background: #ffebee;
             color: var(--primary-pink);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 24px;
-            margin: 0 auto 15px auto;
+            font-size: 26px;
+            margin: 0 auto 18px auto;
         }
 
         .custom-modal-box h3 {
             color: var(--dark-pink);
-            font-size: 18px;
-            margin-bottom: 8px;
-            font-weight: 600;
+            font-size: 20px;
+            margin-bottom: 12px;
+            font-weight: 700;
+            letter-spacing: -0.3px;
         }
 
         .custom-modal-box p {
             color: var(--gray);
-            font-size: 13px;
-            line-height: 1.5;
+            font-size: 13.5px;
+            line-height: 1.65;
+            margin-bottom: 22px;
+        }
+
+        .highlight-notice {
+            background-color: #fff5f8;
+            border-left: 4px solid var(--primary-pink);
+            padding: 12px 14px;
+            border-radius: 0 10px 10px 0;
+            text-align: left;
             margin-bottom: 20px;
+            font-size: 13px;
+            color: var(--text-color);
+            line-height: 1.5;
+        }
+
+        .highlight-notice strong {
+            color: var(--dark-pink);
+            display: block;
+            margin-bottom: 3px;
         }
 
         .custom-modal-btn {
             background: linear-gradient(135deg, var(--primary-pink), var(--dark-pink));
             color: #ffffff;
             border: none;
-            padding: 10px 25px;
-            border-radius: 8px;
+            padding: 11px 28px;
+            border-radius: 10px;
             font-size: 14px;
             font-weight: 600;
             cursor: pointer;
-            transition: opacity 0.3s;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(194, 24, 91, 0.25);
+            width: 100%;
         }
 
         .custom-modal-btn:hover {
-            opacity: 0.9;
+            opacity: 0.92;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 15px rgba(194, 24, 91, 0.35);
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes pulseIcon {
+            0%, 100% { opacity: 0.7; transform: translate(-50%, -50%) scale(0.95); }
+            50% { opacity: 1; transform: translate(-50%, -50%) scale(1.05); }
         }
 
         @keyframes fadeIn {
@@ -313,8 +377,8 @@
         }
 
         @keyframes scaleUp {
-            from { transform: scale(0.8); }
-            to { transform: scale(1); }
+            from { transform: scale(0.85); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
         }
 
         /* Professional Success Message Box */
@@ -417,15 +481,17 @@
 </head>
 <body>
 
-    <!-- Custom Alert Modal Container -->
+    <!-- Custom Alert & Loading Modal Container -->
     <div id="customModal" class="custom-modal-overlay hidden">
         <div class="custom-modal-box">
-            <div class="custom-modal-icon">
-                <i class="fa-solid fa-triangle-exclamation"></i>
+            <div id="modalIconContainer">
+                <!-- Dynamically injected spinner or icon -->
             </div>
-            <h3 id="modalTitle">Invalid Selection</h3>
-            <p id="modalMessage">Please select a valid option from the dropdown list.</p>
-            <button class="custom-modal-btn" onclick="closeCustomModal()">OK, Got it</button>
+            <h3 id="modalTitle">Notice</h3>
+            <div id="modalMessageContainer">
+                <p id="modalMessage">Please wait...</p>
+            </div>
+            <button class="custom-modal-btn" id="modalActionBtn" onclick="closeCustomModal()">বোঝge গেছি / ঠিক আছে</button>
         </div>
     </div>
 
@@ -588,9 +654,9 @@
     <script>
         const scriptURL = 'https://script.google.com/macros/s/AKfycbyx9vPi6Ob_-FR4j3TQlDDWpwBkgi4ILek5VBz9HcHk-rOBqF29-viIyIID4jXZxgCF/exec';
 
-        // ব্যাকএন্ডে পাঠানোর জন্য বিশুদ্ধ তারিখ স্টোর করার গ্লোবাল ভেরিয়েবল
         let pureDateString = '';
         let targetInputToFocus = null;
+        let isSubmittingModalActive = false;
 
         const locationData = {
             "Dhaka": [
@@ -732,14 +798,46 @@
             });
         };
 
-        function showCustomModal(title, message, inputElement = null) {
+        function showCustomModal(title, message, inputElement = null, isSubmitting = false) {
+            document.getElementById('modalTitleinnerText = title'); // safety
             document.getElementById('modalTitle').innerText = title;
-            document.getElementById('modalMessage').innerText = message;
+            
+            const messageContainer = document.getElementById('modalMessageContainer');
+            const iconContainer = document.getElementById('modalIconContainer');
+            const actionBtn = document.getElementById('modalActionBtn');
+
+            if (isSubmitting) {
+                isSubmittingModalActive = true;
+                iconContainer.innerHTML = `
+                    <div class="loading-container-pro">
+                        <div class="spinner-ring"></div>
+                        <div class="spinner-inner-icon"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+                    </div>
+                `;
+                messageContainer.innerHTML = `
+                    <p>${message}</p>
+                    <div class="highlight-notice">
+                        <strong>নিরাপত্তা নির্দেশিকা:</strong> অনুগ্রহ করে একাধিকবার সাবমিট বাটনে ক্লিক করবেন না। ডাটা সুরক্ষিতভাবে সংরক্ষণ করা হচ্ছে।
+                    </div>
+                `;
+                actionBtn.style.display = "none"; // লোডিং চলাকালীন বাটন লুকিয়ে রাখা হলো
+            } else {
+                isSubmittingModalActive = false;
+                iconContainer.innerHTML = `
+                    <div class="custom-modal-icon">
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+                    </div>
+                `;
+                messageContainer.innerHTML = `<p id="modalMessage">${message}</p>`;
+                actionBtn.style.display = "block";
+            }
+
             document.getElementById('customModal').classList.remove('hidden');
             targetInputToFocus = inputElement;
         }
 
         function closeCustomModal() {
+            if (isSubmittingModalActive) return; // সাবমিট প্রসেস চলাকালীন বন্ধ করা যাবে না
             document.getElementById('customModal').classList.add('hidden');
             if (targetInputToFocus) {
                 targetInputToFocus.focus();
@@ -973,9 +1071,13 @@
                 return;
             }
 
-            const submitBtn = document.getElementById('submitBtn');
-            submitBtn.disabled = true;
-            submitBtn.innerText = "Submitting...";
+            // অত্যন্ত প্রফেশনাল এবং সুন্দর লোডিং পপ-আপ কল করা হচ্ছে
+            showCustomModal(
+                "তথ্য প্রসেস হচ্ছে...", 
+                "আপনার তথ্য সফলভাবে পালস নার্সিং-এর ডাটাবেসে সাবমিট করা হচ্ছে। অনুগ্রহ করে একটু অপেক্ষা করুন...", 
+                null, 
+                true
+            );
 
             const selectedDelivery = document.querySelector('input[name="deliverySystem"]:checked');
             const selectedCourse = document.querySelector('input[name="course"]:checked');
@@ -985,10 +1087,7 @@
             formData.append('orderDate', pureDateString);
             formData.append('deliverySystem', selectedDelivery ? selectedDelivery.value : '');
             formData.append('studentName', document.getElementById('studentName').value);
-            
-            // ফোন নাম্বারের শুরুতে অ্যাপোস্ট্রফি (') যুক্ত করা হলো যাতে গুগল এক্সেল শিটে '0' সহ পুরো ১১ সংখ্যা টেক্সট হিসেবে সংরক্ষিত হয়
             formData.append('phoneNumber', `'` + phoneInput);
-            
             formData.append('course', selectedCourse ? selectedCourse.value : '');
             formData.append('level', selectedLevel ? selectedLevel.value : '');
             formData.append('district', districtInput);
@@ -997,13 +1096,13 @@
 
             fetch(scriptURL, { method: 'POST', body: formData })
                 .then(response => {
+                    document.getElementById('customModal').classList.add('hidden'); // পপ-আপ বন্ধ হবে
                     document.getElementById('formWrapper').classList.add('hidden');
                     document.getElementById('successMessageContainer').classList.remove('hidden');
                 })
                 .catch(error => {
+                    document.getElementById('customModal').classList.add('hidden');
                     alert('Error! Something went wrong.');
-                    submitBtn.disabled = false;
-                    submitBtn.innerText = "Submit Information";
                     console.error('Error!', error.message);
                 });
         }
