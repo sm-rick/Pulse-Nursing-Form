@@ -4,11 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pulse Nursing Coaching - Student Information Form</title>
+
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
     <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <style>
         :root {
             --primary-pink: #c2185b;
@@ -161,7 +163,8 @@
             border-bottom: none;
         }
 
-        .autocomplete-items div:hover, .autocomplete-items div.autocomplete-active {
+        .autocomplete-items div:hover,
+        .autocomplete-items div.autocomplete-active {
             background-color: #fce4ec;
             color: var(--dark-pink);
         }
@@ -370,8 +373,14 @@
         }
 
         @keyframes pulseIcon {
-            0%, 100% { opacity: 0.7; transform: translate(-50%, -50%) scale(0.95); }
-            50% { opacity: 1; transform: translate(-50%, -50%) scale(1.05); }
+            0%, 100% {
+                opacity: 0.7;
+                transform: translate(-50%, -50%) scale(0.95);
+            }
+            50% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.05);
+            }
         }
 
         @keyframes fadeIn {
@@ -380,8 +389,14 @@
         }
 
         @keyframes scaleUp {
-            from { transform: scale(0.85); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
+            from {
+                transform: scale(0.85);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
         }
 
         /* Professional Success Message Box */
@@ -477,12 +492,14 @@
             background: #ffebee;
             color: #c62828;
         }
+
         .youtube-full-btn:hover {
             background: #c62828;
             color: var(--white);
         }
     </style>
 </head>
+
 <body>
 
     <!-- Custom Alert & Loading Modal Container -->
@@ -490,19 +507,24 @@
         <div class="custom-modal-box">
             <div id="modalIconContainer"></div>
             <h3 id="modalTitle">Notice</h3>
+
             <div id="modalMessageContainer">
                 <p id="modalMessage">Please wait...</p>
             </div>
+
             <button class="custom-modal-btn" id="modalActionBtn" onclick="closeCustomModal()">ঠিক আছে</button>
         </div>
     </div>
 
     <div class="container">
+
         <!-- Header -->
         <div class="header">
             <div class="logo-container">
-                <img src="https://i.ibb.co.com/Ld7snkkP/logo.png" alt="logo" border="0">            </div>
+                <!-- NEW LOGO LINK -->
+                <img src="https://i.ibb.co.com/Ld7snkkP/logo.png" alt="logo" border="0">
             </div>
+
             <a href="admin.html" class="admin-btn">
                 <i class="fa-solid fa-lock"></i> Admin Login
             </a>
@@ -513,7 +535,7 @@
         <!-- Main Form Wrapper -->
         <div id="formWrapper">
             <form id="studentForm" autocomplete="off" onsubmit="handleFormSubmit(event)">
-                
+
                 <div class="form-group">
                     <label>Date</label>
                     <input type="text" id="orderDate" readonly>
@@ -522,139 +544,263 @@
                 <!-- Delivery System Radio Cards -->
                 <div class="form-group">
                     <label>Delivery System</label>
+
                     <div class="radio-grid" style="grid-template-columns: repeat(2, 1fr);">
+
                         <div class="radio-card" onclick="selectRadio('deliveryOffice')">
-                            <input type="radio" id="deliveryOffice" name="deliverySystem" value="Office Delivery" checked required>
+                            <input type="radio"
+                                   id="deliveryOffice"
+                                   name="deliverySystem"
+                                   value="Office Delivery"
+                                   checked
+                                   required>
                             <label for="deliveryOffice">Office Delivery</label>
                         </div>
+
                         <div class="radio-card" onclick="selectRadio('deliveryHome')">
-                            <input type="radio" id="deliveryHome" name="deliverySystem" value="Home Delivery">
+                            <input type="radio"
+                                   id="deliveryHome"
+                                   name="deliverySystem"
+                                   value="Home Delivery">
                             <label for="deliveryHome">Home Delivery</label>
                         </div>
+
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label>Student Name (English Only)</label>
-                    <input type="text" id="studentName" placeholder="Enter full name in English" oninput="validateEnglishName(this)" required>
+                    <input type="text"
+                           id="studentName"
+                           placeholder="Enter full name in English"
+                           oninput="validateEnglishName(this)"
+                           required>
                 </div>
 
                 <div class="form-group">
                     <label>Phone Number (11 Digit English Number)</label>
-                    <input type="text" id="phoneNumber" placeholder="e.g. 01712345678" maxlength="11" oninput="validatePhone(this)" required>
+                    <input type="text"
+                           id="phoneNumber"
+                           placeholder="e.g. 01712345678"
+                           maxlength="11"
+                           oninput="validatePhone(this)"
+                           required>
                 </div>
 
                 <!-- Course Radio Cards -->
                 <div class="form-group">
                     <label>Course</label>
+
                     <div class="radio-grid">
+
                         <div class="radio-card" onclick="selectRadio('courseBsc')">
-                            <input type="radio" id="courseBsc" name="course" value="BSC" required>
+                            <input type="radio"
+                                   id="courseBsc"
+                                   name="course"
+                                   value="BSC"
+                                   required>
                             <label for="courseBsc">BSC</label>
                         </div>
+
                         <div class="radio-card" onclick="selectRadio('courseDiploma')">
-                            <input type="radio" id="courseDiploma" name="course" value="DIPLOMA">
+                            <input type="radio"
+                                   id="courseDiploma"
+                                   name="course"
+                                   value="DIPLOMA">
                             <label for="courseDiploma">DIPLOMA</label>
                         </div>
+
                         <div class="radio-card" onclick="selectRadio('courseMidwifery')">
-                            <input type="radio" id="courseMidwifery" name="course" value="Midwifery">
+                            <input type="radio"
+                                   id="courseMidwifery"
+                                   name="course"
+                                   value="Midwifery">
                             <label for="courseMidwifery">Midwifery</label>
                         </div>
+
                     </div>
                 </div>
 
                 <!-- Level Radio Cards -->
                 <div class="form-group">
                     <label>Level</label>
+
                     <div class="radio-grid">
+
                         <div class="radio-card" onclick="selectRadio('levelAdmission')">
-                            <input type="radio" id="levelAdmission" name="level" value="Admission" required>
+                            <input type="radio"
+                                   id="levelAdmission"
+                                   name="level"
+                                   value="Admission"
+                                   required>
                             <label for="levelAdmission">Admission</label>
                         </div>
+
                         <div class="radio-card" onclick="selectRadio('levelLicense')">
-                            <input type="radio" id="levelLicense" name="level" value="License">
+                            <input type="radio"
+                                   id="levelLicense"
+                                   name="level"
+                                   value="License">
                             <label for="levelLicense">License</label>
                         </div>
+
                         <div class="radio-card" onclick="selectRadio('levelJob')">
-                            <input type="radio" id="levelJob" name="level" value="Job">
+                            <input type="radio"
+                                   id="levelJob"
+                                   name="level"
+                                   value="Job">
                             <label for="levelJob">Job</label>
                         </div>
+
                         <div class="radio-card" onclick="selectRadio('levelAcademic')">
-                            <input type="radio" id="levelAcademic" name="level" value="Academic">
+                            <input type="radio"
+                                   id="levelAcademic"
+                                   name="level"
+                                   value="Academic">
                             <label for="levelAcademic">Academic</label>
                         </div>
+
                     </div>
                 </div>
 
                 <!-- Searchable District Input -->
                 <div class="form-group">
                     <label>District</label>
-                    <input type="text" id="district" placeholder="Click or Type District" required>
+                    <input type="text"
+                           id="district"
+                           placeholder="Click or Type District"
+                           required>
                     <div id="districtList" class="autocomplete-items"></div>
                 </div>
 
                 <!-- Searchable Upazilla Input -->
                 <div class="form-group">
                     <label>Upazilla / Thana</label>
-                    <input type="text" id="upazilla" placeholder="Click or Type Upazilla / Thana" required>
+                    <input type="text"
+                           id="upazilla"
+                           placeholder="Click or Type Upazilla / Thana"
+                           required>
                     <div id="upazillaList" class="autocomplete-items"></div>
                 </div>
 
                 <!-- Address Line -->
                 <div class="form-group hidden" id="addressGroup">
                     <label>Address Line</label>
-                    <input type="text" id="addressLine" placeholder="Village, Road, House No, etc.">
+                    <input type="text"
+                           id="addressLine"
+                           placeholder="Village, Road, House No, etc.">
                 </div>
 
-                <button type="submit" id="submitBtn" class="submit-btn">Submit Information</button>
+                <button type="submit"
+                        id="submitBtn"
+                        class="submit-btn">
+                    Submit Information
+                </button>
+
             </form>
         </div>
 
         <!-- Professional Success Message Container -->
-        <div id="successMessageContainer" class="hidden success-box" tabindex="-1">
+        <div id="successMessageContainer"
+             class="hidden success-box"
+             tabindex="-1">
+
             <div class="success-icon-container">
                 <i class="fa-solid fa-check"></i>
             </div>
+
             <h3>Submission Successful!</h3>
-            <p class="sub-title">Your information has been securely recorded.</p>
+            <p class="sub-title">
+                Your information has been securely recorded.
+            </p>
 
             <div class="pulse-info-card">
-                <h4><i class="fa-solid fa-building"></i> Office Address</h4>
-                <p>301/A, Hossain Villa, Mabs Road, Green Road, Farmgate, Dhaka.</p>
-                
-                <h4 style="margin-top: 8px;"><i class="fa-solid fa-phone"></i> Official Contacts</h4>
-                <p><strong>Founder & MD:</strong> 01792-439561</p>
-                <p><strong>Admin-1 (WhatsApp):</strong> 01985574715</p>
-                <p><strong>Admin-2 (WhatsApp):</strong> 01764890174</p>
 
-                <h4 style="margin-top: 8px;"><i class="fa-solid fa-shield-halved"></i> Rules & Privacy Policy</h4>
-                <p>1. All submitted data is 100% secure and confidential.<br>2. Course materials and lecture sheets are strictly for enrolled students only.</p>
+                <h4>
+                    <i class="fa-solid fa-building"></i>
+                    Office Address
+                </h4>
+
+                <p>
+                    301/A, Hossain Villa, Mabs Road, Green Road, Farmgate, Dhaka.
+                </p>
+
+                <h4 style="margin-top: 8px;">
+                    <i class="fa-solid fa-phone"></i>
+                    Official Contacts
+                </h4>
+
+                <p>
+                    <strong>Founder & MD:</strong> 01792-439561
+                </p>
+
+                <p>
+                    <strong>Admin-1 (WhatsApp):</strong> 01985574715
+                </p>
+
+                <p>
+                    <strong>Admin-2 (WhatsApp):</strong> 01764890174
+                </p>
+
+                <h4 style="margin-top: 8px;">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    Rules & Privacy Policy
+                </h4>
+
+                <p>
+                    1. All submitted data is 100% secure and confidential.<br>
+                    2. Course materials and lecture sheets are strictly for enrolled students only.
+                </p>
+
             </div>
 
             <!-- Social Media Grid Links -->
             <div class="contact-grid">
-                <a href="https://www.facebook.com/pulsenursingBD" target="_blank" class="contact-btn">
-                    <i class="fa-brands fa-facebook"></i> Admission FB
+
+                <a href="https://www.facebook.com/pulsenursingBD"
+                   target="_blank"
+                   class="contact-btn">
+                    <i class="fa-brands fa-facebook"></i>
+                    Admission FB
                 </a>
-                <a href="https://www.facebook.com/pulse.license.job" target="_blank" class="contact-btn">
-                    <i class="fa-brands fa-facebook"></i> Job & License FB
+
+                <a href="https://www.facebook.com/pulse.license.job"
+                   target="_blank"
+                   class="contact-btn">
+                    <i class="fa-brands fa-facebook"></i>
+                    Job & License FB
                 </a>
-                <a href="https://wa.me/8801985574715" target="_blank" class="contact-btn">
-                    <i class="fa-brands fa-whatsapp"></i> Admin-1 WA
+
+                <a href="https://wa.me/8801985574715"
+                   target="_blank"
+                   class="contact-btn">
+                    <i class="fa-brands fa-whatsapp"></i>
+                    Admin-1 WA
                 </a>
-                <a href="https://wa.me/8801764890174" target="_blank" class="contact-btn">
-                    <i class="fa-brands fa-whatsapp"></i> Admin-2 WA
+
+                <a href="https://wa.me/8801764890174"
+                   target="_blank"
+                   class="contact-btn">
+                    <i class="fa-brands fa-whatsapp"></i>
+                    Admin-2 WA
                 </a>
-                <a href="https://www.youtube.com/@PulseNursing" target="_blank" class="contact-btn youtube-full-btn">
-                    <i class="fa-brands fa-youtube"></i> Pulse Nursing YouTube Channel
+
+                <a href="https://www.youtube.com/@PulseNursing"
+                   target="_blank"
+                   class="contact-btn youtube-full-btn">
+                    <i class="fa-brands fa-youtube"></i>
+                    Pulse Nursing YouTube Channel
                 </a>
+
             </div>
         </div>
     </div>
 
     <!-- JavaScript Logic -->
     <script>
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbyx9vPi6Ob_-FR4j3TQlDDWpwBkgi4ILek5VBz9HcHk-rOBqF29-viIyIID4jXZxgCF/exec';
+
+        const scriptURL =
+            'https://script.google.com/macros/s/AKfycbyx9vPi6Ob_-FR4j3TQlDDWpwBkgi4ILek5VBz9HcHk-rOBqF29-viIyIID4jXZxgCF/exec';
 
         let pureDateString = '';
         let targetInputToFocus = null;
@@ -663,452 +809,1195 @@
         const locationData = {
             "Dhaka": [
                 "Savar", "Dhamrai", "Keraniganj", "Dohar", "Nawabganj",
-                "Uttara", "Uttara West", "Uttara East", "Turag", "Uttar Khan", "Dakshinkhan", "Khilkhet", "Airport", 
-                "Mirpur", "Shah Ali", "Kafrul", "Pallabi", "Rupnagar", "Bhashantek", 
-                "Tejgaon", "Tejgaon Industrial Area", "Sher-e-Bangla Nagar", "Hatirjheel", "Rampura", "Badda", "Bhatara", "Gulshan", "Banani", "Cantonment", 
-                "Mohammadpur", "Adabor", "Dhanmondi", "Hazaribagh", "New Market", "Kalabagan", 
-                "Ramna", "Shahbagh", "Paltan", "Motijheel", "Sabujbagh", "Shahjahanpur", "Mugda", "Khilgaon", 
-                "Wari", "Sutrapur", "Gendaria", "Lalbagh", "Chawkbazar", "Bangshal", "Kotwali", "Kamrangirchar", 
+                "Uttara", "Uttara West", "Uttara East", "Turag", "Uttar Khan", "Dakshinkhan", "Khilkhet", "Airport",
+                "Mirpur", "Shah Ali", "Kafrul", "Pallabi", "Rupnagar", "Bhashantek",
+                "Tejgaon", "Tejgaon Industrial Area", "Sher-e-Bangla Nagar", "Hatirjheel", "Rampura", "Badda", "Bhatara", "Gulshan", "Banani", "Cantonment",
+                "Mohammadpur", "Adabor", "Dhanmondi", "Hazaribagh", "New Market", "Kalabagan",
+                "Ramna", "Shahbagh", "Paltan", "Motijheel", "Sabujbagh", "Shahjahanpur", "Mugda", "Khilgaon",
+                "Wari", "Sutrapur", "Gendaria", "Lalbagh", "Chawkbazar", "Bangshal", "Kotwali", "Kamrangirchar",
                 "Demra", "Jatrabari", "Kadamtali", "Shyampur"
             ],
-            "Faridpur": ["Faridpur Sadar", "Alfadanga", "Boalmari", "Bhanga", "Charbhadrasan", "Madhukhali", "Nagarkanda", "Sadarpur", "Saltha"],
+
+            "Faridpur": [
+                "Faridpur Sadar", "Alfadanga", "Boalmari", "Bhanga",
+                "Charbhadrasan", "Madhukhali", "Nagarkanda", "Sadarpur", "Saltha"
+            ],
+
             "Gazipur": [
                 "Gazipur Sadar", "Kaliakair", "Kaliganj", "Kapasia", "Sreepur",
                 "Konabari", "Gacha", "Tongi East", "Tongi West", "Basan", "Pubail", "Sadar Thana"
             ],
-            "Gopalganj": ["Gopalganj Sadar", "Kashedani", "Kotalipara", "Muksudpur", "Tungipara"],
-            "Kishoreganj": ["Kishoreganj Sadar", "Hossainpur", "Pakundia", "Katiadi", "Kuliarchar", "Bhairab", "Bajitpur", "Itna", "Mithamain", "Nikli", "Tarail", "Austagram", "Karimganj"],
-            "Madaripur": ["Madaripur Sadar", "Shibchar", "Rajoir", "Kalkini", "Dasar"],
-            "Manikganj": ["Manikganj Sadar", "Singair", "Saturia", "Ghior", "Doulatpur", "Shibalaya", "Harirampur"],
-            "Munshiganj": ["Munshiganj Sadar", "Sreenagar", "Louhajang", "Sirajdikhan", "Tongibari", "Gazaria"],
+
+            "Gopalganj": [
+                "Gopalganj Sadar", "Kashedani", "Kotalipara", "Muksudpur", "Tungipara"
+            ],
+
+            "Kishoreganj": [
+                "Kishoreganj Sadar", "Hossainpur", "Pakundia", "Katiadi", "Kuliarchar",
+                "Bhairab", "Bajitpur", "Itna", "Mithamain", "Nikli", "Tarail",
+                "Austagram", "Karimganj"
+            ],
+
+            "Madaripur": [
+                "Madaripur Sadar", "Shibchar", "Rajoir", "Kalkini", "Dasar"
+            ],
+
+            "Manikganj": [
+                "Manikganj Sadar", "Singair", "Saturia", "Ghior",
+                "Doulatpur", "Shibalaya", "Harirampur"
+            ],
+
+            "Munshiganj": [
+                "Munshiganj Sadar", "Sreenagar", "Louhajang",
+                "Sirajdikhan", "Tongibari", "Gazaria"
+            ],
+
             "Narayanganj": [
-                "Narayanganj Sadar", "Rupganj", "Sonargaon", "Araihazar", "Bandar",
-                "Fatullah", "Siddhirganj"
+                "Narayanganj Sadar", "Rupganj", "Sonargaon",
+                "Araihazar", "Bandar", "Fatullah", "Siddhirganj"
             ],
-            "Narsingdi": ["Narsingdi Sadar", "Palash", "Shibpur", "Monohardi", "Belabo", "Raipura"],
-            "Rajbari": ["Rajbari Sadar", "Goalanda", "Pangsha", "Baliakandi", "Kalukhali"],
-            "Shariatpur": ["Shariatpur Sadar", "Naria", "Jajira", "Bhedarganj", "Damudya", "Gosairhat"],
-            "Tangail": ["Tangail Sadar", "Sakhipur", "Basail", "Ghatail", "Kalihati", "Bhuapur", "Mirzapur", "Nagarpur", "Madhupur", "Dhanbari", "Delduar", "Gopalpur"],
+
+            "Narsingdi": [
+                "Narsingdi Sadar", "Palash", "Shibpur",
+                "Monohardi", "Belabo", "Raipura"
+            ],
+
+            "Rajbari": [
+                "Rajbari Sadar", "Goalanda", "Pangsha",
+                "Baliakandi", "Kalukhali"
+            ],
+
+            "Shariatpur": [
+                "Shariatpur Sadar", "Naria", "Jajira",
+                "Bhedarganj", "Damudya", "Gosairhat"
+            ],
+
+            "Tangail": [
+                "Tangail Sadar", "Sakhipur", "Basail", "Ghatail",
+                "Kalihati", "Bhuapur", "Mirzapur", "Nagarpur",
+                "Madhupur", "Dhanbari", "Delduar", "Gopalpur"
+            ],
+
             "Chattogram": [
-                "Anwara", "Banshkhali", "Boalkhali", "Chandanaish", "Fatikchhari", "Hathazari", "Lohagara", "Mirsarai", "Patiya", "Rauzan", "Rangunia", "Sandwip", "Satkania", "Sitakunda",
-                "Kotwali", "Double Mooring", "Panchlaish", "Pahartali", "Halishahar", "Bakalia", "Bayazid Bostami", "Chandgaon", "Bandar", "EPZ", "Patenga", "Karnafuli", "Khulshi", "Sadarghat", "Chawkbazar", "Akbarshah"
+                "Anwara", "Banshkhali", "Boalkhali", "Chandanaish", "Fatikchhari",
+                "Hathazari", "Lohagara", "Mirsarai", "Patiya", "Rauzan",
+                "Rangunia", "Sandwip", "Satkania", "Sitakunda",
+                "Kotwali", "Double Mooring", "Panchlaish", "Pahartali",
+                "Halishahar", "Bakalia", "Bayazid Bostami", "Chandgaon",
+                "Bandar", "EPZ", "Patenga", "Karnafuli", "Khulshi",
+                "Sadarghat", "Chawkbazar", "Akbarshah"
             ],
-            "Cox's Bazar": ["Cox's Bazar Sadar", "Chakaria", "Pekua", "Kutubdia", "Ukhia", "Teknaf", "Ramu", "Maheshkhali", "Eidgaon"],
-            "Bandarban": ["Bandarban Sadar", "Alikadam", "Naikhongchhari", "Rowangchhari", "Ruma", "Thanchi", "Lama"],
-            "Khagrachhari": ["Khagrachhari Sadar", "Dighinala", "Panchhari", "Lakshmichhari", "Mahalchhari", "Matiranga", "Ramgarh", "Manikchhari", "Guimara"],
-            "Rangamati": ["Rangamati Sadar", "Baghaichhari", "Barkal", "Belaichhari", "Kaptai", "Jurachhari", "Langadu", "Naniarchar", "Kawkhali", "Rajasthali"],
-            "Noakhali": ["Noakhali Sadar (Sudharam)", "Senbagh", "Companiganj", "Begumganj", "Chatkhil", "Hatiya", "Subarnachar", "Kabirhat"],
-            "Lakshmipur": ["Lakshmipur Sadar", "Raipur", "Ramganj", "Ramgati", "Kamalnagar", "Chandraganj"],
-            "Feni": ["Feni Sadar", "Chhagalnaiya", "Sonagazi", "Daganbhuiyan", "Parshuram", "Fulgazi"],
-            "Comilla": ["Comilla Adarsha Sadar", "Sadar Dakshin", "Burichong", "Brahmanpara", "Chouddagram", "Daudkandi", "Debidwar", "Homna", "Laksam", "Monoharganj", "Meghna", "Muradnagar", "Nangalkot", "Titas", "Barura", "Lalmai"],
-            "Brahmanbaria": ["Brahmanbaria Sadar", "Ashuganj", "Nasirnagar", "Nabinagar", "Sarail", "Kasba", "Akhaura", "Bancharampur", "Bijoynagar"],
-            "Chandpur": ["Chandpur Sadar", "Matlab Uttar", "Matlab Dakshin", "Hajiganj", "Kachua", "Shahrasti", "Faridganj", "Haimchar"],
+
+            "Cox's Bazar": [
+                "Cox's Bazar Sadar", "Chakaria", "Pekua",
+                "Kutubdia", "Ukhia", "Teknaf", "Ramu",
+                "Maheshkhali", "Eidgaon"
+            ],
+
+            "Bandarban": [
+                "Bandarban Sadar", "Alikadam", "Naikhongchhari",
+                "Rowangchhari", "Ruma", "Thanchi", "Lama"
+            ],
+
+            "Khagrachhari": [
+                "Khagrachhari Sadar", "Dighinala", "Panchhari",
+                "Lakshmichhari", "Mahalchhari", "Matiranga",
+                "Ramgarh", "Manikchhari", "Guimara"
+            ],
+
+            "Rangamati": [
+                "Rangamati Sadar", "Baghaichhari", "Barkal", "Belaichhari",
+                "Kaptai", "Jurachhari", "Langadu", "Naniarchar",
+                "Kawkhali", "Rajasthali"
+            ],
+
+            "Noakhali": [
+                "Noakhali Sadar (Sudharam)", "Senbagh", "Companiganj",
+                "Begumganj", "Chatkhil", "Hatiya", "Subarnachar", "Kabirhat"
+            ],
+
+            "Lakshmipur": [
+                "Lakshmipur Sadar", "Raipur", "Ramganj",
+                "Ramgati", "Kamalnagar", "Chandraganj"
+            ],
+
+            "Feni": [
+                "Feni Sadar", "Chhagalnaiya", "Sonagazi",
+                "Daganbhuiyan", "Parshuram", "Fulgazi"
+            ],
+
+            "Comilla": [
+                "Comilla Adarsha Sadar", "Sadar Dakshin", "Burichong",
+                "Brahmanpara", "Chouddagram", "Daudkandi", "Debidwar",
+                "Homna", "Laksam", "Monoharganj", "Meghna", "Muradnagar",
+                "Nangalkot", "Titas", "Barura", "Lalmai"
+            ],
+
+            "Brahmanbaria": [
+                "Brahmanbaria Sadar", "Ashuganj", "Nasirnagar",
+                "Nabinagar", "Sarail", "Kasba", "Akhaura",
+                "Bancharampur", "Bijoynagar"
+            ],
+
+            "Chandpur": [
+                "Chandpur Sadar", "Matlab Uttar", "Matlab Dakshin",
+                "Hajiganj", "Kachua", "Shahrasti", "Faridganj", "Haimchar"
+            ],
+
             "Rajshahi": [
-                "Paba", "Mohanpur", "Tanore", "Bagmara", "Durgapur", "Charghat", "Bagha", "Godagari", "Puthia",
-                "Boalia", "Rajpara", "Motihar", "Shah Makhdum", "Chandrima", "Katakhali", "Karnahar", "Damkura"
+                "Paba", "Mohanpur", "Tanore", "Bagmara", "Durgapur",
+                "Charghat", "Bagha", "Godagari", "Puthia",
+                "Boalia", "Rajpara", "Motihar", "Shah Makhdum",
+                "Chandrima", "Katakhali", "Karnahar", "Damkura"
             ],
-            "Bogura": ["Bogura Sadar", "Sherpur", "Dhunat", "Sariakandi", "Gabtali", "Sonatala", "Shibganj", "Kahalu", "Nandigram", "Dupchanchia", "Adamdighi", "Shahjahanpur"],
-            "Naogaon": ["Naogaon Sadar", "Raninagar", "Atrai", "Badalgachhi", "Manda", "Dhamoirhat", "Patnitala", "Sapahar", "Porsha", "Mahadebpur", "Niamatpur"],
-            "Natore": ["Natore Sadar", "Bagatipara", "Baraigram", "Gurudaspur", "Lalpur", "Singra", "Naldanga"],
-            "Chapainawabganj": ["Chapainawabganj Sadar", "Gomastapur", "Nachol", "Bholahat", "Shibganj"],
-            "Pabna": ["Pabna Sadar", "Ishwardi", "Bhangura", "Atgharia", "Chatmohar", "Bera", "Sujanagar", "Sathia", "Faridpur"],
-            "Sirajganj": ["Sirajganj Sadar", "Kazipur", "Ullapara", "Shahjadpur", "Rayganj", "Tarash", "Kamarkhanda", "Belkuchi", "Chauhali"],
-            "Joypurhat": ["Joypurhat Sadar", "Akkelpur", "Kalai", "Khetlal", "Panchbibi"],
+
+            "Bogura": [
+                "Bogura Sadar", "Sherpur", "Dhunat", "Sariakandi",
+                "Gabtali", "Sonatala", "Shibganj", "Kahalu",
+                "Nandigram", "Dupchanchia", "Adamdighi", "Shahjahanpur"
+            ],
+
+            "Naogaon": [
+                "Naogaon Sadar", "Raninagar", "Atrai", "Badalgachhi",
+                "Manda", "Dhamoirhat", "Patnitala", "Sapahar",
+                "Porsha", "Mahadebpur", "Niamatpur"
+            ],
+
+            "Natore": [
+                "Natore Sadar", "Bagatipara", "Baraigram",
+                "Gurudaspur", "Lalpur", "Singra", "Naldanga"
+            ],
+
+            "Chapainawabganj": [
+                "Chapainawabganj Sadar", "Gomastapur",
+                "Nachol", "Bholahat", "Shibganj"
+            ],
+
+            "Pabna": [
+                "Pabna Sadar", "Ishwardi", "Bhangura", "Atgharia",
+                "Chatmohar", "Bera", "Sujanagar", "Sathia", "Faridpur"
+            ],
+
+            "Sirajganj": [
+                "Sirajganj Sadar", "Kazipur", "Ullapara", "Shahjadpur",
+                "Rayganj", "Tarash", "Kamarkhanda", "Belkuchi", "Chauhali"
+            ],
+
+            "Joypurhat": [
+                "Joypurhat Sadar", "Akkelpur", "Kalai",
+                "Khetlal", "Panchbibi"
+            ],
+
             "Khulna": [
-                "Rupsa", "Dighalia", "Dumuria", "Paikgachha", "Koyra", "Batiaghata", "Dakop", "Phultala", "Terokhada",
-                "Sonadanga", "Khalishpur", "Daulatpur", "Khan Jahan Ali", "Boyra", "Harintana", "Lobonchora", "Sonadanga Model"
+                "Rupsa", "Dighalia", "Dumuria", "Paikgachha", "Koyra",
+                "Batiaghata", "Dakop", "Phultala", "Terokhada",
+                "Sonadanga", "Khalishpur", "Daulatpur", "Khan Jahan Ali",
+                "Boyra", "Harintana", "Lobonchora", "Sonadanga Model"
             ],
-            "Jashore": ["Jashore Sadar", "Abhaynagar", "Bagherpara", "Chaugachha", "Jhikargachha", "Keshabpur", "Sharsha", "Manikampur"],
-            "Satkhira": ["Satkhira Sadar", "Kalaroa", "Tala", "Debhata", "Kaliganj", "Assasuni", "Shyamnagar"],
-            "Meherpur": ["Meherpur Sadar", "Gangni", "Mujibnagar"],
-            "Narail": ["Narail Sadar", "Lohagara", "Kalia"],
-            "Chuadanga": ["Chuadanga Sadar", "Alamdanga", "Jibannagar", "Damurhuda"],
-            "Kushtia": ["Kushtia Sadar", "Kumarkhali", "Khoksa", "Bheramara", "Mirpur", "Doulatpur"],
-            "Magura": ["Magura Sadar", "Sreepur", "Salikha", "Mohammadpur"],
-            "Bagerhat": ["Bagerhat Sadar", "Kachua", "Mollahat", "Chitalmari", "Sharankhola", "Rampal", "Mongla", "Fakirhat", "Morellganj"],
-            "Jhenaidah": ["Jhenaidah Sadar", "Shailkupa", "Harinakunda", "Kaliganj", "Maheshpur", "Kotchandpur"],
+
+            "Jashore": [
+                "Jashore Sadar", "Abhaynagar", "Bagherpara",
+                "Chaugachha", "Jhikargachha", "Keshabpur",
+                "Sharsha", "Manikampur"
+            ],
+
+            "Satkhira": [
+                "Satkhira Sadar", "Kalaroa", "Tala", "Debhata",
+                "Kaliganj", "Assasuni", "Shyamnagar"
+            ],
+
+            "Meherpur": [
+                "Meherpur Sadar", "Gangni", "Mujibnagar"
+            ],
+
+            "Narail": [
+                "Narail Sadar", "Lohagara", "Kalia"
+            ],
+
+            "Chuadanga": [
+                "Chuadanga Sadar", "Alamdanga",
+                "Jibannagar", "Damurhuda"
+            ],
+
+            "Kushtia": [
+                "Kushtia Sadar", "Kumarkhali", "Khoksa",
+                "Bheramara", "Mirpur", "Doulatpur"
+            ],
+
+            "Magura": [
+                "Magura Sadar", "Sreepur", "Salikha", "Mohammadpur"
+            ],
+
+            "Bagerhat": [
+                "Bagerhat Sadar", "Kachua", "Mollahat", "Chitalmari",
+                "Sharankhola", "Rampal", "Mongla", "Fakirhat", "Morellganj"
+            ],
+
+            "Jhenaidah": [
+                "Jhenaidah Sadar", "Shailkupa", "Harinakunda",
+                "Kaliganj", "Maheshpur", "Kotchandpur"
+            ],
+
             "Barishal": [
-                "Barishal Sadar", "Bakerganj", "Babuganj", "Uzirpur", "Banaripara", "Gournadi", "Agailjhara", "Mehendiganj", "Muladi", "Hizla",
-                "Kotwali", "Airport Thana"
+                "Barishal Sadar", "Bakerganj", "Babuganj", "Uzirpur",
+                "Banaripara", "Gournadi", "Agailjhara", "Mehendiganj",
+                "Muladi", "Hizla", "Kotwali", "Airport Thana"
             ],
-            "Barguna": ["Barguna Sadar", "Amtali", "Betagi", "Bamna", "Patharghata", "Taltali"],
-            "Bhola": ["Bhola Sadar", "Borhanuddin", "Char Fasson", "Doulatkhan", "Lalmohan", "Monpura", "Tazumuddin"],
-            "Jhalokati": ["Jhalokati Sadar", "Nalchity", "Rajapur", "Kathalia"],
-            "Pirojpur": ["Pirojpur Sadar", "Nesarabad (Swarupkati)", "Nazirpur", "Kawkhali", "Bhandaria", "Mathbaria", "Indurkani"],
-            "Patuakhali": ["Patuakhali Sadar", "Bauphal", "Galachipa", "Kalapara", "Dashmina", "Mirzaganj", "Dumki", "Rangabali"],
+
+            "Barguna": [
+                "Barguna Sadar", "Amtali", "Betagi",
+                "Bamna", "Patharghata", "Taltali"
+            ],
+
+            "Bhola": [
+                "Bhola Sadar", "Borhanuddin", "Char Fasson",
+                "Doulatkhan", "Lalmohan", "Monpura", "Tazumuddin"
+            ],
+
+            "Jhalokati": [
+                "Jhalokati Sadar", "Nalchity", "Rajapur", "Kathalia"
+            ],
+
+            "Pirojpur": [
+                "Pirojpur Sadar", "Nesarabad (Swarupkati)",
+                "Nazirpur", "Kawkhali", "Bhandaria",
+                "Mathbaria", "Indurkani"
+            ],
+
+            "Patuakhali": [
+                "Patuakhali Sadar", "Bauphal", "Galachipa",
+                "Kalapara", "Dashmina", "Mirzaganj", "Dumki", "Rangabali"
+            ],
+
             "Sylhet": [
-                "Golapganj", "Beani Bazar", "Jaintapur", "Kanaighat", "Gowainghat", "Companiganj", "Zakiganj", "Bishwanath", "Osmani Nagar", "Dakshin Surma", "Balaganj", "Fenchuganj",
+                "Golapganj", "Beani Bazar", "Jaintapur", "Kanaighat",
+                "Gowainghat", "Companiganj", "Zakiganj", "Bishwanath",
+                "Osmani Nagar", "Dakshin Surma", "Balaganj", "Fenchuganj",
                 "Kotwali", "Jalalabad", "Moglabazar", "Airport", "Shah Paran"
             ],
-            "Sunamganj": ["Sunamganj Sadar", "Bishwamvarpur", "Chhatak", "Dowarabazar", "Jagannathpur", "Shantiganj (South Sunamganj)", "Tahirpur", "Dharmapasha", "Sulla", "Derai", "Madhyanagar"],
-            "Habiganj": ["Habiganj Sadar", "Nabiganj", "Bahubal", "Ajmiriganj", "Baniachong", "Lakhai", "Chunarughat", "Madhabpur", "Shayestaganj"],
-            "Moulvibazar": ["Moulvibazar Sadar", "Barlekha", "Juri", "Kulaura", "Kamalganj", "Sreemangal", "Rajnagar"],
+
+            "Sunamganj": [
+                "Sunamganj Sadar", "Bishwamvarpur", "Chhatak",
+                "Dowarabazar", "Jagannathpur", "Shantiganj (South Sunamganj)",
+                "Tahirpur", "Dharmapasha", "Sulla", "Derai", "Madhyanagar"
+            ],
+
+            "Habiganj": [
+                "Habiganj Sadar", "Nabiganj", "Bahubal", "Ajmiriganj",
+                "Baniachong", "Lakhai", "Chunarughat",
+                "Madhabpur", "Shayestaganj"
+            ],
+
+            "Moulvibazar": [
+                "Moulvibazar Sadar", "Barlekha", "Juri",
+                "Kulaura", "Kamalganj", "Sreemangal", "Rajnagar"
+            ],
+
             "Rangpur": [
-                "Badarganj", "Gangachara", "Kaunia", "Mithapukur", "Pirgachha", "Pirganj", "Taraganj",
+                "Badarganj", "Gangachara", "Kaunia", "Mithapukur",
+                "Pirgachha", "Pirganj", "Taraganj",
                 "Kotwali", "Haragach", "Parshuram", "Tajhat"
             ],
-            "Dinajpur": ["Dinajpur Sadar", "Biral", "Birampur", "Birganj", "Bochaganj", "Chirirbandar", "Ghoraghat", "Hakimpur", "Kaharol", "Khansama", "Nawabganj", "Parbatipur", "Phulbari"],
-            "Gaibandha": ["Gaibandha Sadar", "Fulchhari", "Gobindaganj", "Palashbari", "Sadullapur", "Saghata", "Sundarganj"],
-            "Kurigram": ["Kurigram Sadar", "Bhurungamari", "Chilmari", "Phulbari", "Rajarhat", "Rajibpur", "Roumari", "Nageshwari", "Ulipur"],
-            "Lalmonirhat": ["Lalmonirhat Sadar", "Aditmari", "Kaliganj", "Hatibandha", "Patgram"],
-            "Nilphamari": ["Nilphamari Sadar", "Dimla", "Domar", "Jaldhaka", "Kishoreganj", "Syedpur"],
-            "Panchagarh": ["Panchagarh Sadar", "Atwari", "Boda", "Debiganj", "Tentulia"],
-            "Thakurgaon": ["Thakurgaon Sadar", "Baliadangi", "Pirganj", "Ranisankail", "Haripur"],
+
+            "Dinajpur": [
+                "Dinajpur Sadar", "Biral", "Birampur", "Birganj",
+                "Bochaganj", "Chirirbandar", "Ghoraghat", "Hakimpur",
+                "Kaharol", "Khansama", "Nawabganj", "Parbatipur", "Phulbari"
+            ],
+
+            "Gaibandha": [
+                "Gaibandha Sadar", "Fulchhari", "Gobindaganj",
+                "Palashbari", "Sadullapur", "Saghata", "Sundarganj"
+            ],
+
+            "Kurigram": [
+                "Kurigram Sadar", "Bhurungamari", "Chilmari",
+                "Phulbari", "Rajarhat", "Rajibpur", "Roumari",
+                "Nageshwari", "Ulipur"
+            ],
+
+            "Lalmonirhat": [
+                "Lalmonirhat Sadar", "Aditmari", "Kaliganj",
+                "Hatibandha", "Patgram"
+            ],
+
+            "Nilphamari": [
+                "Nilphamari Sadar", "Dimla", "Domar",
+                "Jaldhaka", "Kishoreganj", "Syedpur"
+            ],
+
+            "Panchagarh": [
+                "Panchagarh Sadar", "Atwari", "Boda",
+                "Debiganj", "Tentulia"
+            ],
+
+            "Thakurgaon": [
+                "Thakurgaon Sadar", "Baliadangi",
+                "Pirganj", "Ranisankail", "Haripur"
+            ],
+
             "Mymensingh": [
-                "Muktagachha", "Bhaluka", "Trishal", "Dhobaura", "Phulpur", "Haluaghat", "Gauripur", "Ishwarganj", "Nandail", "Phulbaria", "Tarakanda", "Gafargaon",
+                "Muktagachha", "Bhaluka", "Trishal", "Dhobaura",
+                "Phulpur", "Haluaghat", "Gauripur", "Ishwarganj",
+                "Nandail", "Phulbaria", "Tarakanda", "Gafargaon",
                 "Kotwali"
             ],
-            "Jamalpur": ["Jamalpur Sadar", "Islampur", "Dewanganj", "Madarganj", "Melandaha", "Bakshiganj", "Sarishabari"],
-            "Netrokona": ["Netrokona Sadar", "Atpara", "Barhatta", "Durgapur", "Kalmakanda", "Kendua", "Khaliajuri", "Madan", "Mohonganj", "Purbadhala"],
-            "Sherpur": ["Sherpur Sadar", "Nalitabari", "Jhenaigati", "Nakla", "Sreebordi"]
+
+            "Jamalpur": [
+                "Jamalpur Sadar", "Islampur", "Dewanganj",
+                "Madarganj", "Melandaha", "Bakshiganj", "Sarishabari"
+            ],
+
+            "Netrokona": [
+                "Netrokona Sadar", "Atpara", "Barhatta", "Durgapur",
+                "Kalmakanda", "Kendua", "Khaliajuri", "Madan",
+                "Mohonganj", "Purbadhala"
+            ],
+
+            "Sherpur": [
+                "Sherpur Sadar", "Nalitabari",
+                "Jhenaigati", "Nakla", "Sreebordi"
+            ]
         };
 
         window.onload = function() {
+
             const today = new Date();
+
             pureDateString = today.toISOString().split('T')[0];
 
-            const dayName = today.toLocaleDateString('en-US', { weekday: 'long' });
-            const monthName = today.toLocaleDateString('en-US', { month: 'long' });
-            const dayNum = today.getDate();
-            const yearNum = today.getFullYear();
-            
-            const englishDateWithDay = `${dayNum} ${monthName} ${yearNum}, ${dayName}`;
-            document.getElementById('orderDate').value = englishDateWithDay;
-
-            const sortedDistricts = Object.keys(locationData).sort((a, b) => a.localeCompare(b));
-            setupDistrictDropdown(sortedDistricts);
-            setupUpazillaDropdown();
-            
-            toggleAddressField();
-
-            document.querySelectorAll('input[name="deliverySystem"]').forEach(radio => {
-                radio.addEventListener('change', toggleAddressField);
+            const dayName = today.toLocaleDateString('en-US', {
+                weekday: 'long'
             });
 
-            document.addEventListener('click', function(e) {
-                const districtInput = document.getElementById('district');
-                const districtList = document.getElementById('districtList');
-                const upazillaInput = document.getElementById('upazilla');
-                const upazillaList = document.getElementById('upazillaList');
+            const monthName = today.toLocaleDateString('en-US', {
+                month: 'long'
+            });
 
-                if (e.target !== districtInput && !districtList.contains(e.target)) {
+            const dayNum = today.getDate();
+            const yearNum = today.getFullYear();
+
+            const englishDateWithDay =
+                `${dayNum} ${monthName} ${yearNum}, ${dayName}`;
+
+            document.getElementById('orderDate').value =
+                englishDateWithDay;
+
+            const sortedDistricts =
+                Object.keys(locationData)
+                    .sort((a, b) => a.localeCompare(b));
+
+            setupDistrictDropdown(sortedDistricts);
+            setupUpazillaDropdown();
+
+            toggleAddressField();
+
+            document
+                .querySelectorAll('input[name="deliverySystem"]')
+                .forEach(radio => {
+                    radio.addEventListener(
+                        'change',
+                        toggleAddressField
+                    );
+                });
+
+            document.addEventListener('click', function(e) {
+
+                const districtInput =
+                    document.getElementById('district');
+
+                const districtList =
+                    document.getElementById('districtList');
+
+                const upazillaInput =
+                    document.getElementById('upazilla');
+
+                const upazillaList =
+                    document.getElementById('upazillaList');
+
+                if (
+                    e.target !== districtInput &&
+                    !districtList.contains(e.target)
+                ) {
                     districtList.innerHTML = "";
                 }
-                if (e.target !== upazillaInput && !upazillaList.contains(e.target)) {
+
+                if (
+                    e.target !== upazillaInput &&
+                    !upazillaList.contains(e.target)
+                ) {
                     upazillaList.innerHTML = "";
                 }
+
             });
         };
 
-        function showCustomModal(title, message, inputElement = null, isSubmitting = false) {
+        function showCustomModal(
+            title,
+            message,
+            inputElement = null,
+            isSubmitting = false
+        ) {
+
             document.getElementById('modalTitle').innerText = title;
-            
-            const messageContainer = document.getElementById('modalMessageContainer');
-            const iconContainer = document.getElementById('modalIconContainer');
-            const actionBtn = document.getElementById('modalActionBtn');
+
+            const messageContainer =
+                document.getElementById('modalMessageContainer');
+
+            const iconContainer =
+                document.getElementById('modalIconContainer');
+
+            const actionBtn =
+                document.getElementById('modalActionBtn');
 
             if (isSubmitting) {
+
                 isSubmittingModalActive = true;
+
                 iconContainer.innerHTML = `
                     <div class="loading-container-pro">
                         <div class="spinner-ring"></div>
-                        <div class="spinner-inner-icon"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+                        <div class="spinner-inner-icon">
+                            <i class="fa-solid fa-cloud-arrow-up"></i>
+                        </div>
                     </div>
                 `;
+
                 messageContainer.innerHTML = `
                     <p>${message}</p>
+
                     <div class="highlight-notice">
-                        <strong>নিরাপত্তা নির্দেশিকা:</strong> অনুগ্রহ করে একাধিকবার সাবমিট বাটনে ক্লিক করবেন না। ডাটা সুরক্ষিতভাবে সংরক্ষণ করা হচ্ছে।
+                        <strong>নিরাপত্তা নির্দেশিকা:</strong>
+                        অনুগ্রহ করে একাধিকবার সাবমিট বাটনে ক্লিক করবেন না।
+                        ডাটা সুরক্ষিতভাবে সংরক্ষণ করা হচ্ছে।
                     </div>
                 `;
+
                 actionBtn.style.display = "none";
+
             } else {
+
                 isSubmittingModalActive = false;
+
                 iconContainer.innerHTML = `
                     <div class="custom-modal-icon">
                         <i class="fa-solid fa-triangle-exclamation"></i>
                     </div>
                 `;
-                messageContainer.innerHTML = `<p id="modalMessage">${message}</p>`;
+
+                messageContainer.innerHTML =
+                    `<p id="modalMessage">${message}</p>`;
+
                 actionBtn.style.display = "block";
             }
 
-            document.getElementById('customModal').classList.remove('hidden');
+            document
+                .getElementById('customModal')
+                .classList.remove('hidden');
+
             targetInputToFocus = inputElement;
         }
 
         function closeCustomModal() {
+
             if (isSubmittingModalActive) return;
-            document.getElementById('customModal').classList.add('hidden');
+
+            document
+                .getElementById('customModal')
+                .classList.add('hidden');
+
             if (targetInputToFocus) {
+
                 targetInputToFocus.focus();
+
                 targetInputToFocus = null;
             }
         }
 
         function selectRadio(id) {
+
             document.getElementById(id).checked = true;
+
             toggleAddressField();
         }
 
         function toggleAddressField() {
-            const deliveryHome = document.getElementById('deliveryHome').checked;
-            const addressGroup = document.getElementById('addressGroup');
-            const addressInput = document.getElementById('addressLine');
+
+            const deliveryHome =
+                document.getElementById('deliveryHome').checked;
+
+            const addressGroup =
+                document.getElementById('addressGroup');
+
+            const addressInput =
+                document.getElementById('addressLine');
 
             if (deliveryHome) {
+
                 addressGroup.classList.remove('hidden');
-                addressInput.setAttribute('required', 'true');
+
+                addressInput.setAttribute(
+                    'required',
+                    'true'
+                );
+
             } else {
+
                 addressGroup.classList.add('hidden');
-                addressInput.removeAttribute('required');
-                addressInput.value = ''; 
+
+                addressInput.removeAttribute(
+                    'required'
+                );
+
+                addressInput.value = '';
             }
         }
 
         function validateEnglishName(input) {
-            input.value = input.value.replace(/[^A-Za-z\s]/g, '');
+
+            input.value =
+                input.value.replace(
+                    /[^A-Za-z\s]/g,
+                    ''
+                );
         }
 
         function validatePhone(input) {
-            input.value = input.value.replace(/[^0-9]/g, '');
-            if(input.value.length > 11) {
-                input.value = input.value.slice(0, 11);
+
+            input.value =
+                input.value.replace(
+                    /[^0-9]/g,
+                    ''
+                );
+
+            if (input.value.length > 11) {
+
+                input.value =
+                    input.value.slice(0, 11);
             }
         }
 
         function addActive(items, currentFocus) {
+
             if (!items) return;
+
             removeActive(items);
-            if (currentFocus >= items.length) currentFocus = 0;
-            if (currentFocus < 0) currentFocus = items.length - 1;
-            
-            items[currentFocus].classList.add('autocomplete-active');
-            items[currentFocus].scrollIntoView({ block: 'nearest' });
+
+            if (currentFocus >= items.length)
+                currentFocus = 0;
+
+            if (currentFocus < 0)
+                currentFocus = items.length - 1;
+
+            items[currentFocus]
+                .classList
+                .add('autocomplete-active');
+
+            items[currentFocus]
+                .scrollIntoView({
+                    block: 'nearest'
+                });
+
             return currentFocus;
         }
 
         function removeActive(items) {
-            for (let i = 0; i < items.length; i++) {
-                items[i].classList.remove('autocomplete-active');
+
+            for (
+                let i = 0;
+                i < items.length;
+                i++
+            ) {
+                items[i]
+                    .classList
+                    .remove('autocomplete-active');
             }
         }
 
         function setupDistrictDropdown(sortedDistricts) {
-            const input = document.getElementById('district');
-            const listContainer = document.getElementById('districtList');
-            const upazillaList = document.getElementById('upazillaList');
+
+            const input =
+                document.getElementById('district');
+
+            const listContainer =
+                document.getElementById('districtList');
+
+            const upazillaList =
+                document.getElementById('upazillaList');
+
             let currentFocus = -1;
 
             function showItems(filterVal = "") {
+
                 upazillaList.innerHTML = "";
                 listContainer.innerHTML = "";
+
                 currentFocus = -1;
-                const filtered = sortedDistricts.filter(item => item.toLowerCase().includes(filterVal.toLowerCase()));
-                if (filtered.length === 0) return;
+
+                const filtered =
+                    sortedDistricts.filter(item =>
+                        item
+                            .toLowerCase()
+                            .includes(
+                                filterVal.toLowerCase()
+                            )
+                    );
+
+                if (filtered.length === 0)
+                    return;
 
                 filtered.forEach(item => {
-                    const div = document.createElement('div');
+
+                    const div =
+                        document.createElement('div');
+
                     div.textContent = item;
-                    div.addEventListener('click', function() {
-                        input.value = item;
-                        listContainer.innerHTML = "";
-                        setupUpazillaDropdown();
-                        document.getElementById('upazilla').value = '';
-                    });
+
+                    div.addEventListener(
+                        'click',
+                        function() {
+
+                            input.value = item;
+
+                            listContainer.innerHTML = "";
+
+                            setupUpazillaDropdown();
+
+                            document
+                                .getElementById('upazilla')
+                                .value = '';
+                        }
+                    );
+
                     listContainer.appendChild(div);
                 });
             }
 
-            input.addEventListener('focus', function() { showItems(input.value); });
-            input.addEventListener('input', function() { showItems(this.value); });
+            input.addEventListener(
+                'focus',
+                function() {
+                    showItems(input.value);
+                }
+            );
 
-            input.addEventListener('blur', function() {
-                setTimeout(() => {
-                    const val = input.value.trim();
-                    if (val && !sortedDistricts.includes(val)) {
-                        input.value = '';
-                        document.getElementById('upazilla').value = '';
-                        setupUpazillaDropdown();
-                    }
-                }, 200);
-            });
+            input.addEventListener(
+                'input',
+                function() {
+                    showItems(this.value);
+                }
+            );
 
-            input.addEventListener('keydown', function(e) {
-                let items = listContainer.getElementsByTagName('div');
-                if (items.length === 0) return;
+            input.addEventListener(
+                'blur',
+                function() {
 
-                if (e.key === 'ArrowDown') {
-                    e.preventDefault();
-                    currentFocus++;
-                    currentFocus = addActive(items, currentFocus);
-                } else if (e.key === 'ArrowUp') {
-                    e.preventDefault();
-                    currentFocus--;
-                    currentFocus = addActive(items, currentFocus);
-                } else if (e.key === 'Enter') {
-                    e.preventDefault();
-                    if (currentFocus > -1 && items[currentFocus]) {
-                        items[currentFocus].click();
-                    } else if (items.length > 0) {
-                        items[0].click();
+                    setTimeout(() => {
+
+                        const val =
+                            input.value.trim();
+
+                        if (
+                            val &&
+                            !sortedDistricts.includes(val)
+                        ) {
+
+                            input.value = '';
+
+                            document
+                                .getElementById('upazilla')
+                                .value = '';
+
+                            setupUpazillaDropdown();
+                        }
+
+                    }, 200);
+                }
+            );
+
+            input.addEventListener(
+                'keydown',
+                function(e) {
+
+                    let items =
+                        listContainer
+                            .getElementsByTagName('div');
+
+                    if (items.length === 0)
+                        return;
+
+                    if (e.key === 'ArrowDown') {
+
+                        e.preventDefault();
+
+                        currentFocus++;
+
+                        currentFocus =
+                            addActive(
+                                items,
+                                currentFocus
+                            );
+
+                    } else if (e.key === 'ArrowUp') {
+
+                        e.preventDefault();
+
+                        currentFocus--;
+
+                        currentFocus =
+                            addActive(
+                                items,
+                                currentFocus
+                            );
+
+                    } else if (e.key === 'Enter') {
+
+                        e.preventDefault();
+
+                        if (
+                            currentFocus > -1 &&
+                            items[currentFocus]
+                        ) {
+
+                            items[currentFocus].click();
+
+                        } else if (items.length > 0) {
+
+                            items[0].click();
+                        }
                     }
                 }
-            });
+            );
         }
 
         function setupUpazillaDropdown() {
-            const input = document.getElementById('upazilla');
-            const listContainer = document.getElementById('upazillaList');
-            const districtList = document.getElementById('districtList');
-            const districtInput = document.getElementById('district');
+
+            const input =
+                document.getElementById('upazilla');
+
+            const listContainer =
+                document.getElementById('upazillaList');
+
+            const districtList =
+                document.getElementById('districtList');
+
+            const districtInput =
+                document.getElementById('district');
+
             let currentFocus = -1;
 
             function getAvailableUpazillas() {
-                const selectedDistrict = districtInput.value.trim();
-                if (selectedDistrict && locationData[selectedDistrict]) {
-                    return [...locationData[selectedDistrict]].sort((a, b) => a.localeCompare(b));
+
+                const selectedDistrict =
+                    districtInput.value.trim();
+
+                if (
+                    selectedDistrict &&
+                    locationData[selectedDistrict]
+                ) {
+
+                    return [
+                        ...locationData[selectedDistrict]
+                    ].sort(
+                        (a, b) =>
+                            a.localeCompare(b)
+                    );
+
                 } else {
+
                     let allUps = [];
-                    for (let dist in locationData) {
-                        locationData[dist].forEach(up => {
-                            if (!allUps.includes(up)) allUps.push(up);
-                        });
+
+                    for (
+                        let dist in locationData
+                    ) {
+
+                        locationData[dist]
+                            .forEach(up => {
+
+                                if (
+                                    !allUps.includes(up)
+                                ) {
+                                    allUps.push(up);
+                                }
+                            });
                     }
-                    return allUps.sort((a, b) => a.localeCompare(b));
+
+                    return allUps.sort(
+                        (a, b) =>
+                            a.localeCompare(b)
+                    );
                 }
             }
 
             function showItems(filterVal = "") {
+
                 districtList.innerHTML = "";
                 listContainer.innerHTML = "";
+
                 currentFocus = -1;
-                const upazillas = getAvailableUpazillas();
-                
-                let filtered = upazillas.filter(item => item.toLowerCase().includes(filterVal.toLowerCase()));
-                if (!districtInput.value.trim() && !filterVal) {
-                    filtered = filtered.slice(0, 12);
+
+                const upazillas =
+                    getAvailableUpazillas();
+
+                let filtered =
+                    upazillas.filter(item =>
+                        item
+                            .toLowerCase()
+                            .includes(
+                                filterVal.toLowerCase()
+                            )
+                    );
+
+                if (
+                    !districtInput.value.trim() &&
+                    !filterVal
+                ) {
+                    filtered =
+                        filtered.slice(0, 12);
                 }
 
-                if (filtered.length === 0) return;
+                if (filtered.length === 0)
+                    return;
 
                 filtered.forEach(item => {
-                    const div = document.createElement('div');
-                    div.textContent = item;
-                    div.addEventListener('click', function() {
-                        input.value = item;
-                        listContainer.innerHTML = "";
 
-                        if (!districtInput.value.trim()) {
-                            for (let dist in locationData) {
-                                if (locationData[dist].includes(item)) {
-                                    districtInput.value = dist;
-                                    break;
+                    const div =
+                        document.createElement('div');
+
+                    div.textContent = item;
+
+                    div.addEventListener(
+                        'click',
+                        function() {
+
+                            input.value = item;
+
+                            listContainer.innerHTML = "";
+
+                            if (
+                                !districtInput.value.trim()
+                            ) {
+
+                                for (
+                                    let dist in locationData
+                                ) {
+
+                                    if (
+                                        locationData[dist]
+                                            .includes(item)
+                                    ) {
+
+                                        districtInput.value =
+                                            dist;
+
+                                        break;
+                                    }
                                 }
                             }
                         }
-                    });
+                    );
+
                     listContainer.appendChild(div);
                 });
             }
 
-            input.addEventListener('focus', function() { showItems(input.value); });
-            input.addEventListener('input', function() { showItems(this.value); });
+            input.addEventListener(
+                'focus',
+                function() {
+                    showItems(input.value);
+                }
+            );
 
-            input.addEventListener('blur', function() {
-                setTimeout(() => {
-                    const val = input.value.trim();
-                    const availableUps = getAvailableUpazillas();
-                    if (val && !availableUps.includes(val)) {
-                        input.value = '';
-                    }
-                }, 200);
-            });
+            input.addEventListener(
+                'input',
+                function() {
+                    showItems(this.value);
+                }
+            );
 
-            input.addEventListener('keydown', function(e) {
-                let items = listContainer.getElementsByTagName('div');
-                if (items.length === 0) return;
+            input.addEventListener(
+                'blur',
+                function() {
 
-                if (e.key === 'ArrowDown') {
-                    e.preventDefault();
-                    currentFocus++;
-                    currentFocus = addActive(items, currentFocus);
-                } else if (e.key === 'ArrowUp') {
-                    e.preventDefault();
-                    currentFocus--;
-                    currentFocus = addActive(items, currentFocus);
-                } else if (e.key === 'Enter') {
-                    e.preventDefault();
-                    if (currentFocus > -1 && items[currentFocus]) {
-                        items[currentFocus].click();
-                    } else if (items.length > 0) {
-                        items[0].click();
+                    setTimeout(() => {
+
+                        const val =
+                            input.value.trim();
+
+                        const availableUps =
+                            getAvailableUpazillas();
+
+                        if (
+                            val &&
+                            !availableUps.includes(val)
+                        ) {
+                            input.value = '';
+                        }
+
+                    }, 200);
+                }
+            );
+
+            input.addEventListener(
+                'keydown',
+                function(e) {
+
+                    let items =
+                        listContainer
+                            .getElementsByTagName('div');
+
+                    if (items.length === 0)
+                        return;
+
+                    if (e.key === 'ArrowDown') {
+
+                        e.preventDefault();
+
+                        currentFocus++;
+
+                        currentFocus =
+                            addActive(
+                                items,
+                                currentFocus
+                            );
+
+                    } else if (e.key === 'ArrowUp') {
+
+                        e.preventDefault();
+
+                        currentFocus--;
+
+                        currentFocus =
+                            addActive(
+                                items,
+                                currentFocus
+                            );
+
+                    } else if (e.key === 'Enter') {
+
+                        e.preventDefault();
+
+                        if (
+                            currentFocus > -1 &&
+                            items[currentFocus]
+                        ) {
+
+                            items[currentFocus].click();
+
+                        } else if (
+                            items.length > 0
+                        ) {
+
+                            items[0].click();
+                        }
                     }
                 }
-            });
+            );
         }
 
         function handleFormSubmit(event) {
-            event.preventDefault();
-            
-            const districtInput = document.getElementById('district').value.trim();
-            const upazillaInput = document.getElementById('upazilla').value.trim();
-            const phoneInput = document.getElementById('phoneNumber').value.trim();
 
-            const validDistricts = Object.keys(locationData);
-            if (!validDistricts.includes(districtInput)) {
-                showCustomModal("Invalid District", "দয়া করে সঠিক জেলা নির্বাচন করুন। ড্রপডাউন তালিকা থেকে ক্লিক করে আপনার জেলা সিলেক্ট করুন।", document.getElementById('district'));
+            event.preventDefault();
+
+            const districtInput =
+                document
+                    .getElementById('district')
+                    .value
+                    .trim();
+
+            const upazillaInput =
+                document
+                    .getElementById('upazilla')
+                    .value
+                    .trim();
+
+            const phoneInput =
+                document
+                    .getElementById('phoneNumber')
+                    .value
+                    .trim();
+
+            const validDistricts =
+                Object.keys(locationData);
+
+            if (
+                !validDistricts.includes(
+                    districtInput
+                )
+            ) {
+
+                showCustomModal(
+                    "Invalid District",
+                    "দয়া করে সঠিক জেলা নির্বাচন করুন। ড্রপডাউন তালিকা থেকে ক্লিক করে আপনার জেলা সিলেক্ট করুন।",
+                    document.getElementById('district')
+                );
+
                 return;
             }
 
-            const validUpazillas = locationData[districtInput] || [];
-            if (!validUpazillas.includes(upazillaInput)) {
-                showCustomModal("Invalid Upazilla / Thana", "দয়া করে সঠিক উপজেলা বা থানা নির্বাচন করুন। ড্রপডাউন তালিকা থেকে ক্লিক করে আপনার সঠিক উপজেলা সিলেক্ট করুন।", document.getElementById('upazilla'));
+            const validUpazillas =
+                locationData[districtInput] || [];
+
+            if (
+                !validUpazillas.includes(
+                    upazillaInput
+                )
+            ) {
+
+                showCustomModal(
+                    "Invalid Upazilla / Thana",
+                    "দয়া করে সঠিক উপজেলা বা থানা নির্বাচন করুন। ড্রপডাউন তালিকা থেকে ক্লিক করে আপনার সঠিক উপজেলা সিলেক্ট করুন।",
+                    document.getElementById('upazilla')
+                );
+
                 return;
             }
 
             if (phoneInput.length !== 11) {
-                showCustomModal("Invalid Phone Number", "দয়া করে সঠিক ১১ ডিজিটের মোবাইল নম্বর প্রদান করুন (যেমন: 01712345678)।", document.getElementById('phoneNumber'));
+
+                showCustomModal(
+                    "Invalid Phone Number",
+                    "দয়া করে সঠিক ১১ ডিজিটের মোবাইল নম্বর প্রদান করুন (যেমন: 01712345678)।",
+                    document.getElementById('phoneNumber')
+                );
+
                 return;
             }
 
             showCustomModal(
-                "তথ্য প্রসেস হচ্ছে...", 
-                "আপনার তথ্য সফলভাবে পালস নার্সিং-এর ডাটাবেসে সাবমিট করা হচ্ছে। অনুগ্রহ করে একটু অপেক্ষা করুন...", 
-                null, 
+                "তথ্য প্রসেস হচ্ছে...",
+                "আপনার তথ্য সফলভাবে পালস নার্সিং-এর ডাটাবেসে সাবমিট করা হচ্ছে। অনুগ্রহ করে একটু অপেক্ষা করুন...",
+                null,
                 true
             );
 
-            const selectedDelivery = document.querySelector('input[name="deliverySystem"]:checked');
-            const selectedCourse = document.querySelector('input[name="course"]:checked');
-            const selectedLevel = document.querySelector('input[name="level"]:checked');
+            const selectedDelivery =
+                document.querySelector(
+                    'input[name="deliverySystem"]:checked'
+                );
 
-            const formData = new FormData();
-            formData.append('orderDate', pureDateString);
-            formData.append('deliverySystem', selectedDelivery ? selectedDelivery.value : '');
-            formData.append('studentName', document.getElementById('studentName').value);
-            formData.append('phoneNumber', `'` + phoneInput);
-            formData.append('course', selectedCourse ? selectedCourse.value : '');
-            formData.append('level', selectedLevel ? selectedLevel.value : '');
-            formData.append('district', districtInput);
-            formData.append('upazilla', upazillaInput);
-            formData.append('addressLine', (selectedDelivery && selectedDelivery.value === 'Home Delivery') ? document.getElementById('addressLine').value : 'N/A');
+            const selectedCourse =
+                document.querySelector(
+                    'input[name="course"]:checked'
+                );
 
-            fetch(scriptURL, { method: 'POST', body: formData })
+            const selectedLevel =
+                document.querySelector(
+                    'input[name="level"]:checked'
+                );
+
+            const formData =
+                new FormData();
+
+            formData.append(
+                'orderDate',
+                pureDateString
+            );
+
+            formData.append(
+                'deliverySystem',
+                selectedDelivery
+                    ? selectedDelivery.value
+                    : ''
+            );
+
+            formData.append(
+                'studentName',
+                document
+                    .getElementById('studentName')
+                    .value
+            );
+
+            formData.append(
+                'phoneNumber',
+                `'` + phoneInput
+            );
+
+            formData.append(
+                'course',
+                selectedCourse
+                    ? selectedCourse.value
+                    : ''
+            );
+
+            formData.append(
+                'level',
+                selectedLevel
+                    ? selectedLevel.value
+                    : ''
+            );
+
+            formData.append(
+                'district',
+                districtInput
+            );
+
+            formData.append(
+                'upazilla',
+                upazillaInput
+            );
+
+            formData.append(
+                'addressLine',
+                (
+                    selectedDelivery &&
+                    selectedDelivery.value === 'Home Delivery'
+                )
+                    ? document
+                        .getElementById('addressLine')
+                        .value
+                    : 'N/A'
+            );
+
+            fetch(
+                scriptURL,
+                {
+                    method: 'POST',
+                    body: formData
+                }
+            )
                 .then(response => {
-                    document.getElementById('customModal').classList.add('hidden');
-                    document.getElementById('formWrapper').classList.add('hidden');
-                    
-                    const successContainer = document.getElementById('successMessageContainer');
-                    successContainer.classList.remove('hidden');
-                    successContainer.focus(); // ফোকাস সরিয়ে দেওয়া হলো যাতে ব্লিংকিং কার্সর বা বর্ডার না দেখায়
+
+                    document
+                        .getElementById('customModal')
+                        .classList
+                        .add('hidden');
+
+                    document
+                        .getElementById('formWrapper')
+                        .classList
+                        .add('hidden');
+
+                    const successContainer =
+                        document.getElementById(
+                            'successMessageContainer'
+                        );
+
+                    successContainer
+                        .classList
+                        .remove('hidden');
+
+                    successContainer.focus();
                 })
+
                 .catch(error => {
-                    document.getElementById('customModal').classList.add('hidden');
-                    alert('Error! Something went wrong.');
-                    console.error('Error!', error.message);
+
+                    document
+                        .getElementById('customModal')
+                        .classList
+                        .add('hidden');
+
+                    alert(
+                        'Error! Something went wrong.'
+                    );
+
+                    console.error(
+                        'Error!',
+                        error.message
+                    );
                 });
         }
+
     </script>
+
 </body>
 </html>
