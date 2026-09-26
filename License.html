@@ -1,0 +1,5955 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<title>Pulse Nursing License Coaching | March 2027</title>
+
+<meta name="theme-color" content="#0b6b4f">
+<meta name="description" content="Pulse Nursing License Coaching - March 2027 Admission System">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --primary:#087f5b;
+    --primary-dark:#056044;
+    --primary-light:#e9f8f2;
+    --secondary:#0d6efd;
+    --gold:#d99a00;
+    --danger:#dc3545;
+    --warning:#f59f00;
+    --success:#198754;
+    --text:#17221d;
+    --muted:#6c757d;
+    --border:#e2e8e5;
+    --bg:#f5f8f7;
+    --white:#ffffff;
+    --shadow:0 10px 35px rgba(20,55,43,.08);
+    --radius:18px;
+}
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:"Plus Jakarta Sans","Inter",sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    min-height:100vh;
+}
+
+button,
+input,
+select,
+textarea{
+    font-family:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.site-header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:rgba(255,255,255,.96);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--border);
+}
+
+.header-inner{
+    max-width:1180px;
+    margin:auto;
+    min-height:76px;
+    padding:10px 18px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+}
+
+.brand{
+    display:flex;
+    align-items:center;
+    gap:11px;
+    min-width:0;
+}
+
+.brand img{
+    width:48px;
+    height:48px;
+    object-fit:contain;
+    border-radius:12px;
+    background:#fff;
+}
+
+.brand-text{
+    min-width:0;
+}
+
+.brand-title{
+    font-size:16px;
+    font-weight:800;
+    color:var(--primary-dark);
+    white-space:nowrap;
+}
+
+.brand-subtitle{
+    font-size:10px;
+    color:var(--muted);
+    margin-top:2px;
+}
+
+.header-actions{
+    display:flex;
+    gap:8px;
+}
+
+.header-btn{
+    border:1px solid var(--border);
+    background:#fff;
+    color:var(--text);
+    height:42px;
+    padding:0 13px;
+    border-radius:12px;
+    font-weight:700;
+    font-size:12px;
+    display:flex;
+    align-items:center;
+    gap:6px;
+    transition:.2s;
+}
+
+.header-btn:hover{
+    border-color:var(--primary);
+    color:var(--primary);
+    transform:translateY(-1px);
+}
+
+.header-btn.primary{
+    background:var(--primary);
+    color:#fff;
+    border-color:var(--primary);
+}
+
+/* =====================================================
+   PAGE
+===================================================== */
+
+.page{
+    max-width:1180px;
+    margin:auto;
+    padding:25px 16px 50px;
+}
+
+.view{
+    display:none;
+}
+
+.view.active{
+    display:block;
+}
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:24px;
+    box-shadow:var(--shadow);
+    padding:26px;
+    margin-bottom:20px;
+    position:relative;
+    overflow:hidden;
+}
+
+.hero::after{
+    content:"";
+    position:absolute;
+    width:180px;
+    height:180px;
+    right:-60px;
+    top:-60px;
+    background:var(--primary-light);
+    border-radius:50%;
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+}
+
+.badge{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    background:var(--primary-light);
+    color:var(--primary-dark);
+    border:1px solid #ccefe1;
+    border-radius:999px;
+    padding:7px 11px;
+    font-size:11px;
+    font-weight:800;
+}
+
+.hero h1{
+    margin-top:13px;
+    font-size:clamp(25px,5vw,40px);
+    line-height:1.15;
+    letter-spacing:-1px;
+}
+
+.hero h1 span{
+    color:var(--primary);
+}
+
+.hero p{
+    color:var(--muted);
+    margin-top:10px;
+    max-width:720px;
+    font-size:13px;
+    line-height:1.7;
+}
+
+/* =====================================================
+   CARDS
+===================================================== */
+
+.card{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    padding:22px;
+    margin-bottom:18px;
+}
+
+.card-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:15px;
+    margin-bottom:20px;
+}
+
+.card-title{
+    font-size:18px;
+    font-weight:800;
+}
+
+.card-description{
+    color:var(--muted);
+    font-size:11px;
+    margin-top:5px;
+    line-height:1.6;
+}
+
+.section-title{
+    display:flex;
+    align-items:center;
+    gap:9px;
+    font-size:14px;
+    font-weight:800;
+    margin:23px 0 14px;
+}
+
+.section-title::before{
+    content:"";
+    width:4px;
+    height:20px;
+    border-radius:10px;
+    background:var(--primary);
+}
+
+/* =====================================================
+   FORM
+===================================================== */
+
+.form-grid{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:15px;
+}
+
+.form-group{
+    display:flex;
+    flex-direction:column;
+    gap:7px;
+}
+
+.form-group.full{
+    grid-column:1/-1;
+}
+
+label{
+    font-size:12px;
+    font-weight:700;
+    color:#39463f;
+}
+
+.required{
+    color:var(--danger);
+}
+
+input,
+select,
+textarea{
+    width:100%;
+    border:1px solid var(--border);
+    background:#fbfdfc;
+    color:var(--text);
+    border-radius:12px;
+    padding:12px 13px;
+    min-height:46px;
+    outline:none;
+    font-size:13px;
+    transition:.2s;
+}
+
+textarea{
+    min-height:90px;
+    resize:vertical;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+    border-color:var(--primary);
+    background:#fff;
+    box-shadow:0 0 0 3px rgba(8,127,91,.09);
+}
+
+input[readonly]{
+    background:#f1f5f3;
+    color:#52615a;
+}
+
+/* =====================================================
+   COURSE
+===================================================== */
+
+.course-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:10px;
+}
+
+.course-option{
+    position:relative;
+}
+
+.course-option input{
+    position:absolute;
+    opacity:0;
+    pointer-events:none;
+}
+
+.course-label{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    min-height:54px;
+    padding:8px;
+    border:1px solid var(--border);
+    border-radius:13px;
+    background:#fff;
+    font-size:12px;
+    font-weight:800;
+    color:#46544d;
+    transition:.2s;
+}
+
+.course-option input:checked + .course-label{
+    border-color:var(--primary);
+    background:var(--primary-light);
+    color:var(--primary-dark);
+    box-shadow:0 0 0 2px rgba(8,127,91,.08);
+}
+
+/* =====================================================
+   PAYMENT
+===================================================== */
+
+.payment-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:13px;
+}
+
+.money-box{
+    background:#f8faf9;
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:14px;
+}
+
+.money-label{
+    font-size:10px;
+    color:var(--muted);
+    font-weight:700;
+    margin-bottom:7px;
+}
+
+.money-value{
+    font-size:19px;
+    font-weight:800;
+}
+
+.due-box{
+    background:#fff7e6;
+    border-color:#f4d79a;
+}
+
+.due-box .money-value{
+    color:#b66a00;
+}
+
+/* =====================================================
+   BUTTONS
+===================================================== */
+
+.btn{
+    min-height:45px;
+    padding:0 16px;
+    border-radius:12px;
+    border:1px solid transparent;
+    font-size:12px;
+    font-weight:800;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    transition:.2s;
+}
+
+.btn:hover{
+    transform:translateY(-1px);
+}
+
+.btn-primary{
+    background:var(--primary);
+    color:#fff;
+}
+
+.btn-primary:hover{
+    background:var(--primary-dark);
+}
+
+.btn-secondary{
+    background:#fff;
+    border-color:var(--border);
+    color:var(--text);
+}
+
+.btn-danger{
+    background:#fff0f1;
+    border-color:#ffd0d4;
+    color:#b42332;
+}
+
+.btn-warning{
+    background:#fff5df;
+    border-color:#f3d69b;
+    color:#9a6200;
+}
+
+.btn-info{
+    background:#edf5ff;
+    border-color:#cfe2ff;
+    color:#0b5ed7;
+}
+
+.form-actions{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-top:22px;
+}
+
+/* =====================================================
+   LOADING
+===================================================== */
+
+.loading{
+    display:none;
+    align-items:center;
+    justify-content:center;
+    gap:9px;
+    color:var(--primary);
+    font-size:12px;
+    font-weight:700;
+    margin-top:12px;
+}
+
+.loading.show{
+    display:flex;
+}
+
+.spinner{
+    width:17px;
+    height:17px;
+    border:2px solid #ccefe1;
+    border-top-color:var(--primary);
+    border-radius:50%;
+    animation:spin .7s linear infinite;
+}
+
+@keyframes spin{
+    to{transform:rotate(360deg)}
+}
+
+/* =====================================================
+   RESULT
+===================================================== */
+
+.result-card{
+    display:none;
+}
+
+.result-card.show{
+    display:block;
+}
+
+.success-banner{
+    padding:15px;
+    border-radius:14px;
+    background:#eaf8f1;
+    border:1px solid #c9ead9;
+    color:#146c43;
+    font-size:13px;
+    font-weight:700;
+    margin-bottom:15px;
+}
+
+.user-id-box{
+    background:var(--primary);
+    color:#fff;
+    padding:18px;
+    border-radius:16px;
+    text-align:center;
+    margin-bottom:15px;
+}
+
+.user-id-label{
+    font-size:10px;
+    opacity:.8;
+    font-weight:700;
+}
+
+.user-id-value{
+    font-size:28px;
+    font-weight:800;
+    letter-spacing:1px;
+    margin-top:4px;
+}
+
+.info-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
+}
+
+.info-item{
+    background:#f8faf9;
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:12px;
+}
+
+.info-label{
+    color:var(--muted);
+    font-size:9px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:.4px;
+}
+
+.info-value{
+    margin-top:4px;
+    font-size:12px;
+    font-weight:800;
+    word-break:break-word;
+}
+
+.status{
+    display:inline-flex;
+    padding:5px 9px;
+    border-radius:999px;
+    font-size:9px;
+    font-weight:800;
+}
+
+.status.paid{
+    background:#e9f8f2;
+    color:#087f5b;
+}
+
+.status.due{
+    background:#fff3d8;
+    color:#9a6200;
+}
+
+/* =====================================================
+   SEARCH
+===================================================== */
+
+.search-box{
+    max-width:650px;
+    margin:auto;
+}
+
+.search-hint{
+    text-align:center;
+    color:var(--muted);
+    font-size:11px;
+    line-height:1.6;
+    margin-top:8px;
+}
+
+/* =====================================================
+   ADMIN
+===================================================== */
+
+.admin-login{
+    max-width:430px;
+    margin:30px auto;
+}
+
+.admin-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+    margin-bottom:18px;
+    flex-wrap:wrap;
+}
+
+.admin-header h2{
+    font-size:21px;
+}
+
+.stats-grid{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:12px;
+    margin-bottom:18px;
+}
+
+.stat-card{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:16px;
+    box-shadow:var(--shadow);
+}
+
+.stat-label{
+    font-size:10px;
+    color:var(--muted);
+    font-weight:700;
+}
+
+.stat-value{
+    margin-top:6px;
+    font-size:23px;
+    font-weight:800;
+}
+
+.stat-card.primary .stat-value{
+    color:var(--primary);
+}
+
+.stat-card.warning .stat-value{
+    color:#c77800;
+}
+
+.stat-card.danger .stat-value{
+    color:var(--danger);
+}
+
+/* =====================================================
+   TABLE
+===================================================== */
+
+.table-toolbar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-bottom:13px;
+}
+
+.toolbar-left,
+.toolbar-right{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+}
+
+.table-wrap{
+    width:100%;
+    overflow:auto;
+    border:1px solid var(--border);
+    border-radius:14px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    min-width:1150px;
+    background:#fff;
+}
+
+th,
+td{
+    padding:11px 10px;
+    border-bottom:1px solid #edf1ef;
+    text-align:left;
+    font-size:10px;
+    white-space:nowrap;
+}
+
+th{
+    background:#f3f7f5;
+    color:#45534c;
+    font-weight:800;
+    position:sticky;
+    top:0;
+    z-index:1;
+}
+
+tbody tr:hover{
+    background:#fbfdfc;
+}
+
+.checkbox{
+    width:16px;
+    height:16px;
+    min-height:auto;
+    accent-color:var(--primary);
+}
+
+.action-buttons{
+    display:flex;
+    gap:5px;
+}
+
+.action-btn{
+    min-width:30px;
+    height:30px;
+    padding:0 8px;
+    border-radius:8px;
+    border:1px solid var(--border);
+    background:#fff;
+    font-size:10px;
+    font-weight:800;
+}
+
+/* =====================================================
+   MODAL
+===================================================== */
+
+.modal-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(15,31,25,.42);
+    backdrop-filter:blur(4px);
+    z-index:5000;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:15px;
+}
+
+.modal-overlay.show{
+    display:flex;
+}
+
+.modal{
+    width:min(680px,100%);
+    max-height:92vh;
+    overflow:auto;
+    background:#fff;
+    border-radius:20px;
+    box-shadow:0 25px 80px rgba(0,0,0,.2);
+}
+
+.modal-header{
+    padding:18px 20px;
+    border-bottom:1px solid var(--border);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.modal-title{
+    font-size:16px;
+    font-weight:800;
+}
+
+.close-btn{
+    width:34px;
+    height:34px;
+    border:1px solid var(--border);
+    border-radius:10px;
+    background:#fff;
+    font-size:17px;
+}
+
+.modal-body{
+    padding:20px;
+}
+
+.modal-footer{
+    padding:15px 20px;
+    border-top:1px solid var(--border);
+    display:flex;
+    justify-content:flex-end;
+    gap:8px;
+}
+
+/* =====================================================
+   TOAST
+===================================================== */
+
+.toast-container{
+    position:fixed;
+    top:90px;
+    right:15px;
+    z-index:9000;
+    width:min(360px,calc(100% - 30px));
+}
+
+.toast{
+    background:#fff;
+    border:1px solid var(--border);
+    box-shadow:0 15px 40px rgba(0,0,0,.12);
+    border-radius:14px;
+    padding:13px 15px;
+    margin-bottom:8px;
+    display:flex;
+    gap:10px;
+    align-items:flex-start;
+    animation:toastIn .25s ease;
+}
+
+.toast.success{
+    border-left:4px solid var(--success);
+}
+
+.toast.error{
+    border-left:4px solid var(--danger);
+}
+
+.toast.warning{
+    border-left:4px solid var(--warning);
+}
+
+.toast-title{
+    font-size:11px;
+    font-weight:800;
+}
+
+.toast-text{
+    color:var(--muted);
+    font-size:10px;
+    line-height:1.5;
+    margin-top:2px;
+}
+
+@keyframes toastIn{
+    from{
+        opacity:0;
+        transform:translateY(-10px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* =====================================================
+   EMPTY
+===================================================== */
+
+.empty{
+    text-align:center;
+    padding:40px 15px;
+    color:var(--muted);
+    font-size:12px;
+}
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer{
+    max-width:1180px;
+    margin:auto;
+    padding:20px 16px 35px;
+    text-align:center;
+    color:var(--muted);
+    font-size:10px;
+    line-height:1.8;
+}
+
+footer strong{
+    color:var(--primary);
+}
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media(max-width:800px){
+
+    .header-inner{
+        min-height:66px;
+        padding:8px 12px;
+    }
+
+    .brand img{
+        width:40px;
+        height:40px;
+    }
+
+    .brand-title{
+        font-size:13px;
+    }
+
+    .brand-subtitle{
+        display:none;
+    }
+
+    .header-btn{
+        height:38px;
+        padding:0 10px;
+        font-size:10px;
+    }
+
+    .header-btn span{
+        display:none;
+    }
+
+    .page{
+        padding:15px 10px 35px;
+    }
+
+    .hero{
+        padding:20px 17px;
+        border-radius:18px;
+    }
+
+    .card{
+        padding:16px;
+        border-radius:16px;
+    }
+
+    .form-grid{
+        grid-template-columns:1fr;
+        gap:12px;
+    }
+
+    .form-group.full{
+        grid-column:auto;
+    }
+
+    .course-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .payment-grid{
+        grid-template-columns:1fr;
+    }
+
+    .info-grid{
+        grid-template-columns:1fr;
+    }
+
+    .stats-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .admin-header{
+        align-items:flex-start;
+    }
+}
+
+@media(max-width:430px){
+
+    .course-label{
+        min-height:49px;
+        font-size:11px;
+    }
+
+    .hero h1{
+        font-size:25px;
+    }
+
+    .btn{
+        width:100%;
+    }
+
+    .form-actions{
+        flex-direction:column;
+    }
+
+    .stats-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .stat-value{
+        font-size:19px;
+    }
+}
+
+/* =====================================================
+   PRINT
+===================================================== */
+
+@media print{
+
+    body{
+        background:#fff;
+    }
+
+    .site-header,
+    footer,
+    .no-print,
+    .admin-header,
+    .stats-grid,
+    .table-toolbar{
+        display:none!important;
+    }
+
+    .page{
+        max-width:none;
+        padding:0;
+    }
+
+    .card{
+        box-shadow:none;
+        border:0;
+    }
+
+    .table-wrap{
+        overflow:visible;
+        border:0;
+    }
+
+    table{
+        min-width:0;
+    }
+
+    th,
+    td{
+        font-size:8px;
+        padding:5px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header class="site-header">
+    <div class="header-inner">
+
+        <div class="brand">
+            <img
+                src="https://i.ibb.co.com/Ld7snkkP/logo.png"
+                alt="Pulse Nursing Logo"
+            >
+
+            <div class="brand-text">
+                <div class="brand-title">
+                    Pulse Nursing Coaching
+                </div>
+
+                <div class="brand-subtitle">
+                    License & Job Coaching • March 2027
+                </div>
+            </div>
+        </div>
+
+        <div class="header-actions">
+
+            <button
+                class="header-btn"
+                onclick="showView('searchView')"
+            >
+                🔎 <span>Search</span>
+            </button>
+
+            <button
+                class="header-btn primary"
+                onclick="showView('adminView')"
+            >
+                🔐 <span>Admin</span>
+            </button>
+
+        </div>
+
+    </div>
+</header>
+
+
+<main class="page">
+
+<!-- =====================================================
+     ADMISSION VIEW
+===================================================== -->
+
+<section id="admissionView" class="view active">
+
+    <div class="hero">
+
+        <div class="hero-content">
+
+            <span class="badge">
+                ● ADMISSION OPEN • MARCH 2027
+            </span>
+
+            <h1>
+                Pulse Nursing
+                <span>License Coaching</span>
+            </h1>
+
+            <p>
+                নার্সিং লাইসেন্স পরীক্ষার প্রস্তুতির জন্য
+                March 2027 Batch-এর ভর্তি ফর্ম।
+                সঠিক তথ্য দিয়ে ফর্মটি পূরণ করুন।
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="card-header">
+
+            <div>
+                <div class="card-title">
+                    Admission Form
+                </div>
+
+                <div class="card-description">
+                    Please provide accurate information.
+                </div>
+            </div>
+
+            <span class="badge">
+                March 2027
+            </span>
+
+        </div>
+
+
+        <form id="admissionForm">
+
+            <!-- BASIC INFORMATION -->
+
+            <div class="section-title">
+                Personal Information
+            </div>
+
+            <div class="form-grid">
+
+                <div class="form-group">
+
+                    <label>
+                        Date
+                    </label>
+
+                    <input
+                        type="text"
+                        id="admissionDate"
+                        readonly
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Name <span class="required">*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        placeholder="ENTER FULL NAME IN ENGLISH"
+                        autocomplete="name"
+                        required
+                        oninput="sanitizeName(this)"
+                    >
+
+                </div>
+
+
+                <div class="form-group full">
+
+                    <label>
+                        Phone Number <span class="required">*</span>
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="phone"
+                        placeholder="01XXXXXXXXX"
+                        inputmode="numeric"
+                        maxlength="11"
+                        required
+                        oninput="sanitizePhone(this)"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <!-- COURSE -->
+
+            <div class="section-title">
+                Select Course
+            </div>
+
+            <div class="course-grid">
+
+                <label class="course-option">
+
+                    <input
+                        type="radio"
+                        name="course"
+                        value="BSC"
+                        required
+                    >
+
+                    <span class="course-label">
+                        BSC
+                    </span>
+
+                </label>
+
+
+                <label class="course-option">
+
+                    <input
+                        type="radio"
+                        name="course"
+                        value="DIPLOMA"
+                    >
+
+                    <span class="course-label">
+                        DIPLOMA
+                    </span>
+
+                </label>
+
+
+                <label class="course-option">
+
+                    <input
+                        type="radio"
+                        name="course"
+                        value="MIDWIFERY"
+                    >
+
+                    <span class="course-label">
+                        MIDWIFERY
+                    </span>
+
+                </label>
+
+
+                <label class="course-option">
+
+                    <input
+                        type="radio"
+                        name="course"
+                        value="PCT"
+                    >
+
+                    <span class="course-label">
+                        PCT
+                    </span>
+
+                </label>
+
+            </div>
+
+
+            <!-- ADDRESS -->
+
+            <div class="section-title">
+                Address Information
+            </div>
+
+            <div class="form-grid">
+
+                <div class="form-group">
+
+                    <label>
+                        District <span class="required">*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="district"
+                        list="districtList"
+                        placeholder="Search District"
+                        autocomplete="off"
+                        required
+                    >
+
+                    <datalist id="districtList"></datalist>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Upazila / Thana <span class="required">*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="upazila"
+                        list="upazilaList"
+                        placeholder="Search Upazila / Thana"
+                        autocomplete="off"
+                        required
+                    >
+
+                    <datalist id="upazilaList"></datalist>
+
+                </div>
+
+
+                <div class="form-group full">
+
+                    <label>
+                        Address Line
+                    </label>
+
+                    <textarea
+                        id="address"
+                        placeholder="Village / Road / House / Area..."
+                    ></textarea>
+
+                </div>
+
+            </div>
+
+
+            <!-- PAYMENT -->
+
+            <div class="section-title">
+                Payment Information
+            </div>
+
+            <div class="payment-grid">
+
+                <div class="money-box">
+
+                    <div class="money-label">
+                        TOTAL COURSE FEE
+                    </div>
+
+                    <input
+                        type="number"
+                        id="totalFee"
+                        min="0"
+                        step="1"
+                        placeholder="0"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="money-box">
+
+                    <div class="money-label">
+                        CURRENT PAYMENT
+                    </div>
+
+                    <input
+                        type="number"
+                        id="currentPayment"
+                        min="0"
+                        step="1"
+                        placeholder="0"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="money-box due-box">
+
+                    <div class="money-label">
+                        REMAINING DUE
+                    </div>
+
+                    <div
+                        class="money-value"
+                        id="duePreview"
+                    >
+                        ৳ 0
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PASSWORD -->
+
+            <div class="section-title">
+                Account Security
+            </div>
+
+            <div class="form-grid">
+
+                <div class="form-group full">
+
+                    <label>
+                        Set 6 Digit Password
+                        <span class="required">*</span>
+                    </label>
+
+                    <input
+                        type="password"
+                        id="studentPassword"
+                        maxlength="6"
+                        minlength="6"
+                        inputmode="numeric"
+                        placeholder="••••••"
+                        autocomplete="new-password"
+                        required
+                        oninput="sanitizePassword(this)"
+                    >
+
+                    <div class="card-description">
+                        Password must contain exactly 6 English digits.
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-actions">
+
+                <button
+                    type="submit"
+                    class="btn btn-primary"
+                    id="submitBtn"
+                >
+                    ✓ SUBMIT ADMISSION FORM
+                </button>
+
+                <button
+                    type="reset"
+                    class="btn btn-secondary"
+                    onclick="resetAdmissionForm()"
+                >
+                    ↺ RESET
+                </button>
+
+            </div>
+
+
+            <div
+                class="loading"
+                id="admissionLoading"
+            >
+                <span class="spinner"></span>
+                Submitting admission...
+            </div>
+
+        </form>
+
+    </div>
+
+
+    <!-- SUCCESS RESULT -->
+
+    <div
+        class="card result-card"
+        id="admissionResult"
+    >
+
+        <div class="success-banner">
+            ✓ Admission submitted successfully.
+            Please save your User ID and Password.
+        </div>
+
+
+        <div class="user-id-box">
+
+            <div class="user-id-label">
+                YOUR USER ID
+            </div>
+
+            <div
+                class="user-id-value"
+                id="resultUserId"
+            >
+                —
+            </div>
+
+        </div>
+
+
+        <div class="info-grid">
+
+            <div class="info-item">
+
+                <div class="info-label">
+                    Name
+                </div>
+
+                <div
+                    class="info-value"
+                    id="resultName"
+                >
+                    —
+                </div>
+
+            </div>
+
+
+            <div class="info-item">
+
+                <div class="info-label">
+                    Course
+                </div>
+
+                <div
+                    class="info-value"
+                    id="resultCourse"
+                >
+                    —
+                </div>
+
+            </div>
+
+
+            <div class="info-item">
+
+                <div class="info-label">
+                    Phone
+                </div>
+
+                <div
+                    class="info-value"
+                    id="resultPhone"
+                >
+                    —
+                </div>
+
+            </div>
+
+
+            <div class="info-item">
+
+                <div class="info-label">
+                    Total Fee
+                </div>
+
+                <div
+                    class="info-value"
+                    id="resultTotal"
+                >
+                    —
+                </div>
+
+            </div>
+
+
+            <div class="info-item">
+
+                <div class="info-label">
+                    Paid
+                </div>
+
+                <div
+                    class="info-value"
+                    id="resultPaid"
+                >
+                    —
+                </div>
+
+            </div>
+
+
+            <div class="info-item">
+
+                <div class="info-label">
+                    Due
+                </div>
+
+                <div
+                    class="info-value"
+                    id="resultDue"
+                >
+                    —
+                </div>
+
+            </div>
+
+
+            <div class="info-item">
+
+                <div class="info-label">
+                    Status
+                </div>
+
+                <div
+                    class="info-value"
+                    id="resultStatus"
+                >
+                    —
+                </div>
+
+            </div>
+
+
+            <div class="info-item">
+
+                <div class="info-label">
+                    Address
+                </div>
+
+                <div
+                    class="info-value"
+                    id="resultAddress"
+                >
+                    —
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="form-actions">
+
+            <button
+                class="btn btn-primary"
+                onclick="copyAdmissionCredentials()"
+            >
+                📋 COPY USER ID
+            </button>
+
+            <button
+                class="btn btn-secondary"
+                onclick="window.print()"
+            >
+                🖨 PRINT
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     STUDENT SEARCH VIEW
+===================================================== -->
+
+<section
+    id="searchView"
+    class="view"
+>
+
+    <div class="hero">
+
+        <div class="hero-content">
+
+            <span class="badge">
+                🔎 STUDENT PORTAL
+            </span>
+
+            <h1>
+                Search Your
+                <span>Admission</span>
+            </h1>
+
+            <p>
+                Enter your User ID and 6-digit Password
+                to view your admission information.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="card search-box">
+
+        <div class="card-header">
+
+            <div>
+
+                <div class="card-title">
+                    Student Search
+                </div>
+
+                <div class="card-description">
+                    USER ID + PASSWORD
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <form id="searchForm">
+
+            <div class="form-group">
+
+                <label>
+                    User ID <span class="required">*</span>
+                </label>
+
+                <input
+                    type="text"
+                    id="searchUserId"
+                    placeholder="Example: 2731-001"
+                    autocomplete="off"
+                    required
+                >
+
+            </div>
+
+
+            <div
+                class="form-group"
+                style="margin-top:13px"
+            >
+
+                <label>
+                    Password <span class="required">*</span>
+                </label>
+
+                <input
+                    type="password"
+                    id="searchPassword"
+                    placeholder="6 digit password"
+                    maxlength="6"
+                    inputmode="numeric"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-actions">
+
+                <button
+                    class="btn btn-primary"
+                    type="submit"
+                >
+                    🔎 SEARCH STUDENT
+                </button>
+
+                <button
+                    type="button"
+                    class="btn btn-secondary"
+                    onclick="showView('admissionView')"
+                >
+                    ← BACK
+                </button>
+
+            </div>
+
+
+            <div
+                class="loading"
+                id="searchLoading"
+            >
+                <span class="spinner"></span>
+                Searching...
+            </div>
+
+        </form>
+
+    </div>
+
+
+    <div
+        class="card result-card"
+        id="studentSearchResult"
+    >
+
+        <div class="success-banner">
+            ✓ Student record found successfully.
+        </div>
+
+        <div class="user-id-box">
+
+            <div class="user-id-label">
+                USER ID
+            </div>
+
+            <div
+                class="user-id-value"
+                id="searchResultUserId"
+            >
+                —
+            </div>
+
+        </div>
+
+
+        <div class="info-grid">
+
+            <div class="info-item">
+                <div class="info-label">Name</div>
+                <div class="info-value" id="searchResultName">—</div>
+            </div>
+
+            <div class="info-item">
+                <div class="info-label">Course</div>
+                <div class="info-value" id="searchResultCourse">—</div>
+            </div>
+
+            <div class="info-item">
+                <div class="info-label">Phone</div>
+                <div class="info-value" id="searchResultPhone">—</div>
+            </div>
+
+            <div class="info-item">
+                <div class="info-label">Date</div>
+                <div class="info-value" id="searchResultDate">—</div>
+            </div>
+
+            <div class="info-item">
+                <div class="info-label">District</div>
+                <div class="info-value" id="searchResultDistrict">—</div>
+            </div>
+
+            <div class="info-item">
+                <div class="info-label">Upazila / Thana</div>
+                <div class="info-value" id="searchResultUpazila">—</div>
+            </div>
+
+            <div class="info-item">
+                <div class="info-label">Total Fee</div>
+                <div class="info-value" id="searchResultTotal">—</div>
+            </div>
+
+            <div class="info-item">
+                <div class="info-label">Current Payment</div>
+                <div class="info-value" id="searchResultPaid">—</div>
+            </div>
+
+            <div class="info-item">
+                <div class="info-label">Due</div>
+                <div class="info-value" id="searchResultDue">—</div>
+            </div>
+
+            <div class="info-item">
+                <div class="info-label">Status</div>
+                <div class="info-value" id="searchResultStatus">—</div>
+            </div>
+
+            <div class="info-item" style="grid-column:1/-1">
+                <div class="info-label">Address</div>
+                <div class="info-value" id="searchResultAddress">—</div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     ADMIN VIEW
+===================================================== -->
+
+<section
+    id="adminView"
+    class="view"
+>
+
+    <!-- ADMIN LOGIN -->
+
+    <div
+        class="card admin-login"
+        id="adminLoginCard"
+    >
+
+        <div class="card-header">
+
+            <div>
+
+                <div class="card-title">
+                    Admin Login
+                </div>
+
+                <div class="card-description">
+                    Authorized personnel only.
+                </div>
+
+            </div>
+
+            <span class="badge">
+                SECURE
+            </span>
+
+        </div>
+
+
+        <form id="adminLoginForm">
+
+            <div class="form-group">
+
+                <label>
+                    Admin Password
+                </label>
+
+                <input
+                    type="password"
+                    id="adminPassword"
+                    placeholder="Enter admin password"
+                    autocomplete="off"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-actions">
+
+                <button
+                    type="submit"
+                    class="btn btn-primary"
+                >
+                    🔐 LOGIN TO ADMIN
+                </button>
+
+                <button
+                    type="button"
+                    class="btn btn-secondary"
+                    onclick="showView('admissionView')"
+                >
+                    ← BACK
+                </button>
+
+            </div>
+
+
+            <div
+                class="loading"
+                id="adminLoading"
+            >
+                <span class="spinner"></span>
+                Authenticating...
+            </div>
+
+        </form>
+
+    </div>
+
+
+    <!-- ADMIN DASHBOARD -->
+
+    <div id="adminDashboard" style="display:none">
+
+        <div class="admin-header">
+
+            <div>
+
+                <h2>
+                    Admin Dashboard
+                </h2>
+
+                <div class="card-description">
+                    Pulse Nursing License Coaching • March 2027
+                </div>
+
+            </div>
+
+
+            <div class="toolbar-right">
+
+                <button
+                    class="btn btn-secondary"
+                    onclick="refreshStudents()"
+                >
+                    ↻ Refresh
+                </button>
+
+                <button
+                    class="btn btn-danger"
+                    onclick="adminLogout()"
+                >
+                    Logout
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- STATS -->
+
+        <div class="stats-grid">
+
+            <div class="stat-card primary">
+
+                <div class="stat-label">
+                    TOTAL STUDENTS
+                </div>
+
+                <div
+                    class="stat-value"
+                    id="statTotal"
+                >
+                    0
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-label">
+                    BSC
+                </div>
+
+                <div
+                    class="stat-value"
+                    id="statBsc"
+                >
+                    0
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-label">
+                    DIPLOMA
+                </div>
+
+                <div
+                    class="stat-value"
+                    id="statDiploma"
+                >
+                    0
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-label">
+                    MIDWIFERY
+                </div>
+
+                <div
+                    class="stat-value"
+                    id="statMidwifery"
+                >
+                    0
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-label">
+                    PCT
+                </div>
+
+                <div
+                    class="stat-value"
+                    id="statPct"
+                >
+                    0
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- FINANCIAL STATS -->
+
+        <div class="stats-grid">
+
+            <div class="stat-card primary">
+
+                <div class="stat-label">
+                    TOTAL FEE
+                </div>
+
+                <div
+                    class="stat-value"
+                    id="statFee"
+                >
+                    ৳0
+                </div>
+
+            </div>
+
+
+            <div class="stat-card primary">
+
+                <div class="stat-label">
+                    COLLECTION
+                </div>
+
+                <div
+                    class="stat-value"
+                    id="statCollection"
+                >
+                    ৳0
+                </div>
+
+            </div>
+
+
+            <div class="stat-card warning">
+
+                <div class="stat-label">
+                    TOTAL DUE
+                </div>
+
+                <div
+                    class="stat-value"
+                    id="statDue"
+                >
+                    ৳0
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-label">
+                    PAID
+                </div>
+
+                <div
+                    class="stat-value"
+                    id="statPaid"
+                >
+                    0
+                </div>
+
+            </div>
+
+
+            <div class="stat-card danger">
+
+                <div class="stat-label">
+                    DUE STUDENTS
+                </div>
+
+                <div
+                    class="stat-value"
+                    id="statDueStudents"
+                >
+                    0
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- STUDENT TABLE -->
+
+        <div class="card">
+
+            <div class="card-header">
+
+                <div>
+
+                    <div class="card-title">
+                        Student Database
+                    </div>
+
+                    <div class="card-description">
+                        Search, filter, edit, update payment and print student records.
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="table-toolbar">
+
+                <div class="toolbar-left">
+
+                    <input
+                        type="search"
+                        id="adminSearch"
+                        placeholder="Search name, phone or User ID..."
+                        style="width:260px;min-height:40px"
+                        oninput="renderStudents()"
+                    >
+
+
+                    <select
+                        id="courseFilter"
+                        onchange="renderStudents()"
+                        style="width:145px;min-height:40px"
+                    >
+
+                        <option value="ALL">
+                            All Courses
+                        </option>
+
+                        <option value="BSC">
+                            BSC
+                        </option>
+
+                        <option value="DIPLOMA">
+                            DIPLOMA
+                        </option>
+
+                        <option value="MIDWIFERY">
+                            MIDWIFERY
+                        </option>
+
+                        <option value="PCT">
+                            PCT
+                        </option>
+
+                    </select>
+
+
+                    <select
+                        id="paymentFilter"
+                        onchange="renderStudents()"
+                        style="width:140px;min-height:40px"
+                    >
+
+                        <option value="ALL">
+                            All Payment
+                        </option>
+
+                        <option value="PAID">
+                            Paid
+                        </option>
+
+                        <option value="DUE">
+                            Due
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="toolbar-right">
+
+                    <button
+                        class="btn btn-info"
+                        onclick="selectAllVisible()"
+                    >
+                        ☑ Select All
+                    </button>
+
+                    <button
+                        class="btn btn-secondary"
+                        onclick="clearSelection()"
+                    >
+                        Clear
+                    </button>
+
+                    <button
+                        class="btn btn-primary"
+                        onclick="printSelectedStudents()"
+                    >
+                        🖨 Print Selected
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="table-wrap">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                <input
+                                    type="checkbox"
+                                    class="checkbox"
+                                    id="masterCheckbox"
+                                    onchange="toggleAllVisible(this.checked)"
+                                >
+                            </th>
+
+                            <th>#</th>
+
+                            <th>User ID</th>
+
+                            <th>Name</th>
+
+                            <th>Phone</th>
+
+                            <th>Course</th>
+
+                            <th>District</th>
+
+                            <th>Upazila</th>
+
+                            <th>Total Fee</th>
+
+                            <th>Paid</th>
+
+                            <th>Due</th>
+
+                            <th>Status</th>
+
+                            <th>Action</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="studentTableBody"></tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<footer>
+
+    <strong>Pulse Nursing Coaching</strong><br>
+
+    License & Job Coaching • March 2027
+
+    <br>
+
+    Founder & Managing Director:
+    01792-439561
+
+    <br>
+
+    Admin WhatsApp:
+    01985574715 • 01764890174
+
+</footer>
+
+
+<!-- =====================================================
+     EDIT STUDENT MODAL
+===================================================== -->
+
+<div
+    class="modal-overlay"
+    id="editModal"
+>
+
+    <div class="modal">
+
+        <div class="modal-header">
+
+            <div class="modal-title">
+                Edit Student Information
+            </div>
+
+            <button
+                class="close-btn"
+                onclick="closeModal('editModal')"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <form id="editStudentForm">
+
+            <div class="modal-body">
+
+                <input
+                    type="hidden"
+                    id="editUserId"
+                >
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label>User ID</label>
+
+                        <input
+                            id="editUserIdDisplay"
+                            readonly
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>Name</label>
+
+                        <input
+                            id="editName"
+                            required
+                            oninput="sanitizeName(this)"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>Phone</label>
+
+                        <input
+                            id="editPhone"
+                            maxlength="11"
+                            inputmode="numeric"
+                            required
+                            oninput="sanitizePhone(this)"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>Course</label>
+
+                        <select id="editCourse">
+
+                            <option value="BSC">BSC</option>
+                            <option value="DIPLOMA">DIPLOMA</option>
+                            <option value="MIDWIFERY">MIDWIFERY</option>
+                            <option value="PCT">PCT</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>District</label>
+
+                        <input
+                            id="editDistrict"
+                            list="districtList"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>Upazila</label>
+
+                        <input
+                            id="editUpazila"
+                            list="editUpazilaList"
+                        >
+
+                        <datalist id="editUpazilaList"></datalist>
+
+                    </div>
+
+
+                    <div class="form-group full">
+
+                        <label>Address</label>
+
+                        <textarea id="editAddress"></textarea>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>Total Fee</label>
+
+                        <input
+                            type="number"
+                            id="editTotalFee"
+                            min="0"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>Current Payment</label>
+
+                        <input
+                            type="number"
+                            id="editCurrentPayment"
+                            min="0"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>New Password</label>
+
+                        <input
+                            type="password"
+                            id="editPassword"
+                            maxlength="6"
+                            inputmode="numeric"
+                            placeholder="Leave blank to keep existing"
+                            oninput="sanitizePassword(this)"
+                        >
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="modal-footer">
+
+                <button
+                    type="button"
+                    class="btn btn-secondary"
+                    onclick="closeModal('editModal')"
+                >
+                    Cancel
+                </button>
+
+                <button
+                    type="submit"
+                    class="btn btn-primary"
+                >
+                    Save Changes
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     PAYMENT MODAL
+===================================================== -->
+
+<div
+    class="modal-overlay"
+    id="paymentModal"
+>
+
+    <div class="modal">
+
+        <div class="modal-header">
+
+            <div class="modal-title">
+                Update Payment
+            </div>
+
+            <button
+                class="close-btn"
+                onclick="closeModal('paymentModal')"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <div class="modal-body">
+
+            <input
+                type="hidden"
+                id="paymentUserId"
+            >
+
+            <div class="form-group">
+
+                <label>
+                    User ID
+                </label>
+
+                <input
+                    id="paymentUserIdDisplay"
+                    readonly
+                >
+
+            </div>
+
+
+            <div
+                class="form-group"
+                style="margin-top:13px"
+            >
+
+                <label>
+                    Total Course Fee
+                </label>
+
+                <input
+                    id="paymentTotalFee"
+                    readonly
+                >
+
+            </div>
+
+
+            <div
+                class="form-group"
+                style="margin-top:13px"
+            >
+
+                <label>
+                    Current Payment
+                </label>
+
+                <input
+                    type="number"
+                    id="paymentCurrent"
+                    min="0"
+                >
+
+            </div>
+
+        </div>
+
+
+        <div class="modal-footer">
+
+            <button
+                class="btn btn-secondary"
+                onclick="closeModal('paymentModal')"
+            >
+                Cancel
+            </button>
+
+            <button
+                class="btn btn-primary"
+                onclick="savePayment()"
+            >
+                Update Payment
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     TOAST
+===================================================== -->
+
+<div
+    class="toast-container"
+    id="toastContainer"
+></div>
+
+
+<script>
+
+/* =====================================================
+   API CONFIGURATION
+===================================================== */
+
+const API_URL =
+"https://script.google.com/macros/s/AKfycbzpw4FMeY5RuOezrJBZhc8J3GyiysEG1IdzuytBrR8c65b5fhenk5zLP77xKrUXo_8kaw/exec";
+
+
+/* =====================================================
+   LOCATION DATA
+   Based on supplied command
+===================================================== */
+
+const LOCATION_DATA = {
+
+"Dhaka":[
+"Savar","Dhamrai","Keraniganj","Dohar","Nawabganj",
+"Uttara","Uttara West","Uttara East","Turag","Uttar Khan",
+"Da​kshinkhan","Khilkhet","Airport","Mirpur","Shah Ali",
+"Kafrul","Pallabi","Rupnagar","Bhashantek","Tejgaon",
+"Tejgaon Industrial Area","Sher-e-Bangla Nagar","Hatirjheel",
+"Rampura","Badda","Bhatara","Gulshan","Banani","Cantonment",
+"Mohammadpur","Adabor","Dhanmondi","Hazaribagh","New Market",
+"Kalabagan","Ramna","Shahbagh","Paltan","Motijheel",
+"Sabujbagh","Shahjahanpur","Mugda","Khilgaon","Wari",
+"Sutrapur","Gendaria","Lalbagh","Chawkbazar","Bangshal",
+"Kotwali","Kamrangirchar","Demra","Jatrabari","Kadamtali",
+"Shyampur"
+],
+
+"Faridpur":[
+"Faridpur Sadar","Alfadanga","Boalmari","Bhanga",
+"Charbhadrasan","Madhukhali","Nagarkanda","Sadarpur","Saltha"
+],
+
+"Gazipur":[
+"Gazipur Sadar","Kaliakair","Kaliganj","Kapasia","Sreepur",
+"Konabari","Gacha","Tongi East","Tongi West","Basan",
+"Pubail","Sadar Thana"
+],
+
+"Gopalganj":[
+"Gopalganj Sadar","Kashedani","Kotalipara","Muksudpur","Tungipara"
+],
+
+"Kishoreganj":[
+"Kishoreganj Sadar","Hossainpur","Pakundia","Katiadi",
+"Kuliarchar","Bhairab","Bajitpur","Itna","Mithamain",
+"Nikli","Tarail","Austagram","Karimganj"
+],
+
+"Madaripur":[
+"Madaripur Sadar","Shibchar","Rajoir","Kalkini","Dasar"
+],
+
+"Manikganj":[
+"Manikganj Sadar","Singair","Saturia","Ghior",
+"Doulatpur","Shibalaya","Harirampur"
+],
+
+"Munshiganj":[
+"Munshiganj Sadar","Sreenagar","Louhajang",
+"Sirajdikhan","Tongibari","Gazaria"
+],
+
+"Narayanganj":[
+"Narayanganj Sadar","Rupganj","Sonargaon",
+"Araihazar","Bandar","Fatullah","Siddhirganj"
+],
+
+"Narsingdi":[
+"Narsingdi Sadar","Palash","Shibpur","Monohardi",
+"Belabo","Raipura"
+],
+
+"Rajbari":[
+"Rajbari Sadar","Goalanda","Pangsha","Baliakandi","Kalukhali"
+],
+
+"Shariatpur":[
+"Shariatpur Sadar","Naria","Jajira","Bhedarganj",
+"Damudya","Gosairhat"
+],
+
+"Tangail":[
+"Tangail Sadar","Sakhipur","Basail","Ghatail","Kalihati",
+"Bhuapur","Mirzapur","Nagarpur","Madhupur","Dhanbari",
+"Delduar","Gopalpur"
+],
+
+"Chattogram":[
+"Anwara","Banshkhali","Boalkhali","Chandanaish",
+"Fatikchhari","Hathazari","Lohagara","Mirsarai",
+"Patiya","Rauzan","Rangunia","Sandwip","Satkania",
+"Sitakunda","Kotwali","Double Mooring","Panchlaish",
+"Pahartali","Halishahar","Bakalia","Bayazid Bostami",
+"Chandgaon","Bandar","EPZ","Patenga","Karnafuli",
+"Khulshi","Sadarghat","Chawkbazar","Akbarshah"
+],
+
+"Cox's Bazar":[
+"Cox's Bazar Sadar","Chakaria","Pekua","Kutubdia",
+"Ukhia","Teknaf","Ramu","Maheshkhali","Eidgaon"
+],
+
+"Bandarban":[
+"Bandarban Sadar","Alikadam","Naikhongchhari",
+"Rowangchhari","Ruma","Thanchi","Lama"
+],
+
+"Khagrachhari":[
+"Khagrachhari Sadar","Dighinala","Panchhari",
+"Lakshmichhari","Mahalchhari","Matiranga",
+"Ramgarh","Manikchhari","Guimara"
+],
+
+"Rangamati":[
+"Rangamati Sadar","Baghaichhari","Barkal","Belaichhari",
+"Kaptai","Jurachhari","Langadu","Naniarchar",
+"Kawkhali","Rajasthali"
+],
+
+"Noakhali":[
+"Noakhali Sadar (Sudharam)","Senbagh","Companiganj",
+"Begumganj","Chatkhil","Hatiya","Subarnachar","Kabirhat"
+],
+
+"Lakshmipur":[
+"Lakshmipur Sadar","Raipur","Ramganj","Ramgati",
+"Kamalnagar","Chandraganj"
+],
+
+"Feni":[
+"Feni Sadar","Chhagalnaiya","Sonagazi","Daganbhuiyan",
+"Parshuram","Fulgazi"
+],
+
+"Comilla":[
+"Comilla Adarsha Sadar","Sadar Dakshin","Burichong",
+"Brahmanpara","Chouddagram","Daudkandi","Debidwar",
+"Homna","Laksam","Monoharganj","Meghna","Muradnagar",
+"Nangalkot","Titas","Barura","Lalmai"
+],
+
+"Brahmanbaria":[
+"Brahmanbaria Sadar","Ashuganj","Nasirnagar","Nabinagar",
+"Sarail","Kasba","Akhaura","Bancharampur","Bijoynagar"
+],
+
+"Chandpur":[
+"Chandpur Sadar","Matlab Uttar","Matlab Dakshin",
+"Hajiganj","Kachua","Shahrasti","Faridganj","Haimchar"
+],
+
+"Rajshahi":[
+"Paba","Mohanpur","Tanore","Bagmara","Durgapur","Charghat",
+"Bagha","Godagari","Puthia","Boalia","Rajpara","Motihar",
+"Shah Makhdum","Chandrima","Katakhali","Karnahar","Damkura"
+],
+
+"Bogura":[
+"Bogura Sadar","Sherpur","Dhunat","Sariakandi","Gabtali",
+"Sonatala","Shibganj","Kahalu","Nandigram",
+"Dupchanchia","Adamdighi","Shahjahanpur"
+],
+
+"Naogaon":[
+"Naogaon Sadar","Raninagar","Atrai","Badalgachhi","Manda",
+"Dhamoirhat","Patnitala","Sapahar","Porsha","Mahadebpur",
+"Niamatpur"
+],
+
+"Natore":[
+"Natore Sadar","Bagatipara","Baraigram","Gurudaspur",
+"Lalpur","Singra","Naldanga"
+],
+
+"Chapainawabganj":[
+"Chapainawabganj Sadar","Gomastapur","Nachol",
+"Bholahat","Shibganj"
+],
+
+"Pabna":[
+"Pabna Sadar","Ishwardi","Bhangura","Atgharia",
+"Chatmohar","Bera","Sujanagar","Sathia","Faridpur"
+],
+
+"Sirajganj":[
+"Sirajganj Sadar","Kazipur","Ullapara","Shahjadpur",
+"Rayganj","Tarash","Kamarkhanda","Belkuchi","Chauhali"
+],
+
+"Joypurhat":[
+"Joypurhat Sadar","Akkelpur","Kalai","Khetlal","Panchbibi"
+],
+
+"Khulna":[
+"Rupsa","Dighalia","Dumuria","Paikgachha","Koyra",
+"Batiaghata","Dakop","Phultala","Terokhada","Sonadanga",
+"Khalishpur","Daulatpur","Khan Jahan Ali","Boyra",
+"Harintana","Lobonchora","Sonadanga Model"
+],
+
+"Jashore":[
+"Jashore Sadar","Abhaynagar","Bagherpara","Chaugachha",
+"Jhikargachha","Keshabpur","Sharsha","Manikampur"
+],
+
+"Satkhira":[
+"Satkhira Sadar","Kalaroa","Tala","Debhata","Kaliganj",
+"Assasuni","Shyamnagar"
+],
+
+"Meherpur":[
+"Meherpur Sadar","Gangni","Mujibnagar"
+],
+
+"Narail":[
+"Narail Sadar","Lohagara","Kalia"
+],
+
+"Chuadanga":[
+"Chuadanga Sadar","Alamdanga","Jibannagar","Damurhuda"
+],
+
+"Kushtia":[
+"Kushtia Sadar","Kumarkhali","Khoksa","Bheramara",
+"Mirpur","Doulatpur"
+],
+
+"Magura":[
+"Magura Sadar","Sreepur","Salikha","Mohammadpur"
+],
+
+"Bagerhat":[
+"Bagerhat Sadar","Kachua","Mollahat","Chitalmari",
+"Sharankhola","Rampal","Mongla","Fakirhat","Morellganj"
+],
+
+"Jhenaidah":[
+"Jhenaidah Sadar","Shailkupa","Harinakunda",
+"Kaliganj","Maheshpur","Kotchandpur"
+],
+
+"Barishal":[
+"Barishal Sadar","Bakerganj","Babuganj","Uzirpur",
+"Banaripara","Gournadi","Agailjhara","Mehendiganj",
+"Muladi","Hizla","Kotwali","Airport Thana"
+],
+
+"Barguna":[
+"Barguna Sadar","Amtali","Betagi","Bamna",
+"Patharghata","Taltali"
+],
+
+"Bhola":[
+"Bhola Sadar","Borhanuddin","Char Fasson","Doulatkhan",
+"Lalmohan","Monpura","Tazumuddin"
+],
+
+"Jhalokati":[
+"Jhalokati Sadar","Nalchity","Rajapur","Kathalia"
+],
+
+"Pirojpur":[
+"Pirojpur Sadar","Nesarabad (Swarupkati)",
+"Nazirpur","Kawkhali","Bhandaria","Mathbaria","Indurkani"
+],
+
+"Patuakhali":[
+"Patuakhali Sadar","Bauphal","Galachipa","Kalapara",
+"Dashmina","Mirzaganj","Dumki","Rangabali"
+],
+
+"Sylhet":[
+"Golapganj","Beani Bazar","Jaintapur","Kanaighat",
+"Gowainghat","Companiganj","Zakiganj","Bishwanath",
+"Osmani Nagar","Dakshin Surma","Balaganj","Fenchuganj",
+"Kotwali","Jalalabad","Moglabazar","Airport","Shah Paran"
+],
+
+"Sunamganj":[
+"Sunamganj Sadar","Bishwamvarpur","Chhatak","Dowarabazar",
+"Jagannathpur","Shantiganj (South Sunamganj)",
+"Tahirpur","Dharmapasha","Sulla","Derai","Madhyanagar"
+],
+
+"Habiganj":[
+"Habiganj Sadar","Nabiganj","Bahubal","Ajmiriganj",
+"Banachong","Lakhai","Chunarughat","Madhabpur",
+"Shayestaganj"
+],
+
+"Moulvibazar":[
+"Moulvibazar Sadar","Barlekha","Juri","Kulaura",
+"Kamalganj","Sreemangal","Rajnagar"
+],
+
+"Rangpur":[
+"Badarganj","Gangachara","Kaunia","Mithapukur",
+"Pirganj","Pirgachha","Taraganj","Kotwali",
+"Haragach","Parshuram","Tajhat"
+],
+
+"Dinajpur":[
+"Dinajpur Sadar","Biral","Birampur","Birganj","Bochaganj",
+"Chirirbandar","Ghoraghat","Hakimpur","Kaharol",
+"Khansama","Nawabganj","Parbatipur","Phulbari"
+],
+
+"Gaibandha":[
+"Gaibandha Sadar","Fulchhari","Gobindaganj",
+"Palashbari","Sadullapur","Saghata","Sundarganj"
+],
+
+"Kurigram":[
+"Kurigram Sadar","Bhurungamari","Chilmari","Phulbari",
+"Rajarhat","Rajibpur","Roumari","Nageshwari","Ulipur"
+],
+
+"Lalmonirhat":[
+"Lalmonirhat Sadar","Aditmari","Kaliganj",
+"Hatibandha","Patgram"
+],
+
+"Nilphamari":[
+"Nilphamari Sadar","Dimla","Domar","Jaldhaka",
+"Kishoreganj","Syedpur"
+],
+
+"Panchagarh":[
+"Panchagarh Sadar","Atwari","Boda","Debiganj","Tentulia"
+],
+
+"Thakurgaon":[
+"Thakurgaon Sadar","Baliadangi","Pirganj",
+"Ranisankail","Haripur"
+],
+
+"Mymensingh":[
+"Muktagachha","Bhaluka","Trishal","Dhobaura","Phulpur",
+"Haluaghat","Gauripur","Ishwarganj","Nandail",
+"Phulbaria","Tarakanda","Gafargaon","Kotwali"
+],
+
+"Jamalpur":[
+"Jamalpur Sadar","Islampur","Dewanganj","Madarganj",
+"Melandaha","Bakshiganj","Sarishabari"
+],
+
+"Netrokona":[
+"Netrokona Sadar","Atpara","Barhatta","Durgapur",
+"Kalmakanda","Kendua","Khaliajuri","Madan",
+"Mohonganj","Purbadhala"
+],
+
+"Sherpur":[
+"Sherpur Sadar","Nalitabari","Jhenaigati","Nakla","Sreebordi"
+]
+
+};
+
+
+/* =====================================================
+   GLOBAL STATE
+===================================================== */
+
+let students = [];
+let adminPasswordSession = "";
+let selectedStudents = new Set();
+
+
+/* =====================================================
+   INIT
+===================================================== */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    setCurrentDate();
+
+    populateDistricts();
+
+    setupLocationEvents();
+
+    setupPaymentCalculation();
+
+    setupForms();
+
+});
+
+
+/* =====================================================
+   VIEW CONTROL
+===================================================== */
+
+function showView(id){
+
+    document
+        .querySelectorAll(".view")
+        .forEach(v => v.classList.remove("active"));
+
+    const target = document.getElementById(id);
+
+    if(target){
+        target.classList.add("active");
+    }
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+}
+
+
+/* =====================================================
+   DATE
+===================================================== */
+
+function setCurrentDate(){
+
+    const now = new Date();
+
+    const date =
+        String(now.getDate()).padStart(2,"0") +
+        "-" +
+        String(now.getMonth()+1).padStart(2,"0") +
+        "-" +
+        now.getFullYear();
+
+    document.getElementById("admissionDate").value = date;
+}
+
+
+/* =====================================================
+   SANITIZATION
+===================================================== */
+
+function sanitizeName(input){
+
+    input.value =
+        input.value.replace(/[^A-Za-z .'-]/g,"");
+}
+
+function sanitizePhone(input){
+
+    input.value =
+        input.value.replace(/\D/g,"").slice(0,11);
+}
+
+function sanitizePassword(input){
+
+    input.value =
+        input.value.replace(/\D/g,"").slice(0,6);
+}
+
+
+/* =====================================================
+   LOCATION
+===================================================== */
+
+function populateDistricts(){
+
+    const list =
+        document.getElementById("districtList");
+
+    list.innerHTML = "";
+
+    Object.keys(LOCATION_DATA)
+        .forEach(district => {
+
+            const option =
+                document.createElement("option");
+
+            option.value = district;
+
+            list.appendChild(option);
+
+        });
+
+    updateUpazilaList(
+        document.getElementById("district").value
+    );
+}
+
+
+function updateUpazilaList(district){
+
+    const list =
+        document.getElementById("upazilaList");
+
+    list.innerHTML = "";
+
+    if(!LOCATION_DATA[district]){
+        return;
+    }
+
+    LOCATION_DATA[district]
+        .forEach(upazila => {
+
+            const option =
+                document.createElement("option");
+
+            option.value = upazila;
+
+            list.appendChild(option);
+
+        });
+}
+
+
+function setupLocationEvents(){
+
+    const district =
+        document.getElementById("district");
+
+    const upazila =
+        document.getElementById("upazila");
+
+
+    district.addEventListener("input", () => {
+
+        const value =
+            district.value.trim();
+
+        if(LOCATION_DATA[value]){
+
+            updateUpazilaList(value);
+
+        }else{
+
+            document.getElementById("upazilaList")
+                .innerHTML = "";
+
+        }
+
+        validateLocationFields(false);
+
+    });
+
+
+    district.addEventListener("blur", () => {
+
+        const value =
+            district.value.trim();
+
+        if(!LOCATION_DATA[value]){
+
+            district.value = "";
+
+            document.getElementById("upazila").value = "";
+
+            updateUpazilaList("");
+
+            toast(
+                "Invalid District",
+                "Please select a valid district from the list.",
+                "warning"
+            );
+
+        }
+
+    });
+
+
+    upazila.addEventListener("input", () => {
+
+        const value =
+            upazila.value.trim();
+
+        const districtValue =
+            district.value.trim();
+
+
+        if(districtValue &&
+           LOCATION_DATA[districtValue]){
+
+            const match =
+                LOCATION_DATA[districtValue]
+                .find(
+                    item =>
+                    normalize(item) === normalize(value)
+                );
+
+            if(match){
+                upazila.value = match;
+            }
+
+        }else{
+
+            // Reverse lookup
+            const result =
+                findDistrictByUpazila(value);
+
+            if(result){
+
+                district.value =
+                    result.district;
+
+                updateUpazilaList(
+                    result.district
+                );
+
+                upazila.value =
+                    result.upazila;
+
+            }
+
+        }
+
+    });
+
+
+    upazila.addEventListener("blur", () => {
+
+        validateLocationFields(true);
+
+    });
+
+
+    document
+        .getElementById("editDistrict")
+        .addEventListener("input", function(){
+
+            updateEditUpazilaList(
+                this.value.trim()
+            );
+
+        });
+
+}
+
+
+function normalize(value){
+
+    return String(value || "")
+        .trim()
+        .toLowerCase()
+        .replace(/\s+/g," ");
+
+}
+
+
+function findDistrictByUpazila(upazila){
+
+    const target =
+        normalize(upazila);
+
+    if(!target){
+        return null;
+    }
+
+    for(
+        const district of Object.keys(LOCATION_DATA)
+    ){
+
+        const match =
+            LOCATION_DATA[district]
+            .find(
+                item =>
+                normalize(item) === target
+            );
+
+        if(match){
+
+            return {
+                district,
+                upazila:match
+            };
+
+        }
+
+    }
+
+    return null;
+}
+
+
+function validateLocationFields(showMessage){
+
+    const district =
+        document.getElementById("district");
+
+    const upazila =
+        document.getElementById("upazila");
+
+    const districtValue =
+        district.value.trim();
+
+    const upazilaValue =
+        upazila.value.trim();
+
+
+    if(
+        districtValue &&
+        !LOCATION_DATA[districtValue]
+    ){
+
+        district.value = "";
+
+        if(showMessage){
+
+            toast(
+                "Invalid District",
+                "Please select a valid district.",
+                "warning"
+            );
+
+        }
+
+        return false;
+    }
+
+
+    if(districtValue){
+
+        const valid =
+            LOCATION_DATA[districtValue]
+            .some(
+                item =>
+                normalize(item) ===
+                normalize(upazilaValue)
+            );
+
+        if(upazilaValue && !valid){
+
+            upazila.value = "";
+
+            if(showMessage){
+
+                toast(
+                    "Invalid Upazila",
+                    "Please select a valid Upazila / Thana.",
+                    "warning"
+                );
+
+            }
+
+            return false;
+        }
+
+    }
+
+    return true;
+}
+
+
+function updateEditUpazilaList(district){
+
+    const list =
+        document.getElementById("editUpazilaList");
+
+    list.innerHTML = "";
+
+    if(!LOCATION_DATA[district]){
+        return;
+    }
+
+    LOCATION_DATA[district]
+        .forEach(upazila => {
+
+            const option =
+                document.createElement("option");
+
+            option.value = upazila;
+
+            list.appendChild(option);
+
+        });
+}
+
+
+/* =====================================================
+   PAYMENT
+===================================================== */
+
+function setupPaymentCalculation(){
+
+    const total =
+        document.getElementById("totalFee");
+
+    const paid =
+        document.getElementById("currentPayment");
+
+    total.addEventListener(
+        "input",
+        updateDuePreview
+    );
+
+    paid.addEventListener(
+        "input",
+        updateDuePreview
+    );
+
+}
+
+
+function updateDuePreview(){
+
+    const total =
+        Number(
+            document.getElementById("totalFee").value
+        ) || 0;
+
+    const paid =
+        Number(
+            document.getElementById("currentPayment").value
+        ) || 0;
+
+    const due =
+        Math.max(0,total-paid);
+
+    document.getElementById("duePreview")
+        .textContent =
+        formatMoney(due);
+
+}
+
+
+/* =====================================================
+   FORM SETUP
+===================================================== */
+
+function setupForms(){
+
+    document
+        .getElementById("admissionForm")
+        .addEventListener(
+            "submit",
+            submitAdmission
+        );
+
+
+    document
+        .getElementById("searchForm")
+        .addEventListener(
+            "submit",
+            searchStudent
+        );
+
+
+    document
+        .getElementById("adminLoginForm")
+        .addEventListener(
+            "submit",
+            adminLogin
+        );
+
+
+    document
+        .getElementById("editStudentForm")
+        .addEventListener(
+            "submit",
+            submitEditStudent
+        );
+
+}
+
+
+/* =====================================================
+   ADMISSION SUBMIT
+===================================================== */
+
+async function submitAdmission(event){
+
+    event.preventDefault();
+
+    if(!validateLocationFields(true)){
+        return;
+    }
+
+
+    const name =
+        document.getElementById("name")
+        .value.trim();
+
+    const phone =
+        document.getElementById("phone")
+        .value.trim();
+
+    const courseElement =
+        document.querySelector(
+            'input[name="course"]:checked'
+        );
+
+    const district =
+        document.getElementById("district")
+        .value.trim();
+
+    const upazila =
+        document.getElementById("upazila")
+        .value.trim();
+
+    const address =
+        document.getElementById("address")
+        .value.trim();
+
+    const totalFee =
+        Number(
+            document.getElementById("totalFee")
+            .value
+        );
+
+    const currentPayment =
+        Number(
+            document.getElementById("currentPayment")
+            .value
+        );
+
+    const password =
+        document.getElementById("studentPassword")
+        .value.trim();
+
+
+    if(!courseElement){
+
+        toast(
+            "Course Required",
+            "Please select a course.",
+            "warning"
+        );
+
+        return;
+    }
+
+
+    if(!/^[A-Za-z .'-]+$/.test(name)){
+
+        toast(
+            "Invalid Name",
+            "Name must contain English letters only.",
+            "error"
+        );
+
+        return;
+    }
+
+
+    if(!/^01[3-9]\d{8}$/.test(phone)){
+
+        toast(
+            "Invalid Phone",
+            "Enter a valid Bangladesh mobile number.",
+            "error"
+        );
+
+        return;
+    }
+
+
+    if(
+        !Number.isFinite(totalFee) ||
+        totalFee < 0
+    ){
+
+        toast(
+            "Invalid Fee",
+            "Enter a valid total course fee.",
+            "error"
+        );
+
+        return;
+    }
+
+
+    if(
+        !Number.isFinite(currentPayment) ||
+        currentPayment < 0
+    ){
+
+        toast(
+            "Invalid Payment",
+            "Enter a valid current payment.",
+            "error"
+        );
+
+        return;
+    }
+
+
+    if(currentPayment > totalFee){
+
+        toast(
+            "Invalid Payment",
+            "Current payment cannot exceed total fee.",
+            "error"
+        );
+
+        return;
+    }
+
+
+    if(!/^\d{6}$/.test(password)){
+
+        toast(
+            "Invalid Password",
+            "Password must contain exactly 6 digits.",
+            "error"
+        );
+
+        return;
+    }
+
+
+    const data = {
+
+        action:"admission",
+
+        name:name,
+
+        phone:phone,
+
+        course:courseElement.value,
+
+        district:district,
+
+        upazila:upazila,
+
+        address:address,
+
+        totalFee:totalFee,
+
+        currentPayment:currentPayment,
+
+        password:password
+
+    };
+
+
+    setLoading(
+        "admissionLoading",
+        true
+    );
+
+    document.getElementById("submitBtn")
+        .disabled = true;
+
+
+    try{
+
+        const response =
+            await fetch(API_URL,{
+
+                method:"POST",
+
+                headers:{
+                    "Content-Type":
+                    "text/plain;charset=utf-8"
+                },
+
+                body:JSON.stringify(data)
+
+            });
+
+
+        const result =
+            await response.json();
+
+
+        if(!result.success){
+
+            throw new Error(
+                result.message ||
+                "Admission submission failed."
+            );
+
+        }
+
+
+        displayAdmissionResult(
+            result.student
+        );
+
+
+        toast(
+            "Admission Successful",
+            "User ID has been generated successfully.",
+            "success"
+        );
+
+
+        document
+            .getElementById("admissionResult")
+            .scrollIntoView({
+                behavior:"smooth",
+                block:"start"
+            });
+
+
+    }catch(error){
+
+        toast(
+            "Submission Failed",
+            error.message,
+            "error"
+        );
+
+    }finally{
+
+        setLoading(
+            "admissionLoading",
+            false
+        );
+
+        document.getElementById("submitBtn")
+            .disabled = false;
+
+    }
+
+}
+
+
+/* =====================================================
+   DISPLAY ADMISSION RESULT
+===================================================== */
+
+function displayAdmissionResult(student){
+
+    document.getElementById("resultUserId")
+        .textContent =
+        student.userId || "—";
+
+    document.getElementById("resultName")
+        .textContent =
+        student.name || "—";
+
+    document.getElementById("resultCourse")
+        .textContent =
+        student.course || "—";
+
+    document.getElementById("resultPhone")
+        .textContent =
+        student.phone || "—";
+
+    document.getElementById("resultTotal")
+        .textContent =
+        formatMoney(student.totalFee);
+
+    document.getElementById("resultPaid")
+        .textContent =
+        formatMoney(student.currentPayment);
+
+    document.getElementById("resultDue")
+        .textContent =
+        formatMoney(student.due);
+
+    document.getElementById("resultAddress")
+        .textContent =
+        [
+            student.district,
+            student.upazila,
+            student.address
+        ]
+        .filter(Boolean)
+        .join(", ") || "—";
+
+
+    document.getElementById("resultStatus")
+        .innerHTML =
+        statusHTML(student.status);
+
+
+    document
+        .getElementById("admissionResult")
+        .classList.add("show");
+
+}
+
+
+/* =====================================================
+   COPY CREDENTIALS
+===================================================== */
+
+function copyAdmissionCredentials(){
+
+    const userId =
+        document.getElementById("resultUserId")
+        .textContent;
+
+    const password =
+        document.getElementById("studentPassword")
+        .value;
+
+    const text =
+`Pulse Nursing Coaching
+March 2027 Admission
+
+User ID: ${userId}
+Password: ${password}`;
+
+    navigator.clipboard
+        .writeText(text)
+        .then(() => {
+
+            toast(
+                "Copied",
+                "User ID and Password copied.",
+                "success"
+            );
+
+        })
+        .catch(() => {
+
+            toast(
+                "Copy Failed",
+                "Please copy the credentials manually.",
+                "warning"
+            );
+
+        });
+
+}
+
+
+/* =====================================================
+   STUDENT SEARCH
+===================================================== */
+
+async function searchStudent(event){
+
+    event.preventDefault();
+
+
+    const userId =
+        document.getElementById("searchUserId")
+        .value.trim();
+
+    const password =
+        document.getElementById("searchPassword")
+        .value.trim();
+
+
+    if(!/^\d{4}-\d{3}$/.test(userId)){
+
+        toast(
+            "Invalid User ID",
+            "Example: 2731-001",
+            "warning"
+        );
+
+        return;
+    }
+
+
+    if(!/^\d{6}$/.test(password)){
+
+        toast(
+            "Invalid Password",
+            "Password must contain exactly 6 digits.",
+            "warning"
+        );
+
+        return;
+    }
+
+
+    setLoading(
+        "searchLoading",
+        true
+    );
+
+
+    try{
+
+        const response =
+            await fetch(API_URL,{
+
+                method:"POST",
+
+                headers:{
+                    "Content-Type":
+                    "text/plain;charset=utf-8"
+                },
+
+                body:JSON.stringify({
+
+                    action:"search",
+
+                    userId:userId,
+
+                    password:password
+
+                })
+
+            });
+
+
+        const result =
+            await response.json();
+
+
+        if(!result.success){
+
+            throw new Error(
+                result.message ||
+                "Student not found."
+            );
+
+        }
+
+
+        displayStudentSearchResult(
+            result.student
+        );
+
+
+        toast(
+            "Student Found",
+            "Admission information loaded.",
+            "success"
+        );
+
+
+    }catch(error){
+
+        document
+            .getElementById("studentSearchResult")
+            .classList.remove("show");
+
+        toast(
+            "Search Failed",
+            error.message,
+            "error"
+        );
+
+    }finally{
+
+        setLoading(
+            "searchLoading",
+            false
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   SEARCH RESULT
+===================================================== */
+
+function displayStudentSearchResult(student){
+
+    document.getElementById("searchResultUserId")
+        .textContent =
+        student.userId || "—";
+
+    document.getElementById("searchResultName")
+        .textContent =
+        student.name || "—";
+
+    document.getElementById("searchResultCourse")
+        .textContent =
+        student.course || "—";
+
+    document.getElementById("searchResultPhone")
+        .textContent =
+        student.phone || "—";
+
+    document.getElementById("searchResultDate")
+        .textContent =
+        student.date || "—";
+
+    document.getElementById("searchResultDistrict")
+        .textContent =
+        student.district || "—";
+
+    document.getElementById("searchResultUpazila")
+        .textContent =
+        student.upazila || "—";
+
+    document.getElementById("searchResultTotal")
+        .textContent =
+        formatMoney(student.totalFee);
+
+    document.getElementById("searchResultPaid")
+        .textContent =
+        formatMoney(student.currentPayment);
+
+    document.getElementById("searchResultDue")
+        .textContent =
+        formatMoney(student.due);
+
+    document.getElementById("searchResultStatus")
+        .innerHTML =
+        statusHTML(student.status);
+
+    document.getElementById("searchResultAddress")
+        .textContent =
+        [
+            student.district,
+            student.upazila,
+            student.address
+        ]
+        .filter(Boolean)
+        .join(", ") || "—";
+
+
+    document
+        .getElementById("studentSearchResult")
+        .classList.add("show");
+
+}
+
+
+/* =====================================================
+   ADMIN LOGIN
+===================================================== */
+
+async function adminLogin(event){
+
+    event.preventDefault();
+
+
+    const password =
+        document.getElementById("adminPassword")
+        .value.trim();
+
+
+    if(!password){
+
+        toast(
+            "Password Required",
+            "Enter admin password.",
+            "warning"
+        );
+
+        return;
+    }
+
+
+    setLoading(
+        "adminLoading",
+        true
+    );
+
+
+    try{
+
+        const response =
+            await fetch(API_URL,{
+
+                method:"POST",
+
+                headers:{
+                    "Content-Type":
+                    "text/plain;charset=utf-8"
+                },
+
+                body:JSON.stringify({
+
+                    action:"admin_login",
+
+                    password:password
+
+                })
+
+            });
+
+
+        const result =
+            await response.json();
+
+
+        if(!result.success){
+
+            throw new Error(
+                result.message ||
+                "Invalid admin password."
+            );
+
+        }
+
+
+        adminPasswordSession =
+            password;
+
+
+        document
+            .getElementById("adminLoginCard")
+            .style.display = "none";
+
+
+        document
+            .getElementById("adminDashboard")
+            .style.display = "block";
+
+
+        await loadStudents();
+
+
+        toast(
+            "Login Successful",
+            "Welcome to Admin Dashboard.",
+            "success"
+        );
+
+
+    }catch(error){
+
+        toast(
+            "Login Failed",
+            error.message,
+            "error"
+        );
+
+    }finally{
+
+        setLoading(
+            "adminLoading",
+            false
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   LOAD STUDENTS
+===================================================== */
+
+async function loadStudents(){
+
+    if(!adminPasswordSession){
+        return;
+    }
+
+
+    try{
+
+        const url =
+            API_URL +
+            "?action=students&adminPassword=" +
+            encodeURIComponent(
+                adminPasswordSession
+            );
+
+
+        const response =
+            await fetch(url);
+
+
+        const result =
+            await response.json();
+
+
+        if(!result.success){
+
+            throw new Error(
+                result.message ||
+                "Unable to load students."
+            );
+
+        }
+
+
+        students =
+            Array.isArray(result.students)
+                ? result.students
+                : [];
+
+
+        selectedStudents.clear();
+
+        renderStudents();
+
+        updateStatistics();
+
+
+    }catch(error){
+
+        toast(
+            "Database Error",
+            error.message,
+            "error"
+        );
+
+    }
+
+}
+
+
+async function refreshStudents(){
+
+    await loadStudents();
+
+    toast(
+        "Refreshed",
+        "Student database updated.",
+        "success"
+    );
+
+}
+
+
+/* =====================================================
+   RENDER STUDENTS
+===================================================== */
+
+function renderStudents(){
+
+    const tbody =
+        document.getElementById(
+            "studentTableBody"
+        );
+
+
+    const search =
+        document.getElementById(
+            "adminSearch"
+        )
+        .value
+        .trim()
+        .toLowerCase();
+
+
+    const course =
+        document.getElementById(
+            "courseFilter"
+        )
+        .value;
+
+
+    const payment =
+        document.getElementById(
+            "paymentFilter"
+        )
+        .value;
+
+
+    const filtered =
+        students.filter(student => {
+
+            const searchMatch =
+                !search ||
+                String(student.userId)
+                    .toLowerCase()
+                    .includes(search) ||
+                String(student.name)
+                    .toLowerCase()
+                    .includes(search) ||
+                String(student.phone)
+                    .toLowerCase()
+                    .includes(search);
+
+
+            const courseMatch =
+                course === "ALL" ||
+                String(student.course)
+                    .toUpperCase() === course;
+
+
+            const paymentMatch =
+                payment === "ALL" ||
+                String(student.status)
+                    .toUpperCase() === payment;
+
+
+            return (
+                searchMatch &&
+                courseMatch &&
+                paymentMatch
+            );
+
+        });
+
+
+    if(!filtered.length){
+
+        tbody.innerHTML = `
+            <tr>
+                <td colspan="13">
+                    <div class="empty">
+                        No student records found.
+                    </div>
+                </td>
+            </tr>
+        `;
+
+        return;
+    }
+
+
+    tbody.innerHTML =
+        filtered.map(
+            (student,index) => {
+
+                const checked =
+                    selectedStudents.has(
+                        student.userId
+                    )
+                    ? "checked"
+                    : "";
+
+
+                return `
+
+                <tr>
+
+                    <td>
+                        <input
+                            type="checkbox"
+                            class="checkbox student-checkbox"
+                            data-user-id="${escapeAttr(student.userId)}"
+                            ${checked}
+                            onchange="toggleStudentSelection(
+                                '${escapeJS(student.userId)}',
+                                this.checked
+                            )"
+                        >
+                    </td>
+
+                    <td>
+                        ${index+1}
+                    </td>
+
+                    <td>
+                        <strong>
+                            ${escapeHTML(student.userId)}
+                        </strong>
+                    </td>
+
+                    <td>
+                        ${escapeHTML(student.name)}
+                    </td>
+
+                    <td>
+                        ${escapeHTML(student.phone)}
+                    </td>
+
+                    <td>
+                        ${escapeHTML(student.course)}
+                    </td>
+
+                    <td>
+                        ${escapeHTML(student.district)}
+                    </td>
+
+                    <td>
+                        ${escapeHTML(student.upazila)}
+                    </td>
+
+                    <td>
+                        ${formatMoney(student.totalFee)}
+                    </td>
+
+                    <td>
+                        ${formatMoney(student.currentPayment)}
+                    </td>
+
+                    <td>
+                        ${formatMoney(student.due)}
+                    </td>
+
+                    <td>
+                        ${statusHTML(student.status)}
+                    </td>
+
+                    <td>
+
+                        <div class="action-buttons">
+
+                            <button
+                                class="action-btn"
+                                title="Edit"
+                                onclick="openEditModal(
+                                    '${escapeJS(student.userId)}'
+                                )"
+                            >
+                                ✏
+                            </button>
+
+                            <button
+                                class="action-btn"
+                                title="Payment"
+                                onclick="openPaymentModal(
+                                    '${escapeJS(student.userId)}'
+                                )"
+                            >
+                                ৳
+                            </button>
+
+                            <button
+                                class="action-btn"
+                                title="Print"
+                                onclick="printSingleStudent(
+                                    '${escapeJS(student.userId)}'
+                                )"
+                            >
+                                🖨
+                            </button>
+
+                            <button
+                                class="action-btn"
+                                title="Delete"
+                                onclick="deleteStudentRecord(
+                                    '${escapeJS(student.userId)}'
+                                )"
+                            >
+                                🗑
+                            </button>
+
+                        </div>
+
+                    </td>
+
+                </tr>
+
+                `;
+
+            }
+        )
+        .join("");
+
+}
+
+
+/* =====================================================
+   STATISTICS
+===================================================== */
+
+function updateStatistics(){
+
+    const total =
+        students.length;
+
+
+    const bsc =
+        students.filter(
+            s =>
+            String(s.course).toUpperCase()
+            === "BSC"
+        ).length;
+
+
+    const diploma =
+        students.filter(
+            s =>
+            String(s.course).toUpperCase()
+            === "DIPLOMA"
+        ).length;
+
+
+    const midwifery =
+        students.filter(
+            s =>
+            String(s.course).toUpperCase()
+            === "MIDWIFERY"
+        ).length;
+
+
+    const pct =
+        students.filter(
+            s =>
+            String(s.course).toUpperCase()
+            === "PCT"
+        ).length;
+
+
+    const totalFee =
+        students.reduce(
+            (sum,s) =>
+            sum + Number(s.totalFee || 0),
+            0
+        );
+
+
+    const collection =
+        students.reduce(
+            (sum,s) =>
+            sum + Number(s.currentPayment || 0),
+            0
+        );
+
+
+    const due =
+        students.reduce(
+            (sum,s) =>
+            sum + Number(s.due || 0),
+            0
+        );
+
+
+    const paid =
+        students.filter(
+            s =>
+            Number(s.due || 0) <= 0
+        ).length;
+
+
+    const dueStudents =
+        students.filter(
+            s =>
+            Number(s.due || 0) > 0
+        ).length;
+
+
+    document.getElementById("statTotal")
+        .textContent = total;
+
+    document.getElementById("statBsc")
+        .textContent = bsc;
+
+    document.getElementById("statDiploma")
+        .textContent = diploma;
+
+    document.getElementById("statMidwifery")
+        .textContent = midwifery;
+
+    document.getElementById("statPct")
+        .textContent = pct;
+
+    document.getElementById("statFee")
+        .textContent = formatMoney(totalFee);
+
+    document.getElementById("statCollection")
+        .textContent = formatMoney(collection);
+
+    document.getElementById("statDue")
+        .textContent = formatMoney(due);
+
+    document.getElementById("statPaid")
+        .textContent = paid;
+
+    document.getElementById("statDueStudents")
+        .textContent = dueStudents;
+
+}
+
+
+/* =====================================================
+   SELECTION
+===================================================== */
+
+function toggleStudentSelection(
+    userId,
+    checked
+){
+
+    if(checked){
+
+        selectedStudents.add(userId);
+
+    }else{
+
+        selectedStudents.delete(userId);
+
+    }
+
+}
+
+
+function getVisibleStudents(){
+
+    const search =
+        document.getElementById(
+            "adminSearch"
+        )
+        .value
+        .trim()
+        .toLowerCase();
+
+
+    const course =
+        document.getElementById(
+            "courseFilter"
+        ).value;
+
+
+    const payment =
+        document.getElementById(
+            "paymentFilter"
+        ).value;
+
+
+    return students.filter(student => {
+
+        const searchMatch =
+            !search ||
+            String(student.userId)
+                .toLowerCase()
+                .includes(search) ||
+            String(student.name)
+                .toLowerCase()
+                .includes(search) ||
+            String(student.phone)
+                .toLowerCase()
+                .includes(search);
+
+
+        const courseMatch =
+            course === "ALL" ||
+            String(student.course)
+                .toUpperCase() === course;
+
+
+        const paymentMatch =
+            payment === "ALL" ||
+            String(student.status)
+                .toUpperCase() === payment;
+
+
+        return (
+            searchMatch &&
+            courseMatch &&
+            paymentMatch
+        );
+
+    });
+
+}
+
+
+function selectAllVisible(){
+
+    getVisibleStudents()
+        .forEach(student => {
+
+            selectedStudents.add(
+                student.userId
+            );
+
+        });
+
+    renderStudents();
+
+}
+
+
+function toggleAllVisible(checked){
+
+    getVisibleStudents()
+        .forEach(student => {
+
+            if(checked){
+
+                selectedStudents.add(
+                    student.userId
+                );
+
+            }else{
+
+                selectedStudents.delete(
+                    student.userId
+                );
+
+            }
+
+        });
+
+    renderStudents();
+
+}
+
+
+function clearSelection(){
+
+    selectedStudents.clear();
+
+    document.getElementById(
+        "masterCheckbox"
+    ).checked = false;
+
+    renderStudents();
+
+}
+
+
+/* =====================================================
+   EDIT MODAL
+===================================================== */
+
+function openEditModal(userId){
+
+    const student =
+        students.find(
+            s => String(s.userId) === String(userId)
+        );
+
+
+    if(!student){
+
+        toast(
+            "Error",
+            "Student record not found.",
+            "error"
+        );
+
+        return;
+    }
+
+
+    document.getElementById("editUserId")
+        .value = student.userId;
+
+    document.getElementById("editUserIdDisplay")
+        .value = student.userId;
+
+    document.getElementById("editName")
+        .value = student.name || "";
+
+    document.getElementById("editPhone")
+        .value = student.phone || "";
+
+    document.getElementById("editCourse")
+        .value = student.course || "BSC";
+
+    document.getElementById("editDistrict")
+        .value = student.district || "";
+
+    updateEditUpazilaList(
+        student.district || ""
+    );
+
+    document.getElementById("editUpazila")
+        .value = student.upazila || "";
+
+    document.getElementById("editAddress")
+        .value = student.address || "";
+
+    document.getElementById("editTotalFee")
+        .value = student.totalFee || 0;
+
+    document.getElementById("editCurrentPayment")
+        .value = student.currentPayment || 0;
+
+    document.getElementById("editPassword")
+        .value = "";
+
+
+    openModal("editModal");
+
+}
+
+
+async function submitEditStudent(event){
+
+    event.preventDefault();
+
+
+    const userId =
+        document.getElementById(
+            "editUserId"
+        ).value;
+
+
+    const name =
+        document.getElementById(
+            "editName"
+        ).value.trim();
+
+
+    const phone =
+        document.getElementById(
+            "editPhone"
+        ).value.trim();
+
+
+    const district =
+        document.getElementById(
+            "editDistrict"
+        ).value.trim();
+
+
+    const upazila =
+        document.getElementById(
+            "editUpazila"
+        ).value.trim();
+
+
+    const totalFee =
+        Number(
+            document.getElementById(
+                "editTotalFee"
+            ).value
+        );
+
+
+    const currentPayment =
+        Number(
+            document.getElementById(
+                "editCurrentPayment"
+            ).value
+        );
+
+
+    const password =
+        document.getElementById(
+            "editPassword"
+        ).value.trim();
+
+
+    if(!/^[A-Za-z .'-]+$/.test(name)){
+
+        toast(
+            "Invalid Name",
+            "English letters only.",
+            "error"
+        );
+
+        return;
+    }
+
+
+    if(!/^01[3-9]\d{8}$/.test(phone)){
+
+        toast(
+            "Invalid Phone",
+            "Enter a valid Bangladesh phone number.",
+            "error"
+        );
+
+        return;
+    }
+
+
+    if(!LOCATION_DATA[district]){
+
+        toast(
+            "Invalid District",
+            "Please select a valid district.",
+            "error"
+        );
+
+        return;
+    }
+
+
+    if(
+        !LOCATION_DATA[district]
+        .some(
+            item =>
+            normalize(item) === normalize(upazila)
+        )
+    ){
+
+        toast(
+            "Invalid Upazila",
+            "Please select a valid Upazila.",
+            "error"
+        );
+
+        return;
+    }
+
+
+    if(currentPayment > totalFee){
+
+        toast(
+            "Invalid Payment",
+            "Payment cannot exceed total fee.",
+            "error"
+        );
+
+        return;
+    }
+
+
+    if(
+        password &&
+        !/^\d{6}$/.test(password)
+    ){
+
+        toast(
+            "Invalid Password",
+            "Password must contain exactly 6 digits.",
+            "error"
+        );
+
+        return;
+    }
+
+
+    try{
+
+        const payload = {
+
+            action:"update_student",
+
+            adminPassword:
+                adminPasswordSession,
+
+            userId:userId,
+
+            name:name,
+
+            phone:phone,
+
+            course:
+                document.getElementById(
+                    "editCourse"
+                ).value,
+
+            district:district,
+
+            upazila:upazila,
+
+            address:
+                document.getElementById(
+                    "editAddress"
+                ).value.trim(),
+
+            totalFee:totalFee,
+
+            currentPayment:currentPayment
+
+        };
+
+
+        if(password){
+
+            payload.password =
+                password;
+
+        }
+
+
+        const response =
+            await fetch(API_URL,{
+
+                method:"POST",
+
+                headers:{
+                    "Content-Type":
+                    "text/plain;charset=utf-8"
+                },
+
+                body:JSON.stringify(payload)
+
+            });
+
+
+        const result =
+            await response.json();
+
+
+        if(!result.success){
+
+            throw new Error(
+                result.message ||
+                "Update failed."
+            );
+
+        }
+
+
+        closeModal("editModal");
+
+        toast(
+            "Updated",
+            "Student information updated successfully.",
+            "success"
+        );
+
+
+        await loadStudents();
+
+
+    }catch(error){
+
+        toast(
+            "Update Failed",
+            error.message,
+            "error"
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   PAYMENT MODAL
+===================================================== */
+
+function openPaymentModal(userId){
+
+    const student =
+        students.find(
+            s =>
+            String(s.userId) ===
+            String(userId)
+        );
+
+
+    if(!student){
+        return;
+    }
+
+
+    document.getElementById(
+        "paymentUserId"
+    ).value = student.userId;
+
+
+    document.getElementById(
+        "paymentUserIdDisplay"
+    ).value = student.userId;
+
+
+    document.getElementById(
+        "paymentTotalFee"
+    ).value =
+        student.totalFee || 0;
+
+
+    document.getElementById(
+        "paymentCurrent"
+    ).value =
+        student.currentPayment || 0;
+
+
+    openModal("paymentModal");
+
+}
+
+
+async function savePayment(){
+
+    const userId =
+        document.getElementById(
+            "paymentUserId"
+        ).value;
+
+
+    const currentPayment =
+        Number(
+            document.getElementById(
+                "paymentCurrent"
+            ).value
+        );
+
+
+    if(!Number.isFinite(currentPayment)){
+
+        toast(
+            "Invalid Payment",
+            "Enter a valid amount.",
+            "error"
+        );
+
+        return;
+    }
+
+
+    const student =
+        students.find(
+            s =>
+            String(s.userId) ===
+            String(userId)
+        );
+
+
+    if(
+        student &&
+        currentPayment >
+        Number(student.totalFee || 0)
+    ){
+
+        toast(
+            "Invalid Payment",
+            "Payment cannot exceed total fee.",
+            "error"
+        );
+
+        return;
+    }
+
+
+    try{
+
+        const response =
+            await fetch(API_URL,{
+
+                method:"POST",
+
+                headers:{
+                    "Content-Type":
+                    "text/plain;charset=utf-8"
+                },
+
+                body:JSON.stringify({
+
+                    action:"update_payment",
+
+                    adminPassword:
+                        adminPasswordSession,
+
+                    userId:userId,
+
+                    currentPayment:
+                        currentPayment
+
+                })
+
+            });
+
+
+        const result =
+            await response.json();
+
+
+        if(!result.success){
+
+            throw new Error(
+                result.message ||
+                "Payment update failed."
+            );
+
+        }
+
+
+        closeModal("paymentModal");
+
+
+        toast(
+            "Payment Updated",
+            "Payment information updated successfully.",
+            "success"
+        );
+
+
+        await loadStudents();
+
+
+    }catch(error){
+
+        toast(
+            "Payment Update Failed",
+            error.message,
+            "error"
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   DELETE
+===================================================== */
+
+async function deleteStudentRecord(userId){
+
+    const student =
+        students.find(
+            s =>
+            String(s.userId) ===
+            String(userId)
+        );
+
+
+    if(!student){
+        return;
+    }
+
+
+    const confirmed =
+        confirm(
+            `Delete student ${student.userId} - ${student.name}?\n\nThis action cannot be undone.`
+        );
+
+
+    if(!confirmed){
+        return;
+    }
+
+
+    try{
+
+        const response =
+            await fetch(API_URL,{
+
+                method:"POST",
+
+                headers:{
+                    "Content-Type":
+                    "text/plain;charset=utf-8"
+                },
+
+                body:JSON.stringify({
+
+                    action:"delete_student",
+
+                    adminPassword:
+                        adminPasswordSession,
+
+                    userId:userId
+
+                })
+
+            });
+
+
+        const result =
+            await response.json();
+
+
+        if(!result.success){
+
+            throw new Error(
+                result.message ||
+                "Delete failed."
+            );
+
+        }
+
+
+        selectedStudents.delete(userId);
+
+
+        toast(
+            "Deleted",
+            "Student record deleted.",
+            "success"
+        );
+
+
+        await loadStudents();
+
+
+    }catch(error){
+
+        toast(
+            "Delete Failed",
+            error.message,
+            "error"
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   PRINT SINGLE STUDENT
+===================================================== */
+
+function printSingleStudent(userId){
+
+    const student =
+        students.find(
+            s =>
+            String(s.userId) ===
+            String(userId)
+        );
+
+
+    if(!student){
+        return;
+    }
+
+
+    printStudents([student]);
+
+}
+
+
+/* =====================================================
+   PRINT SELECTED
+===================================================== */
+
+function printSelectedStudents(){
+
+    if(selectedStudents.size === 0){
+
+        toast(
+            "No Student Selected",
+            "Select at least one student to print.",
+            "warning"
+        );
+
+        return;
+    }
+
+
+    const selected =
+        students.filter(
+            student =>
+            selectedStudents.has(
+                student.userId
+            )
+        );
+
+
+    printStudents(selected);
+
+}
+
+
+/* =====================================================
+   PRINT ENGINE
+===================================================== */
+
+function printStudents(list){
+
+    if(!list.length){
+        return;
+    }
+
+
+    const printWindow =
+        window.open(
+            "",
+            "_blank",
+            "width=1200,height=800"
+        );
+
+
+    if(!printWindow){
+
+        toast(
+            "Popup Blocked",
+            "Please allow popups for printing.",
+            "warning"
+        );
+
+        return;
+    }
+
+
+    const rows =
+        list.map(
+            (student,index) => `
+
+            <tr>
+
+                <td>${index+1}</td>
+
+                <td>
+                    <strong>
+                        ${escapeHTML(student.userId)}
+                    </strong>
+                </td>
+
+                <td>
+                    ${escapeHTML(student.name)}
+                </td>
+
+                <td>
+                    ${escapeHTML(student.phone)}
+                </td>
+
+                <td>
+                    ${escapeHTML(student.course)}
+                </td>
+
+                <td>
+                    ${escapeHTML(student.district)}
+                </td>
+
+                <td>
+                    ${escapeHTML(student.upazila)}
+                </td>
+
+                <td>
+                    ${formatMoney(student.totalFee)}
+                </td>
+
+                <td>
+                    ${formatMoney(student.currentPayment)}
+                </td>
+
+                <td>
+                    ${formatMoney(student.due)}
+                </td>
+
+                <td>
+                    ${String(student.status).toUpperCase()}
+                </td>
+
+            </tr>
+
+        `
+        ).join("");
+
+
+    printWindow.document.write(`
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>Pulse Nursing Student List</title>
+
+<style>
+
+body{
+    font-family:Arial,sans-serif;
+    padding:25px;
+    color:#17221d;
+}
+
+.header{
+    text-align:center;
+    margin-bottom:25px;
+}
+
+.logo{
+    width:70px;
+    height:70px;
+    object-fit:contain;
+}
+
+h1{
+    margin:8px 0 3px;
+    color:#087f5b;
+}
+
+.subtitle{
+    color:#666;
+    font-size:12px;
+}
+
+.meta{
+    display:flex;
+    justify-content:space-between;
+    margin:15px 0;
+    font-size:11px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th,
+td{
+    border:1px solid #ccc;
+    padding:7px;
+    font-size:9px;
+    text-align:left;
+}
+
+th{
+    background:#eef6f2;
+}
+
+.footer{
+    margin-top:25px;
+    text-align:center;
+    font-size:9px;
+    color:#777;
+}
+
+@media print{
+
+    @page{
+        size:A4 landscape;
+        margin:10mm;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+
+<img
+    class="logo"
+    src="https://i.ibb.co.com/Ld7snkkP/logo.png"
+>
+
+<h1>
+    Pulse Nursing Coaching
+</h1>
+
+<div class="subtitle">
+    License & Job Coaching • March 2027
+</div>
+
+</div>
+
+<div class="meta">
+
+<span>
+    Total Records:
+    <strong>${list.length}</strong>
+</span>
+
+<span>
+    Printed:
+    <strong>${new Date().toLocaleString()}</strong>
+</span>
+
+</div>
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>#</th>
+<th>User ID</th>
+<th>Name</th>
+<th>Phone</th>
+<th>Course</th>
+<th>District</th>
+<th>Upazila</th>
+<th>Total Fee</th>
+<th>Paid</th>
+<th>Due</th>
+<th>Status</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+${rows}
+
+</tbody>
+
+</table>
+
+<div class="footer">
+
+Pulse Nursing Coaching • License & Job Coaching
+
+</div>
+
+<script>
+
+window.onload=function(){
+
+    setTimeout(function(){
+
+        window.print();
+
+    },500);
+
+};
+
+<\/script>
+
+</body>
+
+</html>
+
+    `);
+
+
+    printWindow.document.close();
+
+}
+
+
+/* =====================================================
+   LOGOUT
+===================================================== */
+
+function adminLogout(){
+
+    adminPasswordSession = "";
+
+    students = [];
+
+    selectedStudents.clear();
+
+
+    document.getElementById(
+        "adminDashboard"
+    ).style.display = "none";
+
+
+    document.getElementById(
+        "adminLoginCard"
+    ).style.display = "block";
+
+
+    document.getElementById(
+        "adminPassword"
+    ).value = "";
+
+
+    toast(
+        "Logged Out",
+        "Admin session closed.",
+        "success"
+    );
+
+}
+
+
+/* =====================================================
+   MODAL
+===================================================== */
+
+function openModal(id){
+
+    document
+        .getElementById(id)
+        .classList.add("show");
+
+}
+
+
+function closeModal(id){
+
+    document
+        .getElementById(id)
+        .classList.remove("show");
+
+}
+
+
+document.addEventListener(
+    "click",
+    event => {
+
+        if(
+            event.target.classList.contains(
+                "modal-overlay"
+            )
+        ){
+
+            event.target.classList.remove(
+                "show"
+            );
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   RESET
+===================================================== */
+
+function resetAdmissionForm(){
+
+    setTimeout(() => {
+
+        setCurrentDate();
+
+        document.getElementById(
+            "duePreview"
+        ).textContent = "৳ 0";
+
+        document
+            .getElementById("admissionResult")
+            .classList.remove("show");
+
+    },50);
+
+}
+
+
+/* =====================================================
+   HELPERS
+===================================================== */
+
+function setLoading(id,show){
+
+    const element =
+        document.getElementById(id);
+
+    if(element){
+
+        element.classList.toggle(
+            "show",
+            show
+        );
+
+    }
+
+}
+
+
+function formatMoney(value){
+
+    const number =
+        Number(value) || 0;
+
+    return "৳ " +
+        number.toLocaleString(
+            "en-BD"
+        );
+
+}
+
+
+function statusHTML(status){
+
+    const value =
+        String(status || "DUE")
+        .toUpperCase();
+
+    if(value === "PAID"){
+
+        return `
+            <span class="status paid">
+                PAID
+            </span>
+        `;
+
+    }
+
+    return `
+        <span class="status due">
+            DUE
+        </span>
+    `;
+
+}
+
+
+function escapeHTML(value){
+
+    return String(value ?? "")
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+
+}
+
+
+function escapeAttr(value){
+
+    return escapeHTML(value);
+
+}
+
+
+function escapeJS(value){
+
+    return String(value ?? "")
+        .replace(/\\/g,"\\\\")
+        .replace(/'/g,"\\'")
+        .replace(/"/g,'\\"')
+        .replace(/\n/g,"\\n")
+        .replace(/\r/g,"\\r");
+
+}
+
+
+/* =====================================================
+   TOAST
+===================================================== */
+
+function toast(
+    title,
+    message,
+    type="success"
+){
+
+    const container =
+        document.getElementById(
+            "toastContainer"
+        );
+
+
+    const item =
+        document.createElement("div");
+
+    item.className =
+        "toast " + type;
+
+
+    item.innerHTML = `
+
+        <div>
+
+            <div class="toast-title">
+                ${escapeHTML(title)}
+            </div>
+
+            <div class="toast-text">
+                ${escapeHTML(message)}
+            </div>
+
+        </div>
+
+    `;
+
+
+    container.appendChild(item);
+
+
+    setTimeout(() => {
+
+        item.style.opacity = "0";
+        item.style.transform =
+            "translateY(-8px)";
+
+        setTimeout(
+            () => item.remove(),
+            250
+        );
+
+    },3500);
+
+}
+
+
+/* =====================================================
+   PREVENT ENTER SUBMIT ON SOME SEARCH FIELDS
+===================================================== */
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if(
+            event.key === "Enter" &&
+            event.target.tagName === "INPUT" &&
+            event.target.type === "search"
+        ){
+
+            event.preventDefault();
+
+        }
+
+    }
+);
+
+</script>
+
+</body>
+</html>
